@@ -1,0 +1,49 @@
+@import "react-slideshow-image/dist/styles.css";
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+tspan {
+  fill: white;
+}
+
+.ant-btn-primary {
+  color: white !important;
+  background-color: #262E5B !important;
+}
+
+.ant-btn-primary:hover {
+  color: white !important;
+  background-color: #262E5B !important;
+}
+
+/* .ant-image-img {
+  object-fit: cover !important;
+  width: 100px !important;
+  height: 100px !important;
+} */
+
+.ant-popover-title {
+  color: white !important;
+  font-family: "source-code-pro", monospace;
+  font-weight: 200 !important;
+  text-align: center;
+}
+
+.ant-popover-inner {
+  background-color: #333333 !important;
+}
+
+.ant-popover {
+  --antd-arrow-background-color: #333333 !important;
+}
