@@ -7,9 +7,11 @@ import {
   PaperClipOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
+
 import Upload from "./upload/index.tsx";
 import Webcam from "./webcam/index.tsx";
 import TextFrom from "./text/index.tsx";
+import { Flex } from "antd";
 
 const Analyze = () => {
   const { type } = useParams();
@@ -29,26 +31,40 @@ const Analyze = () => {
   };
 
   return (
-    <>
-      <Section>
-        <OptionsDiv onClick={() => navigate("/video")}>
-          <Text type={"h1"} cls="per-size">
+    <Flex
+      align="center"
+      gap="large"
+      style={{ minWidth: "1040px", paddingTop: "10rem" }}
+      vertical
+    >
+      <Flex gap="middle">
+        <OptionsDiv
+          onClick={() => navigate("/video")}
+          className={type === "video" ? "active" : ""}
+        >
+          <Text type={"h1"} className="per-size">
             <PaperClipOutlined /> Upload Video
           </Text>
         </OptionsDiv>
-        <OptionsDiv onClick={() => navigate("/live")}>
-          <Text type={"h1"} cls="per-size">
+        <OptionsDiv
+          onClick={() => navigate("/live")}
+          className={type === "live" ? "active" : ""}
+        >
+          <Text type={"h1"} className="per-size">
             <VideoCameraOutlined /> Webcam
           </Text>
         </OptionsDiv>
-        <OptionsDiv onClick={() => navigate("/text")}>
-          <Text type={"h1"} cls="per-size">
+        <OptionsDiv
+          onClick={() => navigate("/text")}
+          className={type === "text" ? "active" : ""}
+        >
+          <Text type={"h1"} className="per-size">
             <FontSizeOutlined /> Text
           </Text>
         </OptionsDiv>
-      </Section>
-      {renderComponent(type)}
-    </>
+      </Flex>
+      <Flex justify="center">{renderComponent(type)}</Flex>
+    </Flex>
   );
 };
 

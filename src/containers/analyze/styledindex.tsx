@@ -7,7 +7,7 @@ export const Section = styled.div`
   justify-content: center;
   gap: 10px;
   align-items: center;
-  padding-top: 12rem;
+  padding-top: 10rem;
 `;
 
 export const OptionsDiv = styled.div`

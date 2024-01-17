@@ -9,7 +9,6 @@ export const Inputdiv = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding-top: 6rem;
 `;
 
 export const ButtonsDiv = styled.div`

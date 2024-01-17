@@ -57,12 +57,11 @@ p {
 }
 
 .font-size-icon{
-  line-height: 18px;
-  font-size: 18px;
-  font-weight: 200;
-  border: 1px solid #a19c9c;
-  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid #c4c4c4;
+  border-radius: 3px;
   width: 30px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -134,4 +133,51 @@ p {
 .btn-end{
   display: flex !important;
   justify-self: end !important;
+}
+.section-heading{
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 500;
+  color: #C4C4C4;
+}
+
+.card-heading{
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 500;
+  color: #262E5B;
+}
+
+.card-subheading{
+  font-family: 'Poppins';
+  font-size: 12px;
+  color: #131313;
+}
+
+.accent{
+  color: #262E5B;
+}
+
+.bold{
+  font-weight: 700 !important;
+}
+.medium{
+  font-weight: 500 !important;
+}
+tspan{
+  font-size: 12px !important;
+}
+
+p{
+  color: #131313 !important;
+  font-weight: 400  !important;
+}
+
+.back-btn{
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  min-width: 60px ;
+  align-items: center;
+  cursor: pointer;
 }

@@ -13,9 +13,6 @@ code {
     monospace;
 }
 
-tspan {
-  fill: white;
-}
 
 .ant-btn-primary {
   color: white !important;
@@ -25,6 +22,11 @@ tspan {
 .ant-btn-primary:hover {
   color: white !important;
   background-color: #262E5B !important;
+}
+
+.active{
+  background-color: #c1cfed !important;
+  color: #262e5b !important;
 }
 
 /* .ant-image-img {

@@ -9,8 +9,6 @@ export const Section = styled.div`
   align-items: center;
   gap: 12px;
   align-items: top;
-  //height: 100vh;
-  padding-top: 6rem;
 `;
 
 export const ButtonDiv = styled.div`

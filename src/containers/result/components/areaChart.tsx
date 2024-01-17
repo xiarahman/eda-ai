@@ -1,3 +1,4 @@
+import { Flex } from "antd";
 import React, { PureComponent } from "react";
 import {
   XAxis,
@@ -6,7 +7,6 @@ import {
   Tooltip,
   AreaChart,
   Area,
-  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -59,30 +59,25 @@ export default class AreaCharts extends PureComponent {
 
   render() {
     return (
-      <div style={{ width: "100%" }}>
-        <ResponsiveContainer width={650} height={250}>
-          <AreaChart
-            width={500}
-            height={200}
-            data={data}
-            syncId="anyId"
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Area type="monotone" dataKey="pv" stroke="yellow" fill="yellow" />
-            <Area type="monotone" dataKey="uv" stroke="red" fill="red" />
-            <Area type="monotone" dataKey="amt" stroke="gray" fill="gray" />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
+      <Flex>
+        <AreaChart
+          width={575}
+          height={200}
+          data={data}
+          syncId="anyId"
+          margin={{
+            left: -10,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Area type="monotone" dataKey="pv" stroke="yellow" fill="yellow" />
+          <Area type="monotone" dataKey="uv" stroke="red" fill="red" />
+          <Area type="monotone" dataKey="amt" stroke="gray" fill="gray" />
+        </AreaChart>
+      </Flex>
     );
   }
 }

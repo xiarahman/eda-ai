@@ -1,8 +1,8 @@
 import React from "react";
-import XButton from "antd/es/button";
+import { Button as AntdButton } from "antd";
 import styled from "styled-components";
 
-export const Btn = styled(XButton)`
+export const StyledButton = styled(AntdButton)`
   color: #f5f5f5 !important;
   background-color: #262e5b !important;
   border-radius: 5px;
@@ -10,15 +10,15 @@ export const Btn = styled(XButton)`
 const Button = (props) => {
   if (props.type === "link") {
     return (
-      <Btn type={props.type} href={props.href}>
+      <StyledButton type={props.type} href={props.href}>
         {props.children}
-      </Btn>
+      </StyledButton>
     );
   } else {
     return (
-      <Btn type={props.type} className={props.cls}>
+      <StyledButton type={props.type} className={props.cls}>
         {props.children}
-      </Btn>
+      </StyledButton>
     );
   }
 };

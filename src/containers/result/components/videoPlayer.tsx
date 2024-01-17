@@ -7,9 +7,13 @@ const VideoPlayer = () => {
       <ReactPlayer
         url={""}
         controls={true}
-        width="500px"
-        height="480px"
-        style={{ backgroundColor: "#F5F5F5", borderRadius: "5px" }}
+        width="100%"
+        height="433px"
+        style={{
+          backgroundColor: "#F5F5F5",
+          borderRadius: "5px",
+          flexGrow: "1",
+        }}
       />
     </>
   );

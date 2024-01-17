@@ -3,9 +3,7 @@ import styled from "styled-components";
 import Text from "../../../components/text/index.tsx";
 
 const SentimentPer = styled.div`
-  width: 200px;
-
-  padding: 1rem;
+  padding: 0.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -14,13 +12,13 @@ const SentimentPer = styled.div`
   background: #c1cfed;
 `;
 
-const Emotions = () => (
+const Emotions = ({ label, value, emotion }) => (
   <SentimentPer>
-    <Text type={"p"} cls="per-size">
-      Facial
+    <Text type={"p"} className="card-heading">
+      {label}
     </Text>
-    <Text type={"h1"} cls="per-size">
-      30% - Happy
+    <Text type={"h1"} className="card-heading medium accent">
+      {value}% - {emotion}
     </Text>
   </SentimentPer>
 );

@@ -5,7 +5,7 @@ import { Flex, Progress } from "antd";
 import thumbsup from "../../../assets/up.png";
 
 const SentimentPer = styled.div`
-  width: 100%;
+  min-width: 100%;
   margin-top: -50px;
   padding: 0.5rem;
   display: flex;
@@ -15,8 +15,8 @@ const SentimentPer = styled.div`
   backdrop-filter: blur(60px);
   border-radius: 5px;
   img {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
@@ -24,11 +24,11 @@ const Sentiments = () => (
   <Flex vertical align="center">
     <Progress type="dashboard" percent={75} strokeWidth={10} size={150} />
     <SentimentPer>
-      <Text type={"p"} cls="">
+      <Text type={"p"} className="card-heading medium accent">
         0%
       </Text>
       <img className="thumbsup" src={thumbsup} alt="" />
-      <Text type={"p"} cls="">
+      <Text type={"p"} className="card-heading medium accent">
         100%
       </Text>
     </SentimentPer>
