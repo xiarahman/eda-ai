@@ -15,7 +15,7 @@ const InputForm = () => {
       />
       <ButtonsDiv>
         <Upload>
-          <Button type={"primary"} cls="btn-color">
+          <Button type={"primary"} className="btn-color">
             <UploadOutlined /> Click to Upload
           </Button>
         </Upload>
@@ -24,7 +24,7 @@ const InputForm = () => {
           Analyze
         </Button>
       </ButtonsDiv>
-      <Text type={"p"} cls="btn-des">
+      <Text type={"p"} className="btn-des">
         Support for a single upload. Only supports .txt or csv extensions.
       </Text>
     </Inputdiv>
