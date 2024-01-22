@@ -29,7 +29,9 @@ const LiveResult = () => {
             minWidth: "400px",
           }}
         >
-          <div>sdsdsd</div>
+          <div style={{ flexGrow: "1", minHeight: "570px" }}>
+            Frames Captured From Live
+          </div>
         </Flex>
       </Flex>
       {/* Results Block */}

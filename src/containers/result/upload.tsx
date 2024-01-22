@@ -7,8 +7,10 @@ import Emotions from "./components/emotion.tsx";
 import Sentiments from "./components/sentiment.tsx";
 import AreaCharts from "./components/AreaChart.tsx";
 import { RightOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const UploadResult = () => {
+  const navigate = useNavigate();
   return (
     <Flex
       gap="middle"
@@ -82,7 +84,10 @@ const UploadResult = () => {
                 <h3 className="card-heading">Sentiments</h3>
                 <span className="card-subheading">67 sentances</span>
               </Flex>
-              <RightOutlined className="font-size-icon" />
+              <RightOutlined
+                className="font-size-icon"
+                onClick={() => navigate("/sentiment-detail")}
+              />
             </Flex>
 
             <Sentiments />

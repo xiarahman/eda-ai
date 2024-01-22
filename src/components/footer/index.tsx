@@ -16,7 +16,7 @@ const Footer = () => {
         borderTop: "1px solid #D9D9D9;",
         borderBottom: "1px solid #D9D9D9;",
         position: "fixed",
-        bottom: "0",
+        bottom: 0,
         width: "100vw",
       }}
     >
