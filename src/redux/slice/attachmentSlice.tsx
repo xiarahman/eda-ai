@@ -1,20 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const githubSlice = createSlice({
-  name: "github",
+  name: 'github',
   initialState: {
     data: [],
     loading: false,
     error: null,
   },
   reducers: {
-    fetchDataStart: (state) => {
+    fetchDataStart: (state, action) => {
       state.loading = true;
       state.error = null;
     },
     fetchDataSuccess: (state, action) => {
       const newArr = action.payload;
-
       state.data = newArr;
     },
     fetchDataFailure: (state, action) => {
