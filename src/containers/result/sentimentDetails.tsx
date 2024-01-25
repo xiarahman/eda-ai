@@ -2,10 +2,10 @@ import { Flex } from "antd";
 import React from "react";
 import SentenceCard from "./components/sentenceCard.tsx";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SentimentDetails = () => {
-  const navigate = useNavigate();
+  const navigate = useHistory();
   return (
     <Flex
       vertical
@@ -20,7 +20,10 @@ const SentimentDetails = () => {
     >
       <Flex justify="space-between" style={{ width: "100%" }}>
         <h2 className="section-heading">Sentance</h2>
-        <button className="back-btn" onClick={() => navigate("/upload-result")}>
+        <button
+          className="back-btn"
+          onClick={() => navigate.push("/upload-result")}
+        >
           <ArrowLeftOutlined />
           Back
         </button>

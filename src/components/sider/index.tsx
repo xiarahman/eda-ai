@@ -6,13 +6,13 @@ import {
   PaperClipOutlined,
 } from "@ant-design/icons";
 import { Sidebar, Icon, IconBox, StyledLink } from "./styledindex.tsx";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SidebarItem = ({ to, children }) => {
-  const navigate = useNavigate();
+  const navigate = useHistory();
 
   const handleClick = () => {
-    navigate(to);
+    navigate.push(to);
   };
 
   return (
