@@ -8,16 +8,11 @@ import {
 } from "../slice/attachmentSlice.tsx";
 
 export default function* fetchData(action) {
-  const { file } = action.payload;
-
   try {
-    const formData = new FormData();
-    formData.append("file", file);
-
     const response = yield call(
       axios.post,
       "https://cf6c-203-175-67-12.ngrok-free.app/analyze_video",
-      formData
+      action.payload
     );
 
     console.log("API Response:", response.data);

@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import { saga } from "./saga/attachmentSaga";
-import reducer from "../redux/slice/attachmentSlice.tsx";
+import videoSaga from "./saga/videoSaga.tsx";
+import videoReducer from "./slice/videoSlice.tsx";
 
-const sagaMiddleware = createSagaMiddleware();
+const saga = createSagaMiddleware();
 
 const store = configureStore({
-  reducer,
-  middleware: [sagaMiddleware],
+  reducer: {
+    video: videoReducer,
+  },
+  middleware: () => [saga],
 });
-sagaMiddleware.run(saga);
+saga.run(videoSaga);
 
 export default store;

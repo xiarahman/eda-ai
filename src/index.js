@@ -12,11 +12,9 @@ const initialState = {};
 const store = configureStore(initialState, history);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>
 );

@@ -1,5 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import Text from "../../components/text/index.tsx";
 import { OptionsDiv } from "./styledindex.tsx";
 import {
@@ -14,11 +13,10 @@ import TextFrom from "./text/index.tsx";
 import { Flex } from "antd";
 
 const Analyze = () => {
-  const type = useParams();
-  const navigate = useHistory();
+  const [item, setItem] = useState("");
 
-  const renderComponent = (type) => {
-    switch (type) {
+  const renderComponent = (val) => {
+    switch (val) {
       case "video":
         return <Upload />;
       case "live":
@@ -39,31 +37,31 @@ const Analyze = () => {
     >
       <Flex gap="middle">
         <OptionsDiv
-          onClick={() => navigate.push("/video")}
-          className={type === "video" ? "active" : ""}
+          onClick={() => setItem("video")}
+          className={item === "video" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
             <PaperClipOutlined /> Upload Video
           </Text>
         </OptionsDiv>
         <OptionsDiv
-          onClick={() => navigate.push("/live")}
-          className={type === "live" ? "active" : ""}
+          onClick={() => setItem("live")}
+          className={item === "live" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
             <VideoCameraOutlined /> Webcam
           </Text>
         </OptionsDiv>
         <OptionsDiv
-          onClick={() => navigate.push("/text")}
-          className={type === "text" ? "active" : ""}
+          onClick={() => setItem("text")}
+          className={item === "text" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
             <FontSizeOutlined /> Text
           </Text>
         </OptionsDiv>
       </Flex>
-      <Flex justify="center">{renderComponent(type)}</Flex>
+      <Flex justify="center">{item && renderComponent(item)}</Flex>
     </Flex>
   );
 };

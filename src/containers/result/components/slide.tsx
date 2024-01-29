@@ -1,9 +1,9 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import pic from "../../../assets/accountpic.jpg";
 import styled from "styled-components";
 import { Image } from "antd";
+import { useSelector } from "react-redux";
 
 const StyledImage = styled(Image)`
   object-fit: cover !important;
@@ -13,24 +13,23 @@ const StyledImage = styled(Image)`
 `;
 
 const Slider = () => {
+  const data = useSelector((state: any) => state?.video?.data);
   return (
-    <>
-      {/* {slides.length > 0 && ( */}
-      <Slide
-        slidesToShow={5}
-        slidesToScroll={1}
-        arrows={false}
-        autoplay={true}
-        duration={2000}
-      >
-        {/* {slides?.map((slide, index) => ( */}
-        <div>
-          <StyledImage src={pic} />
+    <Slide
+      slidesToShow={5}
+      slidesToScroll={1}
+      arrows={false}
+      autoplay={true}
+      duration={2000}
+    >
+      {data?.video_detail?.frames?.map((frame, index) => (
+        <div key={index}>
+          <StyledImage
+            src={`https://cf6c-203-175-67-12.ngrok-free.app${frame?.frame_path}`}
+          />
         </div>
-        {/* ))} */}
-      </Slide>
-      {/* )} */}
-    </>
+      ))}
+    </Slide>
   );
 };
 

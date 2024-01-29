@@ -31,9 +31,7 @@ const Uploader = () => {
         console.log(info.file, info.fileList);
       }
       if (status === "done") {
-        message.success(`${info.file.name} file uploaded successfully.`);
-        localStorage.setItem("job", info.file.response.job_id);
-        push("/result/video");
+        push(`/result/video/${info.file.response.job_id}`);
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`);
       }

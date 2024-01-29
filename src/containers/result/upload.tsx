@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Flex } from "antd";
 import VideoPlayer from "./components/videoPlayer.tsx";
 import Slider from "./components/slide.tsx";
@@ -7,10 +7,25 @@ import Emotions from "./components/emotion.tsx";
 import Sentiments from "./components/sentiment.tsx";
 import AreaCharts from "./components/AreaChart.tsx";
 import { RightOutlined } from "@ant-design/icons";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { videoFetchRequest } from "../../redux/slice/videoSlice.tsx";
+import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
-const UploadResult = () => {
-  const navigate = useHistory();
+import { reducer } from "./../../redux/slice/videoSlice.tsx";
+import saga from "./../../redux/saga/videoSaga.tsx";
+
+const UploadResult = ({ job_id }) => {
+  // const data = useSelector(getVideos);
+  const data = useSelector((state: any) => state?.video?.data);
+  const dispatch = useDispatch();
+  useInjectSaga({ key: "video", saga });
+  useInjectReducer({ key: "video", reducer: reducer });
+
+  useEffect(() => {
+    dispatch(videoFetchRequest({ job_id }));
+  }, [dispatch, job_id]);
+
+  console.log("Data:", data);
   return (
     <Flex
       gap="middle"
@@ -30,8 +45,12 @@ const UploadResult = () => {
         style={{ flexGrow: "1", minWidth: "400px" }}
       >
         <h2 className="section-heading">Preview</h2>
-        <VideoPlayer />
-        <Flex style={{ width: "100%", backgroundColor: "#f5f5f5" }}>
+        <VideoPlayer file={data?.video_detail?.file_path} />
+        <Flex
+          id="slider"
+          vertical
+          style={{ width: "100%", backgroundColor: "#f5f5f5" }}
+        >
           <Slider />
         </Flex>
       </Flex>
@@ -59,7 +78,9 @@ const UploadResult = () => {
             >
               <Flex vertical align="space-between" style={{ flexGrow: "1" }}>
                 <h3 className="card-heading">Emotions</h3>
-                <span className="card-subheading">67 Frames</span>
+                <span className="card-subheading">
+                  {data?.no_of_frames} Frames
+                </span>
               </Flex>
               <ProgressBar />
             </Flex>
@@ -82,12 +103,11 @@ const UploadResult = () => {
             <Flex justify="space-between">
               <Flex vertical>
                 <h3 className="card-heading">Sentiments</h3>
-                <span className="card-subheading">67 sentances</span>
+                <span className="card-subheading">
+                  {data?.no_of_sentences} Sentences
+                </span>
               </Flex>
-              <RightOutlined
-                className="font-size-icon"
-                onClick={() => navigate.push("/sentiment-detail")}
-              />
+              <RightOutlined className="font-size-icon" />
             </Flex>
 
             <Sentiments />

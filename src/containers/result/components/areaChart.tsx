@@ -1,5 +1,6 @@
+import React from "react";
 import { Flex } from "antd";
-import React, { PureComponent } from "react";
+import { useSelector } from "react-redux";
 import {
   XAxis,
   YAxis,
@@ -54,30 +55,47 @@ const data = [
   },
 ];
 
-export default class AreaCharts extends PureComponent {
-  static demoUrl = "https://codesandbox.io/s/synchronized-line-charts-zc3nl";
+const AreaCharts = () => {
+  const frames = useSelector(
+    (state: any) => state?.video?.data?.video_detail?.frames
+  );
 
-  render() {
-    return (
-      <Flex>
-        <AreaChart
-          width={575}
-          height={200}
-          data={data}
-          syncId="anyId"
-          margin={{
-            left: -10,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Area type="monotone" dataKey="pv" stroke="yellow" fill="yellow" />
-          <Area type="monotone" dataKey="uv" stroke="red" fill="red" />
-          <Area type="monotone" dataKey="amt" stroke="gray" fill="gray" />
-        </AreaChart>
-      </Flex>
-    );
-  }
-}
+  return (
+    <Flex>
+      <AreaChart
+        width={575}
+        height={200}
+        data={frames}
+        syncId="anyId"
+        margin={{
+          left: -10,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="frame_time" />
+        <YAxis />
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey={frames?.emotion_percentages[0]}
+          stroke="yellow"
+          fill="yellow"
+        />
+        <Area
+          type="monotone"
+          dataKey={frames?.emotion_percentages[1]}
+          stroke="yellow"
+          fill="yellow"
+        />
+        <Area
+          type="monotone"
+          dataKey={frames?.emotion_percentages[2]}
+          stroke="yellow"
+          fill="yellow"
+        />
+      </AreaChart>
+    </Flex>
+  );
+};
+
+export default AreaCharts;
