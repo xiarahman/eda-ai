@@ -15,7 +15,7 @@ export const ButtonDiv = styled.div`
   width: 580px;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: top;
   align-items: center;
 `;
 
@@ -30,3 +30,9 @@ export const Preview = styled.div`
   border: 1px solid var(--Neutral-5, #d9d9d9);
   background: #f5f5f5;
 `;
+
+export const styles = {
+  opacity: "0",
+  width: "0",
+  padding: "0",
+};

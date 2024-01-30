@@ -8,7 +8,11 @@ const AppRoutes = () => {
     <Router>
       <Route exact path="/analyze" component={Analyze} />
       <Route exact path="/result/:opt/:job_id" component={Result} />
-      <Route exact path="/sentiment-detail" component={SentimentDetails} />
+      <Route
+        exact
+        path="/sentiment-detail/:opt/:job_id"
+        component={SentimentDetails}
+      />
     </Router>
   );
 };

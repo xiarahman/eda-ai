@@ -12,17 +12,24 @@ const StyledImage = styled(Image)`
   background-color: #222222 !important;
 `;
 
+// Slider Component
 const Slider = () => {
   const data = useSelector((state: any) => state?.video?.data);
+
+  // Check if data and data.video_detail.frames are defined
+  if (!data || !data.video_detail || !data.video_detail.frames) {
+    return null; // or some fallback UI
+  }
+
   return (
     <Slide
-      slidesToShow={5}
+      slidesToShow={4}
       slidesToScroll={1}
       arrows={false}
       autoplay={true}
       duration={2000}
     >
-      {data?.video_detail?.frames?.map((frame, index) => (
+      {data.video_detail.frames.map((frame, index) => (
         <div key={index}>
           <StyledImage
             src={`https://cf6c-203-175-67-12.ngrok-free.app${frame?.frame_path}`}

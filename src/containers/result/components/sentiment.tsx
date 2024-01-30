@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Text from "../../../components/text/index.tsx";
 import { Flex, Progress } from "antd";
 import thumbsup from "../../../assets/up.png";
+import { useSelector } from "react-redux";
 
 const SentimentPer = styled.div`
   min-width: 100%;
@@ -20,18 +21,33 @@ const SentimentPer = styled.div`
   }
 `;
 
-const Sentiments = () => (
-  <Flex vertical align="center">
-    <Progress type="dashboard" percent={75} strokeWidth={10} size={150} />
-    <SentimentPer>
-      <Text type={"p"} className="card-heading medium accent">
-        0%
-      </Text>
-      <img className="thumbsup" src={thumbsup} alt="" />
-      <Text type={"p"} className="card-heading medium accent">
-        100%
-      </Text>
-    </SentimentPer>
-  </Flex>
-);
+const Sentiments = () => {
+  const data = useSelector((state: any) => state?.video?.data);
+
+  if (!data || !data.final_sentiment || !data.final_sentiment[0]) {
+    return null;
+  }
+
+  const formattedPercentage =
+    Math.floor(data.final_sentiment[0].percentage) || 0;
+  return (
+    <Flex vertical align="center">
+      <Progress
+        type="dashboard"
+        percent={formattedPercentage}
+        strokeWidth={10}
+        size={150}
+      />
+      <SentimentPer>
+        <Text type={"p"} className="card-heading medium accent">
+          0%
+        </Text>
+        <img className="thumbsup" src={thumbsup} alt="" />
+        <Text type={"p"} className="card-heading medium accent">
+          100%
+        </Text>
+      </SentimentPer>
+    </Flex>
+  );
+};
 export default Sentiments;

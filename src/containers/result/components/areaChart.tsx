@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Flex } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   XAxis,
   YAxis,
@@ -9,92 +9,76 @@ import {
   AreaChart,
   Area,
 } from "recharts";
+import { chartsDataFetchRequest } from "../../../redux/slice/videoSlice.tsx";
+import { useInjectReducer, useInjectSaga } from "redux-injectors";
+import { reducer } from "../../../redux/slice/chartSlice.tsx";
+import saga from "../../../redux/saga/chartSaga.tsx";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+const AreaCharts = ({ job_id }) => {
+  const chartsData = useSelector((state: any) => state?.chart?.chartsData);
+  const [keys, setKeys] = useState(Object.keys(chartsData));
+  const dispatch = useDispatch();
 
-const AreaCharts = () => {
-  const frames = useSelector(
-    (state: any) => state?.video?.data?.video_detail?.frames
-  );
+  useInjectSaga({ key: "chart", saga });
+  useInjectReducer({ key: "chart", reducer: reducer });
 
+  const emoHexCode = (emotion) => {
+    switch (emotion) {
+      case "happy":
+        return "#FFF172";
+      case "sad":
+        return "#56577A";
+      case "neutral":
+        return "#AFAFAF";
+      case "angry":
+        return "#FF1500";
+      case "fear":
+        return "#9C9DD7";
+    }
+  };
+
+  useEffect(() => {
+    dispatch(chartsDataFetchRequest({ job_id }));
+  }, [dispatch, job_id]);
+
+  console.log("Charts Data:", chartsData);
   return (
-    <Flex>
-      <AreaChart
-        width={575}
-        height={200}
-        data={frames}
-        syncId="anyId"
-        margin={{
-          left: -10,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="frame_time" />
-        <YAxis />
-        <Tooltip />
-        <Area
-          type="monotone"
-          dataKey={frames?.emotion_percentages[0]}
-          stroke="yellow"
-          fill="yellow"
-        />
-        <Area
-          type="monotone"
-          dataKey={frames?.emotion_percentages[1]}
-          stroke="yellow"
-          fill="yellow"
-        />
-        <Area
-          type="monotone"
-          dataKey={frames?.emotion_percentages[2]}
-          stroke="yellow"
-          fill="yellow"
-        />
-      </AreaChart>
-    </Flex>
+    chartsData && (
+      <Flex>
+        <AreaChart
+          width={575}
+          height={200}
+          data={chartsData}
+          syncId="anyId"
+          margin={{
+            left: -10,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey={keys[1]} />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey={keys[0]}
+            stroke={emoHexCode(keys[0])}
+            fill={emoHexCode(keys[0])}
+          />
+          <Area
+            type="monotone"
+            dataKey={keys[2]}
+            stroke={emoHexCode(keys[1])}
+            fill={emoHexCode(keys[1])}
+          />
+          <Area
+            type="monotone"
+            dataKey={keys[3]}
+            stroke={emoHexCode(keys[2])}
+            fill={emoHexCode(keys[2])}
+          />
+        </AreaChart>
+      </Flex>
+    )
   );
 };
 

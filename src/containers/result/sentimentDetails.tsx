@@ -2,10 +2,11 @@ import { Flex } from "antd";
 import React from "react";
 import SentenceCard from "./components/sentenceCard.tsx";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const SentimentDetails = () => {
-  const navigate = useHistory();
+  const history = useHistory();
+  const { opt, job_id } = useParams<any>();
   return (
     <Flex
       vertical
@@ -22,7 +23,7 @@ const SentimentDetails = () => {
         <h2 className="section-heading">Sentance</h2>
         <button
           className="back-btn"
-          onClick={() => navigate.push("/upload-result")}
+          onClick={() => history.push(`/result/${opt}/${job_id}`)}
         >
           <ArrowLeftOutlined />
           Back
