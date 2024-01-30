@@ -5,7 +5,7 @@ import Slider from "./components/slide.tsx";
 import ProgressBar from "./components/progressbar.tsx";
 import Emotions from "./components/emotion.tsx";
 import Sentiments from "./components/sentiment.tsx";
-import AreaCharts from "./components/AreaChart.tsx";
+import AreaCharts from "./components/areaChart.tsx";
 import { RightOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 

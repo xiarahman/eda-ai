@@ -6,17 +6,17 @@ import { Provider } from "react-redux";
 import configureStore from "./configureStore.ts";
 import { ConnectedRouter } from "connected-react-router";
 import history from "./history.js";
-
+import store from './redux/store.tsx'
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const initialState = {};
-const store = configureStore(initialState, history);
+// const store = configureStore(initialState, history);
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ConnectedRouter history={history}>
+      {/* <ConnectedRouter history={history}> */}
         <App />
-      </ConnectedRouter>
+      {/* </ConnectedRouter> */}
     </Provider>
   </React.StrictMode>
 );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex } from "antd";
 import ProgressBar from "./components/progressbar.tsx";
-import AreaCharts from "./components/AreaChart.tsx";
+import AreaCharts from "./components/areaChart.tsx";
 
 const LiveResult = () => {
   return (
@@ -72,7 +72,7 @@ const LiveResult = () => {
           }}
         >
           <Flex gap="large" justify="space-between">
-            <Flex vertical>
+            <Flex vertical>npm star
               <h3 className="card-heading">Graph</h3>
               <span className="card-subheading">15 mins 20 sec</span>
             </Flex>

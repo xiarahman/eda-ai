@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Input } from "antd";
 
 export const Inputdiv = styled.div`
-  //height: 100vh;
+
   display: flex;
-  justify-content: top;
+  margin-top: 10px;
+  
   flex-direction: column;
   align-items: center;
   gap: 20px;
