@@ -18,8 +18,9 @@ const Content: React.FC = () => {
   const navigate = useNavigate();
   return (
     <>
+      {/* Analyze Uploaded Videos */}
       <StyledVideoContent>
-        <Row style={{ margin: "5%" }}>
+        <Row>
           <Col span={18}>
             <StyledSpace direction="vertical" size={3}>
               <StyledTitle>
@@ -42,18 +43,16 @@ const Content: React.FC = () => {
             </StyledSpace>
           </Col>
           <Col span={6}>
-            <StyledContentImage
-              src={VideoImage}
-             
-            />
+            <StyledContentImage src={VideoImage} />
           </Col>
         </Row>
       </StyledVideoContent>
+       {/* Analyze Input Text */}
       <StyledInputContent>
-        <Row style={{ margin: "5%" }}>
+        <Row>
           <Col span={18}>
             <StyledSpace direction="vertical" size={3}>
-              <StyledTitle>
+              <StyledTitle >
                 Analyze <br />
                 Input Text
               </StyledTitle>
@@ -65,22 +64,20 @@ const Content: React.FC = () => {
               </StyledText>
               <StyledAnalyzeButton
                 shape="round"
-                onClick={() => navigate("/analyze")}
+                onClick={() => navigate("/text")}
               >
                 Analyze
               </StyledAnalyzeButton>
             </StyledSpace>
           </Col>
           <Col span={6}>
-            <StyledContentImage
-              src={TextImage}
-            
-            />
+            <StyledContentImage src={TextImage} />
           </Col>
         </Row>
       </StyledInputContent>
+       {/* Analyze Live Stream */}
       <StyledLiveContent>
-        <Row style={{ margin: "5%" }}>
+        <Row>
           <Col span={18}>
             <StyledSpace direction="vertical" size={3}>
               <StyledTitle>
@@ -103,15 +100,11 @@ const Content: React.FC = () => {
             </StyledSpace>
           </Col>
           <Col span={6}>
-            <StyledContentImage
-              src={LiveImage}
-             
-            />
+            <StyledContentImage src={LiveImage} />
           </Col>
         </Row>
       </StyledLiveContent>
     </>
   );
 };
-
 export default Content;

@@ -1,35 +1,35 @@
 import React from "react";
-import { BannerImageContainer, BannerImage,BannerContent, StyledBannerText } from "../style.ts";
-
-import { Typography } from "antd";
-
-const {  Title} = Typography;
-
-
+import Text from "../../text/index.tsx"; 
+import {
+  BannerImageContainer, 
+  BannerImage, 
+  BannerContent, 
+  BannerTitle, 
+} from "../style.ts";
 const Banner: React.FC = () => {
   return (
-    <>
-      <BannerImageContainer>
-        <BannerImage />
-        <BannerContent>
-          <StyledBannerText >
-            Sensing Sentiments:
-          </StyledBannerText>
-          <Title  style={{ color: "white", fontSize:"42px", fontWeight:"900" }}>
-            AI-Powered <br />
-            Facial and Speech
-            <br />
-            Emotion Detection
-          </Title>
-          <StyledBannerText >
-            Discover a new realm of emotional understanding with [App Name], an
-            AI-powered platform <br /> merging facial and speech emotion
-            detection.
-          </StyledBannerText>
-        </BannerContent>
-      </BannerImageContainer>
-    </>
+    <BannerImageContainer> 
+      <BannerImage /> 
+      <BannerContent> 
+        {/* Title */}
+        <Text type={"h3"} cls="banner-title">
+          Sensing Sentiments: 
+        </Text>
+        {/* Subtitle */}
+        <BannerTitle>
+          AI-Powered <br />
+          Facial and Speech
+          <br />
+          Emotion Detection
+        </BannerTitle>
+        {/* Description */}
+        <Text type={"h4"} cls="banner-text">
+          Discover a new realm of emotional understanding with EDA, an
+          AI-powered platform <br /> merging facial and speech emotion
+          detection.
+        </Text>
+      </BannerContent>
+    </BannerImageContainer>
   );
 };
-
-export default Banner;
+export default Banner; 

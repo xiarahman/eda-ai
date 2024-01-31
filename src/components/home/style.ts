@@ -2,12 +2,12 @@ import { styled } from "styled-components";
 import { Typography, Row, Col, Space, Image, Button , Collapse} from "antd";
 import mainImage from "../../assets/HomeImage.jpg";
 import bottomImage from "../../assets/HomeBottomImage.png";
-const { Title, Text } = Typography;
-
 export const BannerImageContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: 100vh;
   line-height: normal;
+  position:relative;
+  padding-bottom: 20px;
 `;
 export const BannerImage = styled.div`
   position: absolute;
@@ -18,7 +18,6 @@ export const BannerImage = styled.div`
   background-position: center;
  background-repeat: no-repeat;
 `;
-
 export const BannerContent = styled.div`
   position: relative;
   text-align: left;
@@ -26,22 +25,15 @@ export const BannerContent = styled.div`
   margin-top: 15%;
   margin-left: 10%;
 `;
-
-export const StyledBannerText= styled(Typography.Text)`
-color: white;
-font-weight: 500;
-font-size: 20px;
-line-height: normal;
-`;
-
 export const StyledContentImage = styled(Image)`
 height: 180px;
 width: 300px;
+margin-top: 5%
 `;
 export const StyledVideoContent = styled.div`
   background-color: #c1cfed;
   color: white;
-  margin-top: 8%;
+  
 `;
 export const StyledInputContent = styled.div`
   background-color: none;
@@ -49,12 +41,16 @@ export const StyledInputContent = styled.div`
 export const StyledLiveContent = styled.div`
   background-color: #8fcddc;
 `;
-
 export const StyledTitle = styled(Typography)`
   font-size: 30px;
   font-weight: 700;
 `;
-export const StyledText = styled(Typography.Text)`
+export const BannerTitle=styled(StyledTitle)`
+ color: white;
+  font-size: 42px;
+   font-weight:900;
+`;
+export const StyledText = styled(Typography)`
   font-size: 20px;
   font-weight: 400;
 `;
@@ -65,16 +61,16 @@ export const StyledAnalyzeButton = styled(Button)`
 `;
 export const FAQContainer = styled.div`
   max-width: 700px;
-  margin: 0 auto;
+  margin: 10px;
 `;
-
 export const StyledCollapse = styled(Collapse)`
   background: none;
-`;
 
+`
 export const StyledSpace = styled(Space)`
-  text-align: center;
+  text-align: left;
   padding: 20px;
+  padding-left: 160px;
   background-color: "#F5F5F5";
 `;
 export const BottomImageContainer = styled.div`
@@ -89,18 +85,13 @@ export const BottomImage = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 `;
+export const BottomTitle=styled(StyledTitle)`
+color:white;
+`
 export const BottomLineContent = styled.div`
   position: relative;
+  margin-top: 5%;
   text-align: center;
   color: white;
 `;
-export const StyledBottomTitle = styled(Typography)`
-  font-size: 46px;
-  font-weight: 900;
-  margin-top: 5%;
-`;
-export const StyledBottomButton = styled(Button)`
-  color: "#262E5B";
-  background-color: "white";
-  margin-top: 10px;
-`;
+

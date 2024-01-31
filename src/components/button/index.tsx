@@ -7,11 +7,13 @@ export const Btn = styled(XButton)`
   background-color: #262e5b !important;
   border-radius: 5px;
 `;
+
 const Button = (props) => {
-  if (props.type === "link") {
+  const { type, cls, onClick, children, ...rest } = props;
+  if (type === "link") {
     return (
-      <Btn type={props.type} href={props.href}>
-        {props.children}
+      <Btn  type={props.type} href={props.href}>
+        {children}
       </Btn>
     );
   } else {
