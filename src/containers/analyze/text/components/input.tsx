@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory, useNavigate } from "react-router-dom";
 import Text from "../../../../components/text/index.tsx"; 
 import { useDispatch, useSelector } from "react-redux"; 
 import { analyzeTextRequest } from "../../../../redux/slice/textSlice.tsx"; 
