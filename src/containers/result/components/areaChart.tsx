@@ -11,16 +11,16 @@ import {
 } from "recharts";
 import { chartsDataFetchRequest } from "../../../redux/slice/videoSlice.tsx";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
-import { reducer } from "../../../redux/slice/chartSlice.tsx";
-import saga from "../../../redux/saga/chartSaga.tsx";
+import { reducer } from "../../../redux/slice/videoSlice.tsx";
+import saga from "../../../redux/saga/videoSaga.tsx";
 
 const AreaCharts = ({ job_id }) => {
-  const chartsData = useSelector((state: any) => state?.chart?.chartsData);
+  const chartsData = useSelector((state: any) => state?.video?.chartsData);
   const [keys, setKeys] = useState(Object.keys(chartsData));
   const dispatch = useDispatch();
 
-  useInjectSaga({ key: "chart", saga });
-  useInjectReducer({ key: "chart", reducer: reducer });
+  useInjectSaga({ key: "video", saga });
+  useInjectReducer({ key: "video", reducer: reducer });
 
   const emoHexCode = (emotion) => {
     switch (emotion) {
