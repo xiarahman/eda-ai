@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex } from "antd";
 import ProgressBar from "./components/progressbar.tsx";
-import AreaCharts from "./components/AreaChart.tsx";
+import AreaCharts from "./components/areaChart.tsx";
 
 const LiveResult = () => {
   return (

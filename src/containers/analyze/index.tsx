@@ -32,7 +32,12 @@ const Analyze = () => {
     <Flex
       align="center"
       gap="large"
-      style={{ minWidth: "1040px", paddingTop: "10rem", flexGrow: "1" }}
+      style={{
+        minWidth: "1040px",
+        minHeight: "830px",
+        paddingTop: "10rem",
+        flexGrow: "1",
+      }}
       vertical
     >
       <Flex gap="middle">

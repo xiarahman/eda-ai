@@ -1,5 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Container, Row1, Row2, StyledCardContainerPreview, StyledCardContainerResults, StyledEmpty, StyledButton, Heading, FinalResults, styles } from "./Styled-Capture.tsx";
+import {
+  Container,
+  Row1,
+  Row2,
+  StyledCardContainerPreview,
+  StyledCardContainerResults,
+  StyledEmpty,
+  StyledButton,
+  Heading,
+  FinalResults,
+  styles,
+} from "./Styled-Capture.tsx";
 import Webcam from "react-webcam";
 import io from "socket.io-client";
 import axios from "axios";
@@ -31,14 +42,17 @@ const WebcamMain = ({ setJobId, jobId }) => {
       // Emit the image data through the WebSocket
       if (socket.current) {
         socket.current.emit("live_stream", { imageData: imageSrc });
-        socket.current.on("processed_frame", ({ imageData, job_id , final_prediction }) => {
-          if (imageData) {
-            setNewImage(imageData, final_prediction);
+        socket.current.on(
+          "processed_frame",
+          ({ imageData, job_id, final_prediction }) => {
+            if (imageData) {
+              setNewImage(imageData, final_prediction);
+            }
+            if (!jobId && job_id) {
+              setJobId(job_id);
+            }
           }
-          if (!jobId && job_id) {
-            setJobId(job_id);
-          }
-        });
+        );
       }
     }
   };
@@ -58,10 +72,8 @@ const WebcamMain = ({ setJobId, jobId }) => {
       .then((response) => {
         const finalPrediction = response.data[0]?.final_prediction;
         setFinalEmotion(finalPrediction);
-        console.log(response)
       })
-     
-     // .then((response) => console.log(response))
+
       .catch((err) =>
         console.log("%cwebcam.tsx line:128 err", "color: #007acc;", err)
       );
@@ -79,10 +91,6 @@ const WebcamMain = ({ setJobId, jobId }) => {
     setFinalEmotion(null);
   };
 
- 
-  console.log(jobId);
-
-  console.log(showFrames);
   useEffect(() => {
     if (!showFrames && jobId) {
       handleDisconnect();

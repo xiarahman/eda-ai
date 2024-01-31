@@ -10,13 +10,17 @@ export const StyledButton = styled(AntdButton)`
 const Button = (props) => {
   if (props.type === "link") {
     return (
-      <StyledButton type={props.type} href={props.href}>
+      <StyledButton type={props.type} href={props.href} onClick={props.onClick}>
         {props.children}
       </StyledButton>
     );
   } else {
     return (
-      <StyledButton type={props.type} className={props.cls}>
+      <StyledButton
+        type={props.type}
+        className={props.cls}
+        onClick={props.onClick}
+      >
         {props.children}
       </StyledButton>
     );

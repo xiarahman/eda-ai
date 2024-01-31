@@ -15,8 +15,6 @@ export default function* fetchData(action) {
       action.payload
     );
 
-    console.log("API Response:", response.data);
-
     yield put(uploadDataSuccess(response.data));
   } catch (error) {
     yield put(uploadDataFailure(error.message));

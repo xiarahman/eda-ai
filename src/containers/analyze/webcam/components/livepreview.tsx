@@ -26,7 +26,6 @@ const LivePreview = ({ setJobId, jobId }) => {
   // Function to capture and send images every second
   const captureAndSendImage = () => {
     if (webcamRef.current) {
-      console.log("in scoket emission");
       const imageSrc = webcamRef.current.getScreenshot();
 
       // Emit the image data through the WebSocket
@@ -35,10 +34,12 @@ const LivePreview = ({ setJobId, jobId }) => {
         socket.current.on(
           "processed_frame",
           ({ imageData, job_id, final_prediction }) => {
+            console.log("Called");
             if (imageData) {
               setNewImage(imageData, final_prediction);
             }
-            if (!jobId && job_id) {
+
+            if (!jobId) {
               setJobId(job_id);
             }
           }
@@ -79,15 +80,12 @@ const LivePreview = ({ setJobId, jobId }) => {
       socket.current.disconnect();
     } else {
       setShowFrames(true);
-      socket.current = io("https://cf6c-203-175-67-12.ngrok-free.app");
+      socket.current = io("http://192.168.18.127:8081");
     }
     // Reset final emotion when starting the webcam
     setFinalEmotion(null);
   };
 
-  console.log("job id" + jobId);
-
-  console.log(showFrames);
   useEffect(() => {
     if (!showFrames && jobId) {
       handleDisconnect();
@@ -110,7 +108,7 @@ const LivePreview = ({ setJobId, jobId }) => {
         <img src={capturedImages} alt="" />
       </Preview>
       <ButtonDiv>
-        <Button type={"primary"} onClick={toggleWebcam}>
+        <Button type={"primary"} cls="btn-width btn-end" onClick={toggleWebcam}>
           {showFrames ? "Stop Stream" : "Start Stream"}
         </Button>
       </ButtonDiv>

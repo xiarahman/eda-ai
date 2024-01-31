@@ -27,9 +27,9 @@ const videoSlice = createSlice({
       state.loading = true;
       state.job_id = action.payload.job_id;
     },
-    chartsDataFetchSuccess: (state, action) => {
+    chartsDataFetchSuccess: (state, { payload }) => {
       state.loading = false;
-      state.chartsData = action.payload;
+      state.chartsData = payload;
     },
     chartsDataFetchFailure: (state, action) => {
       state.loading = false;

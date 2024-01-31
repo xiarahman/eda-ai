@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Flex } from "antd";
+import { Flex, Space } from "antd";
 import VideoPlayer from "./components/videoPlayer.tsx";
 import Slider from "./components/slide.tsx";
 import ProgressBar from "./components/progressbar.tsx";
 import Emotions from "./components/emotion.tsx";
 import Sentiments from "./components/sentiment.tsx";
-import AreaCharts from "./components/AreaChart.tsx";
+import AreaCharts from "./components/areaChart.tsx";
 import { RightOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { videoFetchRequest } from "../../redux/slice/videoSlice.tsx";
@@ -14,11 +14,12 @@ import { useInjectReducer, useInjectSaga } from "redux-injectors";
 import { reducer } from "./../../redux/slice/videoSlice.tsx";
 import saga from "./../../redux/saga/videoSaga.tsx";
 import { useHistory, useParams } from "react-router-dom";
+import { getVideos } from "../../redux/selectors/index.ts";
 
 const UploadResult = ({ job_id }) => {
   const history = useHistory();
-  // const data = useSelector(getVideos);
   const data = useSelector((state: any) => state?.video?.data);
+  const { chartsData } = useSelector(getVideos);
   const dispatch = useDispatch();
   const { opt } = useParams<any>();
 
@@ -28,12 +29,12 @@ const UploadResult = ({ job_id }) => {
   useEffect(() => {
     if (!data) {
       dispatch(videoFetchRequest({ job_id }));
+      console.log("%cupload.tsx line:34 data", "color: #007acc;", data);
     }
   }, [dispatch, job_id, data]);
 
-  console.log("Data:", data);
   if (!data) {
-    return null; // or a loading indicator
+    return <div>Loading...</div>;
   }
   return (
     <Flex
@@ -152,7 +153,11 @@ const UploadResult = ({ job_id }) => {
               <h3 className="card-heading">Graph</h3>
               <span className="card-subheading">15 mins 20 sec</span>
             </Flex>
-            <Flex>happy angry neutral</Flex>
+            <Flex>
+              {chartsData?.top_three_emotions?.map((item) => (
+                <Space>{item?.emotion} </Space>
+              ))}
+            </Flex>
           </Flex>
           <AreaCharts job_id={job_id} />
         </Flex>
