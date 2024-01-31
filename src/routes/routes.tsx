@@ -12,8 +12,8 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-      <Route exact path="/text" component={InputForm} />
-         <Route exact path="/text-result" component={AnalysisResult} />
+      <Route  path="/text" element={<InputForm/>} />
+         <Route  path="/text-result" element={<AnalysisResult/>} />
       </Routes>
         
       {/* <Route exact path="/:type" component={Analyze} />
