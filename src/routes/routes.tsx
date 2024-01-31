@@ -5,14 +5,17 @@ import Result from "../containers/result/index.tsx";
 import UploadResult from "../containers/result/upload.tsx";
 // import TextResult from "../containers/result/text.tsx";
 import SentimentDetails from "../containers/result/sentimentDetails.tsx";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import InputForm from "../containers/analyze/text/components/input.tsx";
 import AnalysisResult from "../containers/result/text.tsx";
 const AppRoutes = () => {
   return (
     <Router>
-         <Route exact path="/text" component={InputForm} />
+      <Routes>
+      <Route exact path="/text" component={InputForm} />
          <Route exact path="/text-result" component={AnalysisResult} />
+      </Routes>
+        
       {/* <Route exact path="/:type" component={Analyze} />
    
       <Route exact path="/upload-result" component={UploadResult} />

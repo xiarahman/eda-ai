@@ -1,216 +1,114 @@
-import React, { useState, useEffect } from "react";
-import { Card, Descriptions, Space, Button, Typography, Row, Col } from "antd";
-import { Progress } from "antd";
-const { Text } = Typography;
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
+import Text from "../../components/text/index.tsx";
+import { Row, Col, Button, List, Space } from "antd";
+import { useInjectSaga, useInjectReducer } from "redux-injectors";
+import EmotionCard from "./components/textEmotion.tsx";
+import SentimentCard from "./components/textSentiment.tsx";
+import { mapEmotions, mapSentiments } from "./components/helper.tsx";
+import { AnalysisResultProps } from "./components/textType.js";
+import { AnalysisContainer, PreviewColumn, ResultsColumn, ResultsWrapper, LoadMoreButton } from "./styledtext.tsx";
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
+import saga  from "../../redux/saga/rootSaga.tsx";
+import reducer from "../../redux/slice/textSlice.tsx"
 
-interface AnalysisResultProps {
-  result: {
-    detailed_analysis: {
-      emotion_percentages: { [key: string]: number };
-      pred_emotion: string;
-      pred_sentiment: string;
-      sentence: string;
-      result: string | any;
-    }[];
-    top_three_emotions: { emotion: string; percentage: number }[];
-    top_three_sentiments: { sentiment: string; percentage: number }[];
-  };
-}
-
-const AnalysisResult: React.FC<AnalysisResultProps> = ({ result }) => {
+const AnalysisResult: React.FC<AnalysisResultProps> = () => {
+  // Retrieve analysis result from Redux state
+  const result = useSelector((state: any) => state.input.analysisResult);
+  // useInjectSaga({ key: "input", saga });
+  // useInjectReducer({ key: "input", reducer: reducer });
+  // State variables for selected emotion, selected sentiment, and displayed sentences
   const [selectedEmotion, setSelectedEmotion] = useState<string | undefined>(
     result.top_three_emotions[0]?.emotion
   );
-  const [selectedSentiment, setSelectedSentiment] = useState<
-    string | undefined
-  >(result.top_three_sentiments[0]?.sentiment);
-  const [displayedSentences, setDisplayedSentences] = useState<number>(3); 
-  useEffect(() => {
-    setSelectedEmotion(result.top_three_emotions[0]?.emotion);
-    setSelectedSentiment(result.top_three_sentiments[0]?.sentiment);
-  }, [result]);
-
+  const [selectedSentiment, setSelectedSentiment] = useState<string | undefined>(
+    result.top_three_sentiments[0]?.sentiment
+  );
+  const [displayedSentences, setDisplayedSentences] = useState<number>(3);
+  // Event handlers for selecting emotion and sentiment
   const handleEmotionSelect = (emotion: string) => {
     setSelectedEmotion(emotion);
   };
-
   const handleSentimentSelect = (sentiment: string) => {
     setSelectedSentiment(sentiment);
   };
-
-  const getColorForEmotion = (emotion: string) => {
-    switch (emotion.toLowerCase()) {
-      case "happy":
-        return "#FFF172";
-      case "sad":
-        return "#56577A";
-      case "angry":
-        return "#FF1500";
-      case "fear":
-        return "#9C9DD7";
-      case "neutral":
-        return "#AFAFAF";
-      default:
-        return result.top_three_emotions.length > 1 ? "#000000" : "#000000";
-    }
-  };
-
-  const getColorForSentiment = (sentiment: string) => {
-    switch (sentiment.toLowerCase()) {
-      case "positive":
-        return "#FF4D4F";
-      case "negative":
-        return "#1890FF";
-      case "neutral":
-        return "#AFAFAF";
-      default:
-        return result.top_three_sentiments.length > 1 ? "#000000" : "#000000";
-    }
-  };
-
-  const availableEmotions = result.top_three_emotions
-    .filter((emotion) => emotion.percentage > 0)
-    .map(
-      (emotion) =>
-        emotion.emotion.charAt(0).toUpperCase() + emotion.emotion.slice(1)
-    );
-
-  const availableSentiments = result.top_three_sentiments
-    .filter((sentiment) => sentiment.percentage > 0)
-    .map(
-      (sentiment) =>
-        sentiment.sentiment.charAt(0).toUpperCase() +
-        sentiment.sentiment.slice(1)
-    );
-
+  // Map available emotions and sentiments from analysis result
+  const availableEmotions = mapEmotions(result.top_three_emotions);
+  const availableSentiments = mapSentiments(result.top_three_sentiments);
+  // Load more sentences event handler
   const handleLoadMore = () => {
-    setDisplayedSentences((prevCount) => prevCount + 3); 
+    setDisplayedSentences((prevCount) => prevCount + 2);
+  };
+
+  // Function to determine sentiment icon and text color
+  const getSentimentIconAndColor = (sentiment: string) => {
+    if (sentiment === "Positive") {
+      return { icon: <SmileOutlined />, color: "#1890ff" };
+    } else if (sentiment === "Negative") {
+      return { icon: <FrownOutlined />, color: "#f5222d" };
+    } else {
+      return { icon: null, color: "inherit" };
+    }
   };
 
   return (
-    <Row gutter={32}>
-      <Col span={10}>
-        <Text strong>Preview</Text>
-        <Card style={{ minHeight: "100%" }}>
-          <Space direction="vertical">
-            {result.detailed_analysis.slice(0, displayedSentences).map((item, index) => (
-              <React.Fragment key={index}>
-                <Descriptions.Item label={`Sentence ${index + 1}`}>
-                  <div style={{ wordWrap: "break-word", color: "black" }}>
-                    {item.sentence}
-                  </div>
-                  <Space direction="horizontal" size={20}>
-                    <Text>{item.pred_emotion}</Text>
-                    <Text>{item.pred_sentiment}</Text>
-                  </Space>
-                </Descriptions.Item>
-                <hr style={{ margin: "10px 0" }} />
-              </React.Fragment>
+    <AnalysisContainer>
+      {/* Preview column */}
+      <PreviewColumn>
+        <Text type={"h4"} className="preview">
+          Preview
+        </Text>
+        <Space direction="vertical">
+          {/* preview sentences  */}
+          {result.detailed_analysis
+            .slice(0, displayedSentences)
+            .map((item, index) => (
+              <List itemLayout="vertical" key={index}>
+                <List.Item
+                  title={`Sentence ${index + 1}`}
+                  actions={[
+                    <Space direction="horizontal" size={20}>
+                      {/* Display predicted emotion */}
+                      <Text type={"p"} className="emotion-name">
+                        {item.pred_emotion}
+                      </Text>
+                      {/* Display sentiment icon and colored text */}
+                      <Text type={"p"} className="sentiment-name" style={{ color: getSentimentIconAndColor(item.pred_sentiment).color }}>
+                        {getSentimentIconAndColor(item.pred_sentiment).icon}
+                        {" "}
+                        {item.pred_sentiment}
+                      </Text>
+                    </Space>,
+                  ]}
+                >
+                  {/* Display sentence*/}
+                  <div>{item.sentence}</div>
+                </List.Item>
+                <hr />
+              </List>
             ))}
-          </Space>
-          {displayedSentences < result.detailed_analysis.length && (
-            <Button type="primary" onClick={handleLoadMore} style={{ marginTop: "10px" }}>
-              Load More
-            </Button>
-          )}
-        </Card>
-      </Col>
-
-      <Col span={14}>
-        <Text strong>Results</Text>
-        <Card style={{ width: "100%", backgroundColor: "#f5f5f5", alignItems: 'center' }} >
-          <Space direction="vertical" >
-
-            <Text strong>Emotions</Text>
-            <Progress
-              type="dashboard"
-              percent={
-                result.top_three_emotions.find(
-                  (emotion) =>
-                    emotion.emotion.toLowerCase() ===
-                    selectedEmotion?.toLowerCase()
-                )?.percentage ?? 0
-              }
-              strokeWidth={10}
-              width={150}
-              strokeColor={getColorForEmotion(selectedEmotion ?? "")}
-              format={() => (
-                <div style={{ textAlign: "center", padding: "10px" }}>
-                  <div>
-                    {result.top_three_emotions.find(
-                      (emotion) =>
-                        emotion.emotion.toLowerCase() ===
-                        selectedEmotion?.toLowerCase()
-                    )?.percentage ?? 0}
-                    %
-                  </div>
-                  <div style={{ marginTop: "10px" }}>{selectedEmotion}</div>
-                </div>
-              )}
-            />
-            <Space direction="horizontal" size={10}>
-              {availableEmotions.map((emotion, index) => (
-                <Button
-                  key={index}
-                  type="text"
-                  onClick={() => handleEmotionSelect(emotion)}
-                >
-                  {emotion}
-                </Button>
-              ))}
-            </Space>
-          </Space>
-        </Card>
-        <Card style={{ width: "100%", backgroundColor: "#f5f5f5", marginTop: '5px' }} >
-          <Space direction="vertical" >
-            <Text strong>Sentiments</Text>
-            <Progress
-              type="dashboard"
-              percent={
-                result.top_three_sentiments.find(
-                  (sentiment) =>
-                    sentiment.sentiment.toLowerCase() ===
-                    selectedSentiment?.toLowerCase()
-                )?.percentage ?? 0
-              }
-              strokeWidth={10}
-              width={150}
-              strokeColor={getColorForSentiment(selectedSentiment ?? "")}
-              format={() => (
-                <div style={{ textAlign: "center", padding: "10px" }}>
-                  <div>
-                    {result.top_three_sentiments.find(
-                      (sentiment) =>
-                        sentiment.sentiment.toLowerCase() ===
-                        selectedSentiment?.toLowerCase()
-                    )?.percentage ?? 0}
-                    %
-                  </div>
-                  <div style={{ marginTop: "10px" }}>
-                    {selectedSentiment}
-                  </div>
-                </div>
-              )}
-            />
-            <Space direction="horizontal" size={10}>
-              {availableSentiments.map((sentiment, index) => (
-                <Button
-                  key={index}
-                  type="text"
-                  onClick={() => handleSentimentSelect(sentiment)}
-                  style={{ color: getColorForSentiment(sentiment) }}
-                >
-                  {sentiment}
-                </Button>
-              ))}
-            </Space>
-          </Space>
-        </Card>
-      </Col>
-    </Row>
+        </Space>
+        {/* Render load more button */}
+        {displayedSentences < result.detailed_analysis.length && (
+          <LoadMoreButton type="primary" onClick={handleLoadMore}>
+            Load More
+          </LoadMoreButton>
+        )}
+      </PreviewColumn>
+      {/* Results column */}
+      <ResultsColumn>
+        <ResultsWrapper>
+          <Text type={"h4"} className="results">
+            Results
+          </Text>
+          {/* Render EmotionCard component */}
+          <EmotionCard />
+          {/* Render SentimentCard component */}
+          <SentimentCard />
+        </ResultsWrapper>
+      </ResultsColumn>
+    </AnalysisContainer>
   );
 };
-
 export default AnalysisResult;
-
-

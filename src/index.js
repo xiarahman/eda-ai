@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import configureStore from "./configureStore.ts";
-import { ConnectedRouter } from "connected-react-router";
-import history from "./history.js";
+// import configureStore from "./configureStore.ts";
+// import { ConnectedRouter } from "connected-react-router";
+// import history from "./history.js";
 import store from './redux/store.tsx'
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const initialState = {};
