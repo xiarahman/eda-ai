@@ -1,18 +1,27 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import Analyze from "../containers/analyze/index.tsx";
 import Result from "../containers/result/index.tsx";
-import { HolderOutlined } from "@ant-design/icons";
-import Home from '../components/home/index.tsx'
-function AppRoutes() {
+// import LiveResult from "../containers/result/live.tsx";
+import UploadResult from "../containers/result/upload.tsx";
+// import TextResult from "../containers/result/text.tsx";
+import SentimentDetails from "../containers/result/sentimentDetails.tsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import InputForm from "../containers/analyze/text/components/input.tsx";
+import AnalysisResult from "../containers/result/text.tsx";
+const AppRoutes = () => {
   return (
-    <Routes>
-      {/* <Route index path="/" element={<Analyze />} />
-      <Route index path="/:type" element={<Analyze />} />
-      <Route path="/result" element={<Result />} />
-      <Route path="/result/:type" element={<Result />} /> */}
-      <Route path ="/home" element ={Home}/>
-    </Routes>
+    <Router>
+      <Routes>
+      <Route  path="/text" element={<InputForm/>} />
+         <Route  path="/text-result" element={<AnalysisResult/>} />
+      </Routes>
+        
+      {/* <Route exact path="/:type" component={Analyze} />
+   
+      <Route exact path="/upload-result" component={UploadResult} />
+      <Route exact path="/result/:type" component={Result} />
+      <Route exact path="/sentiment-detail" component={SentimentDetails} /> */}
+    </Router>
   );
 };
 export default AppRoutes;

@@ -1,7 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import React from "react";
 import Text from "../../components/text/index.tsx";
-import { Section, OptionsDiv } from "./styledindex.tsx";
+import { OptionsDiv } from "./styledindex.tsx";
 import {
   FontSizeOutlined,
   PaperClipOutlined,
@@ -14,8 +14,8 @@ import TextFrom from "./text/index.tsx";
 import { Flex } from "antd";
 
 const Analyze = () => {
-  const { type } = useParams();
-  const navigate = useNavigate();
+  const type = useParams();
+  const navigate = useHistory();
 
   const renderComponent = (type) => {
     switch (type) {
@@ -39,7 +39,7 @@ const Analyze = () => {
     >
       <Flex gap="middle">
         <OptionsDiv
-          onClick={() => navigate("/video")}
+          onClick={() => navigate.push("/video")}
           className={type === "video" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
@@ -47,7 +47,7 @@ const Analyze = () => {
           </Text>
         </OptionsDiv>
         <OptionsDiv
-          onClick={() => navigate("/live")}
+          onClick={() => navigate.push("/live")}
           className={type === "live" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
@@ -55,7 +55,7 @@ const Analyze = () => {
           </Text>
         </OptionsDiv>
         <OptionsDiv
-          onClick={() => navigate("/text")}
+          onClick={() => navigate.push("/text")}
           className={type === "text" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">

@@ -8,16 +8,14 @@ const githubSlice = createSlice({
     error: null,
   },
   reducers: {
-    fetchDataStart: (state) => {
+    uploadFile: (state, action) => {
       state.loading = true;
       state.error = null;
     },
-    fetchDataSuccess: (state, action) => {
-      const newArr = action.payload;
-
-      state.data = newArr;
+    uploadDataSuccess: (state, action) => {
+      state.data = action.payload;
     },
-    fetchDataFailure: (state, action) => {
+    uploadDataFailure: (state, action) => {
       state.data = [];
       state.loading = false;
       state.error = action.payload;
@@ -25,7 +23,7 @@ const githubSlice = createSlice({
   },
 });
 
-export const { fetchDataStart, fetchDataSuccess, fetchDataFailure } =
+export const { uploadFile, uploadDataSuccess, uploadDataFailure } =
   githubSlice.actions;
 
 export default githubSlice.reducer;

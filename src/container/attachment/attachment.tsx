@@ -1,18 +1,22 @@
 // Attachment.js
 import React from "react";
 import { message } from "antd";
-import { useNavigate } from "react-router-dom";
-import { StyledDraggerContainer, StyledDragger, StyledUploadText } from "./Styled-attachment.tsx";
+import { useHistory } from "react-router-dom";
+import {
+  StyledDraggerContainer,
+  StyledDragger,
+  StyledUploadText,
+} from "./Styled-attachment.tsx";
 import { InboxOutlined } from "@ant-design/icons";
 
 const Attachment = () => {
-  const navigate = useNavigate();
+  const navigate = useHistory();
   const props = {
     name: "video",
     multiple: false,
     method: "post",
     crossOrigin: "use-credentials",
-    action: "http://127.0.0.1:8081//analyze_video",
+    action: "http://cf6c-203-175-67-12.ngrok-free.app/analyze_video",
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {
@@ -21,7 +25,7 @@ const Attachment = () => {
       if (status === "done") {
         message.success(`${info.file.name} file uploaded successfully.`);
         localStorage.setItem("job", info.file.response.job_id);
-        navigate("/attachmentResults");
+        navigate.push("/result/video");
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`);
       }
@@ -30,6 +34,7 @@ const Attachment = () => {
       console.log("Dropped files", e.dataTransfer.files);
     },
   };
+
   return (
     <StyledDraggerContainer>
       <StyledDragger {...props}>

@@ -5,10 +5,12 @@ import Slider from "./components/slide.tsx";
 import ProgressBar from "./components/progressbar.tsx";
 import Emotions from "./components/emotion.tsx";
 import Sentiments from "./components/sentiment.tsx";
-import AreaCharts from "./components/AreaChart.tsx";
+import AreaCharts from "./components/areaChart.tsx";
 import { RightOutlined } from "@ant-design/icons";
+import { useHistory } from "react-router-dom";
 
 const UploadResult = () => {
+  const navigate = useHistory();
   return (
     <Flex
       gap="middle"
@@ -82,7 +84,10 @@ const UploadResult = () => {
                 <h3 className="card-heading">Sentiments</h3>
                 <span className="card-subheading">67 sentances</span>
               </Flex>
-              <RightOutlined className="font-size-icon" />
+              <RightOutlined
+                className="font-size-icon"
+                onClick={() => navigate.push("/sentiment-detail")}
+              />
             </Flex>
 
             <Sentiments />

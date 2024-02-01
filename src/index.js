@@ -2,17 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store.tsx";
-
+// import configureStore from "./configureStore.ts";
+// import { ConnectedRouter } from "connected-react-router";
+// import history from "./history.js";
+import store from './redux/store.tsx'
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const initialState = {};
+// const store = configureStore(initialState, history);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      {/* <ConnectedRouter history={history}> */}
         <App />
-      </BrowserRouter>
+      {/* </ConnectedRouter> */}
     </Provider>
   </React.StrictMode>
 );

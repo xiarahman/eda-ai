@@ -23,6 +23,7 @@ const Button = (props) => {
       </StyledButton>
     );
   }
+
 };
 
 export default Button;

@@ -1,16 +1,12 @@
-// Styled-inputText.js
 import styled from "styled-components";
 import { Input } from "antd";
-
 export const Inputdiv = styled.div`
-  //height: 100vh;
   display: flex;
-  justify-content: top;
+  margin-top: 10%;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 `;
-
 export const ButtonsDiv = styled.div`
   width: 580px;
   display: flex;
@@ -26,13 +22,10 @@ export const StyledTextArea = styled(Input.TextArea)`
   display: flex;
   width: 580px;
   max-height: 300px;
-
   align-items: center;
-
   &::placeholder {
     color: rgba(0, 0, 0, 0.45) !important;
   }
-
   &:hover {
     color: black !important;
     background-color: #f5f5f5 !important;

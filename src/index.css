@@ -25,8 +25,8 @@ code {
 }
 
 .active{
-  background-color: #c1cfed !important;
-  color: #262e5b !important;
+  background-color: #262e5b !important;
+  color: #c1cfed !important;
 }
 
 /* .ant-image-img {
