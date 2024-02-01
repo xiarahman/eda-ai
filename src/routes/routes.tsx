@@ -8,12 +8,15 @@ import SentimentDetails from "../containers/result/sentimentDetails.tsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import InputForm from "../containers/analyze/text/components/input.tsx";
 import AnalysisResult from "../containers/result/text.tsx";
+import Home from "../components/home/index.tsx"
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
       <Route  path="/text" element={<InputForm/>} />
          <Route  path="/text-result" element={<AnalysisResult/>} />
+         <Route  path="/home" element={<Home/>} />
+
       </Routes>
         
       {/* <Route exact path="/:type" component={Analyze} />
