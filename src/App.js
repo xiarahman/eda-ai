@@ -14,21 +14,17 @@ import ProgressBar from "./containers/result/components/progressbar.tsx";
 import Emotions from "./containers/result/components/emotion.tsx";
 import Sentiments from "./containers/result/components/sentiment.tsx";
 import { Flex } from "antd";
-import SentenceCard from "./containers/result/components/sentenceCard.tsx";
-import SentimentDetails from "./containers/result/sentimentDetails.tsx";
+import Home from "./components/home/index.tsx";
 const AppContainer = styled.div``;
 
 const App = () => {
   return (
     <AppContainer>
       <Header />
-      <AppRoutes />
-      {/* <UploadResult /> */}
       {/* <LiveResult /> */}
-      {/* <SentimentDetails /> */}
-      {/* <TextResult /> */}
-      <Footer />
-    </AppContainer>
+      <Home/>
+      {/* <Footer /> */}
+    </Flex>
   );
 };
 
