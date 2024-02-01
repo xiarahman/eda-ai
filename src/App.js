@@ -9,7 +9,7 @@ import Webcam from "./containers/analyze/webcam/index.tsx";
 import Upload from "./containers/analyze/upload/index.tsx";
 import LiveResult from "./containers/result/live.tsx";
 import TextResult from "./containers/result/text.tsx";
-import UploadResult from "./containers/result/upload.tsx";
+// import UploadResult from "./containers/result/upload.tsx";
 import ProgressBar from "./containers/result/components/progressbar.tsx";
 import Emotions from "./containers/result/components/emotion.tsx";
 import Sentiments from "./containers/result/components/sentiment.tsx";
@@ -24,7 +24,7 @@ const App = () => {
       {/* <LiveResult /> */}
       <Home/>
       {/* <Footer /> */}
-    </Flex>
+    </AppContainer>
   );
 };
 
