@@ -258,7 +258,7 @@ const AreaCharts = ({ job_id }) => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="interval" label={"Inter"} />
+          <XAxis dataKey="interval" />
           <YAxis />
           <Tooltip />
           <Area type="monotone" dataKey="angry" stroke="yellow" fill="yellow" />

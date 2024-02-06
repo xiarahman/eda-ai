@@ -80,7 +80,7 @@ const LivePreview = ({ setJobId, jobId }) => {
       socket.current.disconnect();
     } else {
       setShowFrames(true);
-      socket.current = io("http://192.168.18.127:8081");
+      socket.current = io("http://localhost:8081");
     }
     // Reset final emotion when starting the webcam
     setFinalEmotion(null);
@@ -93,7 +93,10 @@ const LivePreview = ({ setJobId, jobId }) => {
   }, [showFrames, jobId]);
 
   return (
-    <Section>
+    <>
+      <Preview style={!showFrames ? styles : {}}>
+        <img src={capturedImages} alt="" />
+      </Preview>
       <Preview style={showFrames ? styles : {}}>
         {/* Add video link here */}
         <Webcam
@@ -104,15 +107,11 @@ const LivePreview = ({ setJobId, jobId }) => {
           mirrored={true}
         />
       </Preview>
-      <Preview style={!showFrames ? styles : {}}>
-        <img src={capturedImages} alt="" />
-      </Preview>
-      <ButtonDiv>
-        <Button type={"primary"} cls="btn-width btn-end" onClick={toggleWebcam}>
-          {showFrames ? "Stop Stream" : "Start Stream"}
-        </Button>
-      </ButtonDiv>
-    </Section>
+
+      <Button type={"primary"} cls="btn-width btn-end" onClick={toggleWebcam}>
+        {showFrames ? "Stop Stream" : "Start Stream"}
+      </Button>
+    </>
   );
 };
 
