@@ -31,9 +31,7 @@ const Slider = () => {
     >
       {data.video_detail.frames.map((frame, index) => (
         <div key={index}>
-          <StyledImage
-            src={`https://cf6c-203-175-67-12.ngrok-free.app${frame?.frame_path}`}
-          />
+          <StyledImage src={`https://eae.smartdemo.live${frame?.frame_path}`} />
         </div>
       ))}
     </Slide>

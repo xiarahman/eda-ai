@@ -9,22 +9,17 @@ import { InboxOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { Form, message } from "antd";
 
-import { useInjectReducer, useInjectSaga } from "redux-injectors";
-import { saga } from "./../../../../redux/saga/attachmentSaga.tsx";
-import reducer from "./../../../../redux/slice/attachmentSlice.tsx";
 import { useHistory } from "react-router-dom";
 
 const Uploader = () => {
   const dispatch = useDispatch();
-  useInjectSaga({ key: "github", saga });
-  useInjectReducer({ key: "github", reducer: reducer });
   const { push } = useHistory();
 
   const props: UploadProps = {
     name: "video",
     multiple: false,
     method: "post",
-    action: "https://cf6c-203-175-67-12.ngrok-free.app/analyze_video",
+    action: "https://eae.smartdemo.live/analyze_video",
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {

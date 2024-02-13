@@ -78,7 +78,7 @@ const LiveResult = () => {
             </Flex>
             <Flex>happy angry neutral</Flex>
           </Flex>
-          <AreaCharts />
+          <AreaCharts job_id={""} />
         </Flex>
       </Flex>
     </Flex>

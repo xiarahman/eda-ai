@@ -12,6 +12,7 @@ const AppRoutes = () => (
       path="/sentiment-detail/:opt/:job_id"
       component={SentimentDetails}
     />
+    {/* <Route exact path="/result/:opt/:job_id" component={Result} /> */}
   </Router>
 );
 export default AppRoutes;

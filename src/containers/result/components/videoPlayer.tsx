@@ -5,7 +5,7 @@ const VideoPlayer = ({ file }) => {
   return (
     <>
       <ReactPlayer
-        url={`https://cf6c-203-175-67-12.ngrok-free.app${file}`}
+        url={`https://eae.smartdemo.live${file}`}
         controls={true}
         width="100%"
         height="433px"

@@ -2,17 +2,13 @@
 import styled from "styled-components";
 
 export const Section = styled.div`
-  width: 100vw;
   display: flex;
   flex-direction: column;
 `;
 
 export const ButtonDiv = styled.div`
-  width: 580px;
   display: flex;
-  flex-direction: row;
-  justify-content: top;
-  align-items: center;
+  justify-content: stretch;
 `;
 
 export const Preview = styled.div`

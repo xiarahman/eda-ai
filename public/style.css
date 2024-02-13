@@ -132,7 +132,7 @@ p {
 
 .btn-end{
   display: flex !important;
-  justify-self: end !important;
+  justify-items: end !important;
 }
 .section-heading{
   font-family: 'Poppins';

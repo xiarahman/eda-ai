@@ -35,6 +35,19 @@ const videoSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+
+    liveStreamFetchRequest: (state, action) => {
+      state.loading = true;
+      state.job_id = action.payload.job_id;
+    },
+    liveStreamFetchSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.chartsData = payload;
+    },
+    liveStreamFetchFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -45,6 +58,9 @@ export const {
   chartsDataFetchRequest,
   chartsDataFetchSuccess,
   chartsDataFetchFailure,
+  liveStreamFetchRequest,
+  liveStreamFetchSuccess,
+  liveStreamFetchFailure,
 } = videoSlice.actions;
 
 export const { reducer } = videoSlice;

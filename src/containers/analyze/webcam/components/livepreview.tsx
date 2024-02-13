@@ -4,6 +4,7 @@ import Button from "../../../../components/button/index.tsx";
 import axios from "axios";
 import Webcam from "react-webcam";
 import { io } from "socket.io-client";
+import { useHistory, useParams } from "react-router-dom";
 
 const videoConstraints = {
   width: 505,
@@ -17,6 +18,10 @@ const LivePreview = ({ setJobId, jobId }) => {
   const [capturedImages, setCapturedImages] = useState<any>("");
   const [showFrames, setShowFrames] = useState(false);
   const [finalEmotion, setFinalEmotion] = useState(null);
+  const [showStopButton, setShowStopButton] = useState(false);
+  const history = useHistory();
+
+  const { opt } = useParams<any>();
 
   const setNewImage = (data, emotion) => {
     setCapturedImages(`data:image/jpg;base64,${data}`);
@@ -39,7 +44,7 @@ const LivePreview = ({ setJobId, jobId }) => {
               setNewImage(imageData, final_prediction);
             }
 
-            if (!jobId) {
+            if (!jobId && job_id) {
               setJobId(job_id);
             }
           }
@@ -59,9 +64,7 @@ const LivePreview = ({ setJobId, jobId }) => {
 
   const handleDisconnect = async () => {
     axios
-      .get(
-        `https://cf6c-203-175-67-12.ngrok-free.app/get-live-streams?job_id=${jobId}`
-      )
+      .get(`https://eae.smartdemo.live/get-live-streams?job_id=${jobId}`)
       .then((response) => {
         const finalPrediction = response.data[0]?.final_prediction;
         setFinalEmotion(finalPrediction);
@@ -77,10 +80,12 @@ const LivePreview = ({ setJobId, jobId }) => {
   const toggleWebcam = () => {
     if (showFrames) {
       setShowFrames(false);
+      setShowStopButton(true);
       socket.current.disconnect();
     } else {
       setShowFrames(true);
-      socket.current = io("http://localhost:8081");
+      setShowStopButton(false);
+      socket.current = io("https://eae.smartdemo.live");
     }
     // Reset final emotion when starting the webcam
     setFinalEmotion(null);
@@ -91,6 +96,11 @@ const LivePreview = ({ setJobId, jobId }) => {
       handleDisconnect();
     }
   }, [showFrames, jobId]);
+
+  const handleStopStream = () => {
+    setShowStopButton(false); // Hide the stop button
+    history.push(`/result/live/${jobId}`);
+  };
 
   return (
     <>
@@ -111,6 +121,15 @@ const LivePreview = ({ setJobId, jobId }) => {
       <Button type={"primary"} cls="btn-width btn-end" onClick={toggleWebcam}>
         {showFrames ? "Stop Stream" : "Start Stream"}
       </Button>
+      {showStopButton && ( // Conditionally render the stop button
+        <Button
+          type={"secondary"}
+          cls="btn-width btn-end"
+          onClick={handleStopStream}
+        >
+          View Results
+        </Button>
+      )}
     </>
   );
 };
