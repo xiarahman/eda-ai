@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import {
   chartsDataFetchFailure,
   chartsDataFetchSuccess,
@@ -7,8 +7,12 @@ import {
   videoFetchRequest,
   liveStreamFetchSuccess,
   liveStreamFetchFailure,
-} from "../slice/videoSlice.tsx";
+  analyzeTextRequest,
+  analyzeTextSuccess,
+  analyzeTextFailure,
+} from "../Slice/index.ts";
 import axios from "axios";
+import { API_ENDPOINT } from "../../utils/constants.ts";
 
 function* workVideoFetchRequest({ payload }) {
   console.log("Video fetch request saga triggered");
@@ -17,7 +21,7 @@ function* workVideoFetchRequest({ payload }) {
   try {
     const response = yield call(
       axios.get,
-      `https://eae.smartdemo.live/analyze_video?job_id=${job_id}`,
+      `${API_ENDPOINT}/analyze_video?job_id=${job_id}`,
       {
         headers: {
           "ngrok-skip-browser-warning": true,
@@ -43,7 +47,7 @@ function* workChartsDataFetchRequest({ payload }) {
   try {
     const response = yield call(
       axios.get,
-      `https://eae.smartdemo.live/frames-chart?job_id=${job_id}`,
+      `${API_ENDPOINT}/frames-chart?job_id=${job_id}`,
       {
         headers: {
           "ngrok-skip-browser-warning": true,
@@ -68,7 +72,7 @@ function* workLiveStreamFetchRequest({ payload }) {
   try {
     const response = yield call(
       axios.get,
-      `https://eae.smartdemo.live/get-live-streams?job_id=${job_id}`,
+      `${API_ENDPOINT}/get-live-streams?job_id=${job_id}`,
       {
         headers: {
           "ngrok-skip-browser-warning": true,
@@ -87,6 +91,35 @@ function* workLiveStreamFetchRequest({ payload }) {
   }
 }
 
+function* analyzeTextSaga({ payload }) {
+  alert();
+  const { payloadData } = payload;
+  // Create a FormData object and append the text data
+  const formData = new FormData();
+  formData.append("input_text", payloadData);
+  // Define options for the fetch request
+  const options = {
+    method: "POST",
+    body: formData,
+  };
+  const requestURL = `${API_ENDPOINT}/analyze_text`;
+  try {
+    // Make the POST request to the API
+    const response = yield fetch(requestURL, options);
+    // Check if the response is successful and if not throw error
+    if (!response.ok) {
+      throw new Error("Failed to fetch");
+    }
+    // Extract JSON data from the response
+    const data = yield response.json();
+    // Dispatch success action with the received data
+    yield put(analyzeTextSuccess(data));
+  } catch (error) {
+    // Dispatch failure action with the error message
+    yield put(analyzeTextFailure(error.message));
+  }
+}
+
 function* videoSaga() {
   yield takeEvery<any>(videoFetchRequest.type, workVideoFetchRequest);
   yield takeEvery<any>(
@@ -97,6 +130,7 @@ function* videoSaga() {
     "video/liveStreamFetchRequest",
     workLiveStreamFetchRequest
   );
+  yield takeLatest<any>(analyzeTextRequest.type, analyzeTextSaga);
 }
 
 export default videoSaga;

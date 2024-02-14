@@ -9,11 +9,11 @@ import {
   AreaChart,
   Area,
 } from "recharts";
-import { chartsDataFetchRequest } from "../../../redux/slice/videoSlice.tsx";
+import { chartsDataFetchRequest } from "../../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
-import { reducer } from "../../../redux/slice/videoSlice.tsx";
-import saga from "../../../redux/saga/videoSaga.tsx";
-import { getVideos } from "../../../redux/selectors/index.ts";
+import { reducer } from "../../../redux/Slice/index.ts";
+import saga from "../../../redux/Saga/index.ts";
+import { getVideos } from "../../../redux/Selectors/index.ts";
 
 const AreaCharts = ({ job_id }) => {
   const dispatch = useDispatch();

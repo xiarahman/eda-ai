@@ -7,8 +7,10 @@ export const StyledButton = styled(AntdButton)`
   background-color: #262e5b !important;
   border-radius: 5px;
 `;
+
 const Button = (props) => {
-  if (props.type === "link") {
+  const { type, cls, onClick, children, ...rest } = props;
+  if (type === "link") {
     return (
       <StyledButton type={props.type} href={props.href} onClick={props.onClick}>
         {props.children}
@@ -25,6 +27,7 @@ const Button = (props) => {
       </StyledButton>
     );
   }
+
 };
 
 export default Button;

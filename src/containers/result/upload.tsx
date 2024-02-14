@@ -8,23 +8,17 @@ import Sentiments from "./components/sentiment.tsx";
 import AreaCharts from "./components/areaChart.tsx";
 import { RightOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { videoFetchRequest } from "../../redux/slice/videoSlice.tsx";
+import { videoFetchRequest } from "../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
-import { reducer } from "./../../redux/slice/videoSlice.tsx";
-import saga from "./../../redux/saga/videoSaga.tsx";
 import { useHistory, useParams } from "react-router-dom";
-import { getVideos } from "../../redux/selectors/index.ts";
+import { getVideos } from "../../redux/Selectors/index.ts";
 
 const UploadResult = ({ job_id }) => {
   const history = useHistory();
-  const data = useSelector((state: any) => state?.video?.data);
-  const { chartsData } = useSelector(getVideos);
+  const { chartsData, data } = useSelector(getVideos);
   const dispatch = useDispatch();
   const { opt } = useParams<any>();
-
-  useInjectSaga({ key: "video", saga });
-  useInjectReducer({ key: "video", reducer: reducer });
 
   useEffect(() => {
     if (!data) {

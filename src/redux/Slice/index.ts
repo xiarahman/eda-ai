@@ -5,6 +5,11 @@ export const initialState = {
   chartsData: [],
   loading: false,
   error: null,
+  analyzeText: {
+    analysisResult: {},
+    loading: false,
+    error: false,
+  },
 };
 
 const videoSlice = createSlice({
@@ -48,6 +53,22 @@ const videoSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+
+    // Action to initiate text analysis request
+    analyzeTextRequest: (state) => {
+      state.analyzeText.loading = true;
+      state.analyzeText.error = false;
+    },
+    // Action to handle successful text analysis response
+    analyzeTextSuccess: (state, { payload }) => {
+      state.analyzeText.loading = false;
+      state.analyzeText.analysisResult = payload;
+    },
+    // Action to handle text analysis failure
+    analyzeTextFailure: (state) => {
+      state.analyzeText.error = true;
+      state.analyzeText.loading = false;
+    },
   },
 });
 
@@ -61,6 +82,9 @@ export const {
   liveStreamFetchRequest,
   liveStreamFetchSuccess,
   liveStreamFetchFailure,
+  analyzeTextRequest,
+  analyzeTextSuccess,
+  analyzeTextFailure,
 } = videoSlice.actions;
 
 export const { reducer } = videoSlice;
