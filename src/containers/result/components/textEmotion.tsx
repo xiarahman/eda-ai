@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 import { useInjectSaga, useInjectReducer } from "redux-injectors";
 import { capitalizeFirstLetter } from "./helper.tsx";
-import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
+import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
 
 const EmotionCard = () => {
   const { analysisResult } = useSelector(selectorAnalyzeText);

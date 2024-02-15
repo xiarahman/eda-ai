@@ -18,7 +18,7 @@ import {
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import saga from "../../redux/Saga/rootSaga.tsx";
 import reducer from "../../redux/Slice/textSlice.tsx";
-import { selectorAnalyzeText } from "../../redux/Selectors/index.ts";
+import { selectorAnalyzeText } from "../../redux/selectors/index.ts";
 
 const AnalysisResult: React.FC<AnalysisResultProps> = () => {
   // Retrieve analysis result from Redux state

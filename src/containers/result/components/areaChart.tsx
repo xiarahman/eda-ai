@@ -13,7 +13,7 @@ import { chartsDataFetchRequest } from "../../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 import { reducer } from "../../../redux/Slice/index.ts";
 import saga from "../../../redux/Saga/index.ts";
-import { getVideos } from "../../../redux/Selectors/index.ts";
+import { getVideos } from "../../../redux/selectors/index.ts";
 
 const AreaCharts = ({ job_id }) => {
   const dispatch = useDispatch();

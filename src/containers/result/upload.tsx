@@ -12,7 +12,7 @@ import { videoFetchRequest } from "../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
 import { useHistory, useParams } from "react-router-dom";
-import { getVideos } from "../../redux/Selectors/index.ts";
+import { getVideos } from "../../redux/selectors/index.ts";
 
 const UploadResult = ({ job_id }) => {
   const history = useHistory();

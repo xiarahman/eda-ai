@@ -92,7 +92,6 @@ function* workLiveStreamFetchRequest({ payload }) {
 }
 
 function* analyzeTextSaga({ payload }) {
-  alert();
   const { payloadData } = payload;
   // Create a FormData object and append the text data
   const formData = new FormData();

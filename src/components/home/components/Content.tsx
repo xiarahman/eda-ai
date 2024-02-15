@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import {
   StyledVideoContent,
   StyledSpace,
@@ -15,7 +15,7 @@ import VideoImage from "../../../assets/VideoImage.png";
 import TextImage from "../../../assets/TextImage.png";
 import LiveImage from "../../../assets/LiveImage.png";
 const Content: React.FC = () => {
-  const navigate = useNavigate();
+  const {push} = useHistory();
   return (
     <>
       {/* Analyze Uploaded Videos */}
@@ -36,7 +36,7 @@ const Content: React.FC = () => {
               </StyledText>
               <StyledAnalyzeButton
                 shape="round"
-                onClick={() => navigate("/analyze")}
+                onClick={() => push("/analyze")}
               >
                 Analyze
               </StyledAnalyzeButton>
@@ -64,7 +64,7 @@ const Content: React.FC = () => {
               </StyledText>
               <StyledAnalyzeButton
                 shape="round"
-                onClick={() => navigate("/text")}
+                onClick={() => push("/analyze")}
               >
                 Analyze
               </StyledAnalyzeButton>
@@ -93,7 +93,7 @@ const Content: React.FC = () => {
               </StyledText>
               <StyledAnalyzeButton
                 shape="round"
-                onClick={() => navigate("/analyze")}
+                onClick={() => push("/analyze")}
               >
                 Analyze
               </StyledAnalyzeButton>
