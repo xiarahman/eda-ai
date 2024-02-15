@@ -1,31 +1,39 @@
-// StyledFooter.js
+
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { Typography } from "antd";
 
-export const FooterContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+export const FooterSection= styled.div`
 
-export const CopyrightText = styled.p`
-  color: black;
-  margin: 0;
+padding: 5% 10%;
+
+
 `;
 
 export const SocialLinks = styled.div`
-  display: flex;
-  align-items: center;
+ 
+  margin-top: 15%;
+ 
 `;
 
 export const StyledLink = styled(Link)`
-  margin: 1rem;
+  
   cursor: pointer;
-  color: white;
+  color: #F5F5F5 !important;
   text-decoration: none;
-  color: black;
+  font-size: 14px;
 
-  &:hover {
-    color: #006fee;
-  }
+`;
+export const StyledFooterTitle= styled (Typography)`
+font-size: 20px;
+line-height: 25px;
+color: #C1CFED;
+margin-bottom: 5px;
+font-family: Poppins
+`;
+export const StyledFooterText= styled (StyledFooterTitle)`
+font-size: 12px;
+font-family: Poppins;
+font-weight: 500;
+
 `;
