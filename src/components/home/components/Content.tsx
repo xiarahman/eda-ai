@@ -1,110 +1,31 @@
 import React from "react";
-import { useHistory} from "react-router-dom";
+import quoteComma from "../../../assets/Vector.png"
 import {
-  StyledVideoContent,
+  Content,
   StyledSpace,
-  StyledAnalyzeButton,
-  StyledContentImage,
-  StyledLiveContent,
-  StyledTitle,
   StyledText,
-  StyledInputContent,
 } from "../style.ts";
 import { Row, Col, Image } from "antd";
-import VideoImage from "../../../assets/VideoImage.png";
-import TextImage from "../../../assets/TextImage.png";
-import LiveImage from "../../../assets/LiveImage.png";
-const Content: React.FC = () => {
-  const {push} = useHistory();
+const CardsContent: React.FC = () => {
   return (
-    <>
-      {/* Analyze Uploaded Videos */}
-      <StyledVideoContent>
+      <Content>
+      {/* Description of Product */}
         <Row>
-          <Col span={18}>
-            <StyledSpace direction="vertical" size={3}>
-              <StyledTitle>
-                Analyze <br />
-                Uploaded Videos
-              </StyledTitle>
-              <StyledText>
-                Upload any video and let our advanced AI algorithms unveil the
-                emotions <br />
-                within moments. Gain profound insights into emotional nuances
-                for personal <br />
-                and professional applications.
+          <Col span={22}>
+            <StyledSpace>
+              <StyledText style={{fontFamily:"Poppins", fontWeight: "semi-bold"}}>
+                Dive Deep Into Your Customer Interactions And Uncover <u><i>Valuable Insights </i></u>
+                Into Their <u> <i>Emotions</i></u>  And Sentiments. Empower Your
+                Business <br/>
+                To Drive Meaningful Engagement And Enhance <u><i> Customer Satisfaction.</i> </u>
               </StyledText>
-              <StyledAnalyzeButton
-                shape="round"
-                onClick={() => push("/analyze")}
-              >
-                Analyze
-              </StyledAnalyzeButton>
             </StyledSpace>
           </Col>
-          <Col span={6}>
-            <StyledContentImage src={VideoImage} />
+          <Col span={2}>
+            <Image src={quoteComma} style={{marginTop: "60%"}}/>
           </Col>
         </Row>
-      </StyledVideoContent>
-       {/* Analyze Input Text */}
-      <StyledInputContent>
-        <Row>
-          <Col span={18}>
-            <StyledSpace direction="vertical" size={3}>
-              <StyledTitle >
-                Analyze <br />
-                Input Text
-              </StyledTitle>
-              <StyledText>
-                Transform written words into emotional insights. Enhance
-                <br /> communication strategies, understand sentiment, and
-                optimize <br />
-                interactions.
-              </StyledText>
-              <StyledAnalyzeButton
-                shape="round"
-                onClick={() => push("/analyze")}
-              >
-                Analyze
-              </StyledAnalyzeButton>
-            </StyledSpace>
-          </Col>
-          <Col span={6}>
-            <StyledContentImage src={TextImage} />
-          </Col>
-        </Row>
-      </StyledInputContent>
-       {/* Analyze Live Stream */}
-      <StyledLiveContent>
-        <Row>
-          <Col span={18}>
-            <StyledSpace direction="vertical" size={3}>
-              <StyledTitle>
-                Analyze <br />
-                Live Streams
-              </StyledTitle>
-              <StyledText>
-                Upload any video and let our advanced AI algorithms unveil the
-                emotions <br />
-                within moments. Gain profound insights into emotional nuances
-                for personal <br />
-                and professional applications.
-              </StyledText>
-              <StyledAnalyzeButton
-                shape="round"
-                onClick={() => push("/analyze")}
-              >
-                Analyze
-              </StyledAnalyzeButton>
-            </StyledSpace>
-          </Col>
-          <Col span={6}>
-            <StyledContentImage src={LiveImage} />
-          </Col>
-        </Row>
-      </StyledLiveContent>
-    </>
+      </Content>
   );
 };
-export default Content;
+export default CardsContent;

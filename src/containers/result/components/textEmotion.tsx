@@ -4,27 +4,20 @@ import Text from "../../../components/text/index.tsx";
 import ProgressBar from "./textProgressBar.tsx";
 import { getColorForEmotion } from "./helper.tsx";
 import { useSelector } from "react-redux";
-
-import { useInjectSaga, useInjectReducer } from "redux-injectors";
 import { capitalizeFirstLetter } from "./helper.tsx";
 import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
-
 const EmotionCard = () => {
   const { analysisResult } = useSelector(selectorAnalyzeText);
-
   // State variables for selected emotion
   const [selectedEmotion, setSelectedEmotion] = useState<string | undefined>(
     analysisResult?.top_three_emotions[0]?.emotion
   );
-
   const availableEmotions = analysisResult.top_three_emotions.map(
     (emotion) => emotion.emotion
   );
-
   const handleEmotionSelect = (emotion: string) => {
     setSelectedEmotion(emotion);
   };
-
   return (
     <Card
       style={{

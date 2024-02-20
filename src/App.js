@@ -13,9 +13,9 @@ const App = () => {
   useInjectReducer({ key: "video", reducer: reducer });
   return (
     <AppContainer>
-      <Header />
       <AppRoutes />
-      <Footer />
+    
+     
     </AppContainer>
   );
 };

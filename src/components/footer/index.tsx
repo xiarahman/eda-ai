@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   SocialLinks,
-  StyledLink,
+ 
   StyledFooterText,
   StyledFooterTitle,
   FooterSection,
@@ -11,7 +11,9 @@ import facebook from "../../assets/facebook.png";
 import youtube from "../../assets/youtube.png";
 import instagram from "../../assets/instagram.png";
 import { StyledButton } from "../button/index.tsx";
-
+import StyledLink from "../styledLink.ts";
+import { WorkSubTitle, WorkText } from "../home/style.ts";
+import modalImage from "../../assets/modalImage.png";
 const Footer = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -28,8 +30,8 @@ const Footer = () => {
       style={{
         backgroundColor: "#000244",
         color: "white",
-        marginTop: "12%",
-        width: "100vw",
+        // marginTop: "12%",
+        width: "100%",
       }}
     >
       <FooterSection>
@@ -57,9 +59,9 @@ const Footer = () => {
 
             <StyledFooterText>
               <Flex vertical>
-                <StyledLink>Home</StyledLink>
-                <StyledLink>Features</StyledLink>
-                <StyledLink>How it Works</StyledLink>
+                <StyledLink to="/">Home</StyledLink>
+                <StyledLink >Features</StyledLink>
+                <StyledLink to="/analyze">How it Works</StyledLink>
                 <StyledLink>FAQs</StyledLink>
                 <StyledLink onClick={showModal}>Contact Us</StyledLink>
               </Flex>
@@ -95,14 +97,35 @@ const Footer = () => {
         </Row>
       </FooterSection>
       <Modal
-        title="Contact Us"
-        open={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <Row>
-          <Col span={16}>Send Us A Message</Col>
-          <Col span={6}>bye</Col>
+       open={isModalVisible}
+       onOk={handleOk} 
+       onCancel={handleCancel}
+       style={{width: "100%"}}
+       >
+        <Row style={{marginTop: 0}}>
+          <Col
+            span={16}
+            style={{
+              backgroundColor: "#000244",
+              color: "white",
+              width: "100%",
+              height: "100vh",
+              padding: "30px",
+            }}
+          >
+            <WorkSubTitle style={{ color: "#C1CFED", marginTop: "5%" }}>
+              Send Us A Message
+            </WorkSubTitle>
+            <WorkText style={{ color: "white" }}>
+              Feel free to reach out with your enquiries we will get back to you
+              as soon sa we can!
+            </WorkText>
+            <Image src={modalImage} preview={false} 
+            style={{marginTop: "50%"}}/>
+          </Col>
+
+          <Col span={6}
+          style={{backgroundColor: "#C1CFED"}}>bye</Col>
         </Row>
       </Modal>
     </div>

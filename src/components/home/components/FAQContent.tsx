@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Typography, Collapse, Flex } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import { StyledSpace, StyledCollapse, FAQContainer } from "../style.ts";
+import { StyledCollapse, FAQContainer } from "../style.ts";
 const { Title, Text } = Typography;
 const { Panel } = Collapse;
 const FAQ: React.FC = () => {
@@ -18,14 +18,21 @@ const FAQ: React.FC = () => {
   // Array of FAQ data
   const faqData = [
     {
-      question: "Lorem ipsum is a dummy text right?",
+      question: "What is EmoAnalytica?",
       answer:
         "Lorem ipsum dolor sit amet consectetur. At eget aliquet commodo ut ante molestie vestibulum ullamcorper.",
     },
     // Add more FAQ items as needed
   ];
   return (
-    <Flex vertical align="center" gap='middle'>
+    <Flex
+      vertical
+      align="center"
+      gap="middle"
+      style={{ 
+        backgroundColor: "#C1CFED",
+         padding: "30px"
+         }}>
       <Title level={3}>FAQs</Title>
       <FAQContainer>
         {/* Collapse component */}
