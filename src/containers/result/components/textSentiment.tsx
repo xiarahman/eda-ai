@@ -4,7 +4,9 @@ import Text from "../../../components/text/index.tsx";
 import { Flex, Progress, Card } from "antd";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
-import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
+import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
+import GlobalSentimentProgress from "../../../components/sentiments/progress.tsx";
+import { WorkTitle } from "../../../components/home/style.ts";
 const SentimentPer = styled.div`
   width: 200px;
   margin-top: -50px;
@@ -20,8 +22,7 @@ const SentimentPer = styled.div`
     height: 24px;
   }
 `;
-import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
-import { WorkTitle } from "../../../components/home/style.ts";
+
 
 
 
@@ -43,21 +44,15 @@ const SentimentCard = () => {
         padding: "5px"
       }}
     >
-      <Flex vertical gap={2} >
-        <WorkTitle>Sentiments</WorkTitle>
-        {analysisResult.top_three_sentiments.map((sentimentData, index) => {
-          const { percentage, sentiment } = sentimentData;
-          const formattedPercentage = Math.floor(percentage) || 0;
-          return (
-            <div key={index}>
-              <Text type={"p"} className="card-heading medium accent">
-                {capitalizeFirstLetter(sentiment)}
-              </Text>
-              <Progress percent={formattedPercentage} />
-            </div>
-          );
-        })}
-      </Flex>
+     
+      
+           <Flex vertical gap={2}  >
+           <WorkTitle>Sentiments</WorkTitle>
+        <GlobalSentimentProgress sentimentData={analysisResult.top_three_sentiments} />
+        </Flex>
+         
+         
+      
     </Card>
   );
 };
