@@ -1,29 +1,44 @@
 import { Flex } from "antd";
-import React from "react";
+import React, { useMemo } from "react";
 import { Chart } from "react-google-charts";
 
 export const data = [
-  ["Task", "Hours per Day"],
-  ["Happy", 11],
+  ["Emotion", "Percentage"],
+  ["neutral", 11],
   ["Sad", 2],
-  ["Neutral", 2],
-  ["Angry", 2],
-  ["Admiration", 7], // CSS-style declaration
 ];
 
 export const options = {
   pieHole: 0.4,
+  pieSliceText: "Percentage",
+  pieSliceTextStyle: {
+    color: "black",
+  },
   is3D: false,
+  tooltip: {
+    text: "percentage percent",
+  },
 };
 
-export function UploadPieChart() {
+export function UploadPieChart({ pieChartData = [] }) {
+  const updateData = useMemo(() => {
+    const actualResult = [["Emotion", "Percentage"]];
+
+    pieChartData.forEach((item) => {
+      actualResult.push([item?.emotion, item?.percentage]);
+    });
+
+    return actualResult;
+  }, [pieChartData]);
+
+  console.log(updateData, pieChartData);
   return (
     <Flex style={{ backgroundColor: "#f5f5f5" }}>
       <Chart
         chartType="PieChart"
         width={375}
         height={200}
-        data={data}
+        data={updateData}
         options={options}
         style={{ backgroundColor: "#f5f5f5" }}
       />

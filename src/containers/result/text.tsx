@@ -20,7 +20,7 @@ import thumbsUp from "../../assets/thumbsup.png";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import saga from "../../redux/Saga/rootSaga.tsx";
 import reducer from "../../redux/Slice/textSlice.tsx";
-import { selectorAnalyzeText } from "../../redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../redux/Selectors/index.ts";
 import { getColorForSentiment } from "./components/helper.tsx";
 import { LikeOutlined } from "@ant-design/icons";
 const AnalysisResult: React.FC<AnalysisResultProps> = () => {
@@ -57,14 +57,13 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
   // Function to determine sentiment icon and text color
   const getSentimentIconAndColor = (sentiment: string) => {
     if (sentiment === "positive") {
-      return { icon : <LikeOutlined/>, color: "#00942A" };
+      return { icon: <LikeOutlined />, color: "#00942A" };
     } else if (sentiment === "negative") {
       return { icon: <LikeOutlined rotate={180} />, color: "#f5222d" };
     } else {
       return { icon: null, color: "inherit" };
     }
   };
- 
 
   return (
     <AnalysisContainer>
@@ -88,21 +87,18 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
                         {item.pred_emotion}
                       </Text>
                       {/* Display sentiment icon and colored text */}
-<Space direction= 'horizontal' size={3}>
-
-                      <Text
-                        type={"p"}
-                        className="sentiment-name"
-                        style={{
-                          color: getColorForSentiment(item.pred_sentiment)
-                            
-                        }}
-                      >
-                        {/* {getSentimentIconAndColor(item.pred_sentiment).icon}{" "} */}
-                       {capitalizeFirstLetter(item.pred_sentiment)} 
-                      </Text>
-</Space>
-                     
+                      <Space direction="horizontal" size={3}>
+                        <Text
+                          type={"p"}
+                          className="sentiment-name"
+                          style={{
+                            color: getColorForSentiment(item.pred_sentiment),
+                          }}
+                        >
+                          {/* {getSentimentIconAndColor(item.pred_sentiment).icon}{" "} */}
+                          {capitalizeFirstLetter(item.pred_sentiment)}
+                        </Text>
+                      </Space>
                     </Space>,
                   ]}
                 >

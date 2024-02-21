@@ -4,7 +4,7 @@ import Text from "../../../components/text/index.tsx";
 import { Flex, Progress, Card } from "antd";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
-import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
 import GlobalSentimentProgress from "../../../components/sentiments/progress.tsx";
 import { WorkTitle } from "../../../components/home/style.ts";
 const SentimentPer = styled.div`
@@ -23,9 +23,6 @@ const SentimentPer = styled.div`
   }
 `;
 
-
-
-
 const SentimentCard = () => {
   // Access sentiment data from Redux store
   const { analysisResult } = useSelector(selectorAnalyzeText);
@@ -41,18 +38,15 @@ const SentimentCard = () => {
         marginTop: "10px",
         width: "600px",
         height: "250px",
-        padding: "5px"
+        padding: "5px",
       }}
     >
-     
-      
-           <Flex vertical gap={2}  >
-           <WorkTitle>Sentiments</WorkTitle>
-        <GlobalSentimentProgress sentimentData={analysisResult.top_three_sentiments} />
-        </Flex>
-         
-         
-      
+      <Flex vertical gap={2}>
+        <WorkTitle>Sentiments</WorkTitle>
+        <GlobalSentimentProgress
+          sentimentData={analysisResult.top_three_sentiments}
+        />
+      </Flex>
     </Card>
   );
 };
@@ -106,23 +100,21 @@ export default SentimentCard;
 //     >
 //       <Flex vertical>
 //       <Text type={"p"} className="card-heading medium accent">
-        
+
 //             {capitalizeFirstLetter(sentiment)}
 //           </Text>
 //           <Progress
-          
+
 //           percent={formattedPercentage}
 //           // strokeWidth={10}
 //           // size={150}
 //         />
 //         {/* <SentimentPer> */}
-        
-         
+
 //           {/* <Text type={"p"} className="card-heading medium accent">
 //             0%
 //           </Text> */}
 //           {/* <img className="thumbsup" src={thumbsup} alt="" /> */}
-          
 
 //           {/* <Text type={"p"} className="card-heading medium accent">
 //             100%

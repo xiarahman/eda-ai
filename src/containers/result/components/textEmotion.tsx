@@ -5,7 +5,7 @@ import ProgressBar from "./textProgressBar.tsx";
 import { getColorForEmotion } from "./helper.tsx";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
-import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../..//redux/Selectors/index.ts";
 
 const EmotionCard = () => {
   const { analysisResult } = useSelector(selectorAnalyzeText);

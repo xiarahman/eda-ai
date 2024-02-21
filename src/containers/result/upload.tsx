@@ -12,9 +12,10 @@ import { videoFetchRequest } from "../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
 import { useHistory, useParams } from "react-router-dom";
-import { getVideos } from "../../redux/selectors/index.ts";
+import { getVideos } from "../../redux/Selectors/index.ts";
 import UploadSentiment from "../../components/sentiments/index.tsx";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
+import GlobalSentimentProgress from "../../components/sentiments/progress.tsx";
 
 const UploadResult = ({ job_id }) => {
   const history = useHistory();
@@ -31,6 +32,10 @@ const UploadResult = ({ job_id }) => {
 
   if (!data) {
     return <div>Loading...</div>;
+  }
+
+  if (!data?.final_sentiment) {
+    return null;
   }
   return (
     <Flex
@@ -89,7 +94,7 @@ const UploadResult = ({ job_id }) => {
               <Flex vertical align="space-between" style={{ flexGrow: "1" }}>
                 <h3 className="card-heading">Emotions</h3>
               </Flex>
-              <UploadPieChart />
+              <UploadPieChart pieChartData={data?.final_emotion} />
             </Flex>
           </Flex>
 
@@ -106,7 +111,7 @@ const UploadResult = ({ job_id }) => {
             <Flex justify="space-between">
               <Flex vertical>
                 <h3 className="card-heading">Sentiments</h3>
-                <UploadSentiment />
+                <GlobalSentimentProgress sentimentData={data.final_sentiment} />
                 <RightOutlined
                   className="font-size-icon"
                   onClick={() =>
