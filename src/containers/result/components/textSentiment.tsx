@@ -2,25 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Text from "../../../components/text/index.tsx";
 import { Flex, Progress, Card } from "antd";
-import thumbsup from "../../../assets/up.png";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
 import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
-const SentimentPer = styled.div`
-  width: 200px;
-  margin-top: -50px;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #c1cfed;
-  backdrop-filter: blur(60px);
-  border-radius: 5px;
-  img {
-    width: 24px;
-    height: 24px;
-  }
-`;
+import { WorkTitle } from "../../../components/home/style.ts";
+
+
 
 const SentimentCard = () => {
   // Access sentiment data from Redux store
@@ -30,10 +17,6 @@ const SentimentCard = () => {
     return null;
   }
 
-  // Extract sentiment percentage and name
-  const { percentage, sentiment } = analysisResult.top_three_sentiments[0];
-  const formattedPercentage = Math.floor(percentage) || 0;
-
   return (
     <Card
       style={{
@@ -41,34 +24,105 @@ const SentimentCard = () => {
         marginTop: "10px",
         width: "600px",
         height: "250px",
+        padding: "5px"
       }}
     >
-      <Flex vertical align="center">
-        <Progress
-          type="dashboard"
-          percent={formattedPercentage}
-          strokeWidth={10}
-          size={150}
-        />
-        <SentimentPer>
-          <Text type={"p"} className="card-heading medium accent">
-            0%
-          </Text>
-          {/* <img className="thumbsup" src={thumbsup} alt="" /> */}
-          <Text type={"p"} className="card-heading medium accent">
-            {capitalizeFirstLetter(sentiment)}
-          </Text>
-
-          <Text type={"p"} className="card-heading medium accent">
-            100%
-          </Text>
-        </SentimentPer>
+      <Flex vertical gap={2} >
+        <WorkTitle>Sentiments</WorkTitle>
+        {analysisResult.top_three_sentiments.map((sentimentData, index) => {
+          const { percentage, sentiment } = sentimentData;
+          const formattedPercentage = Math.floor(percentage) || 0;
+          return (
+            <div key={index}>
+              <Text type={"p"} className="card-heading medium accent">
+                {capitalizeFirstLetter(sentiment)}
+              </Text>
+              <Progress percent={formattedPercentage} />
+            </div>
+          );
+        })}
       </Flex>
     </Card>
   );
 };
 
 export default SentimentCard;
+
+// import React from "react";
+// import styled from "styled-components";
+// import Text from "../../../components/text/index.tsx";
+// import { Flex, Progress, Card } from "antd";
+// import thumbsup from "../../../assets/up.png";
+// import { useSelector } from "react-redux";
+// import { capitalizeFirstLetter } from "./helper.tsx";
+// import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
+// const SentimentPer = styled.div`
+//   width: 200px;
+//   margin-top: -50px;
+//   padding: 0.5rem;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   background: #c1cfed;
+//   backdrop-filter: blur(60px);
+//   border-radius: 5px;
+//   img {
+//     width: 24px;
+//     height: 24px;
+//   }
+// `;
+
+// const SentimentCard = () => {
+//   // Access sentiment data from Redux store
+//   const { analysisResult } = useSelector(selectorAnalyzeText);
+
+//   if (!analysisResult?.top_three_sentiments) {
+//     return null;
+//   }
+
+//   // Extract sentiment percentage and name
+//   const { percentage, sentiment } = analysisResult.top_three_sentiments[0];
+//   const formattedPercentage = Math.floor(percentage) || 0;
+
+//   return (
+//     <Card
+//       style={{
+//         backgroundColor: "#f5f5f5",
+//         marginTop: "10px",
+//         width: "600px",
+//         height: "250px",
+//       }}
+//     >
+//       <Flex vertical>
+//       <Text type={"p"} className="card-heading medium accent">
+        
+//             {capitalizeFirstLetter(sentiment)}
+//           </Text>
+//           <Progress
+          
+//           percent={formattedPercentage}
+//           // strokeWidth={10}
+//           // size={150}
+//         />
+//         {/* <SentimentPer> */}
+        
+         
+//           {/* <Text type={"p"} className="card-heading medium accent">
+//             0%
+//           </Text> */}
+//           {/* <img className="thumbsup" src={thumbsup} alt="" /> */}
+          
+
+//           {/* <Text type={"p"} className="card-heading medium accent">
+//             100%
+//         //   </Text> */}
+//         {/* // </SentimentPer> */}
+//       </Flex>
+//     </Card>
+//   );
+// };
+
+// export default SentimentCard;
 
 // import React from "react";
 // import styled from "styled-components";
