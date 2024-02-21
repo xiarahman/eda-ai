@@ -10,7 +10,7 @@ import Header from "../components/header/index.tsx";
 import Footer from "../components/footer/index.tsx";
 const AppRoutes = () => (
   <Router>
-    <Header/>
+    <Header />
     <Route exact path="/" component={Home} />
     <Route exact path="/analyze" component={Analyze} />
     <Route exact path="/result/:opt/:job_id" component={Result} />

@@ -12,7 +12,9 @@ import { videoFetchRequest } from "../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
 import { useHistory, useParams } from "react-router-dom";
-import { getVideos } from "../../redux/selectors/index.ts";
+import { getVideos } from "../../redux/Selectors/index.ts";
+import UploadSentiment from "../../components/sentiments/index.tsx";
+import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 
 const UploadResult = ({ job_id }) => {
   const history = useHistory();
@@ -21,11 +23,11 @@ const UploadResult = ({ job_id }) => {
   const { opt } = useParams<any>();
 
   useEffect(() => {
-    if (!data) {
+    if (data) {
       dispatch(videoFetchRequest({ job_id }));
       console.log("%cupload.tsx line:34 data", "color: #007acc;", data);
     }
-  }, [dispatch, job_id, data]);
+  }, []);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -78,27 +80,16 @@ const UploadResult = ({ job_id }) => {
               vertical
               align="space-between"
               gap="middle"
-              style={{ minHeight: "100%", borderRadius: "5px" }}
+              style={{
+                minHeight: "100px",
+                minWidth: "200px",
+                borderRadius: "5px",
+              }}
             >
               <Flex vertical align="space-between" style={{ flexGrow: "1" }}>
                 <h3 className="card-heading">Emotions</h3>
-                <span className="card-subheading">
-                  {data?.no_of_frames} Frames
-                </span>
               </Flex>
-              <ProgressBar />
-            </Flex>
-            <Flex justify="flex-end" gap="small" vertical>
-              <Emotions
-                label="Facial"
-                value={55}
-                emotion={data?.video_detail?.cumulative_emotion}
-              />
-              <Emotions
-                label="Speech"
-                value={40}
-                emotion={data?.audio_detail?.cumulative_emotion}
-              />
+              <UploadPieChart />
             </Flex>
           </Flex>
 
@@ -115,19 +106,15 @@ const UploadResult = ({ job_id }) => {
             <Flex justify="space-between">
               <Flex vertical>
                 <h3 className="card-heading">Sentiments</h3>
-                <span className="card-subheading">
-                  {data?.no_of_sentences} Sentences
-                </span>
+                <UploadSentiment />
+                <RightOutlined
+                  className="font-size-icon"
+                  onClick={() =>
+                    history.push(`/sentiment-detail/${opt}/${job_id}`)
+                  }
+                />
               </Flex>
-              <RightOutlined
-                className="font-size-icon"
-                onClick={() =>
-                  history.push(`/sentiment-detail/${opt}/${job_id}`)
-                }
-              />
             </Flex>
-
-            <Sentiments />
           </Flex>
         </Flex>
 

@@ -4,6 +4,7 @@ import "react-slideshow-image/dist/styles.css";
 import styled from "styled-components";
 import { Image } from "antd";
 import { useSelector } from "react-redux";
+import { API_ENDPOINT } from "../../../utils/constants.ts";
 
 const StyledImage = styled(Image)`
   object-fit: cover !important;
@@ -31,7 +32,7 @@ const Slider = () => {
     >
       {data.video_detail.frames.map((frame, index) => (
         <div key={index}>
-          <StyledImage src={`https://eae.smartdemo.live${frame?.frame_path}`} />
+          <StyledImage src={`${API_ENDPOINT}${frame?.frame_path}`} />
         </div>
       ))}
     </Slide>
