@@ -14,8 +14,6 @@ const App = () => {
   return (
     <AppContainer>
       <AppRoutes />
-    
-     
     </AppContainer>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, NavBar, NavTitle, } from "./styledindex.tsx";
+import { Nav, NavBar, NavTitle } from "./styledindex.tsx";
 import { StyledButton } from "../home/style.ts";
 import { useHistory } from "react-router";
 import StyledLink from "../styledLink.ts";
@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <NavBar>
       <Nav>
-        <NavTitle>EmoAnalytica</NavTitle>
+        <div>EmoAnalytica</div>
         <div>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink>Features</StyledLink>

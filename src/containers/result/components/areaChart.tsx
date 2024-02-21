@@ -13,7 +13,7 @@ import { chartsDataFetchRequest } from "../../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 import { reducer } from "../../../redux/Slice/index.ts";
 import saga from "../../../redux/Saga/index.ts";
-import { getVideos } from "../../../redux/selectors/index.ts";
+import { getVideos } from "../../../redux/Selectors/index.ts";
 
 const AreaCharts = ({ job_id }) => {
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ const AreaCharts = ({ job_id }) => {
     chartsData?.chart_data && (
       <Flex>
         <AreaChart
-          width={575}
+          width={675}
           height={200}
           data={chartsData?.chart_data}
           syncId="anyId"

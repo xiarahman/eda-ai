@@ -6,7 +6,7 @@ import { StyledTextArea, Inputdiv, ButtonsDiv } from "./styledinput.tsx";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import { selectorAnalyzeText } from "../../../../redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../../../redux/Selectors/index.ts";
 import { analyzeTextRequest } from "../../../../redux/Slice/index.ts";
 const InputForm = () => {
   // State variables

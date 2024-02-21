@@ -4,6 +4,22 @@ import Text from "../../../components/text/index.tsx";
 import { Flex, Progress, Card } from "antd";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
+import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
+const SentimentPer = styled.div`
+  width: 200px;
+  margin-top: -50px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #c1cfed;
+  backdrop-filter: blur(60px);
+  border-radius: 5px;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+`;
 import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
 import { WorkTitle } from "../../../components/home/style.ts";
 
