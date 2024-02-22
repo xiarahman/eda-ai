@@ -4,7 +4,7 @@ import Text from "../../../components/text/index.tsx";
 import { Flex, Progress, Card } from "antd";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
-import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
+import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
 import GlobalSentimentProgress from "../../../components/sentiments/progress.tsx";
 import { WorkTitle } from "../../../components/home/style.ts";
 const SentimentPer = styled.div`

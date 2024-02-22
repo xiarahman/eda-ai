@@ -18,7 +18,7 @@ export const getColorForEmotion = (emotion: string) => {
   
   export const getColorForSentiment = (sentiment: string) => {
     switch (sentiment.toLowerCase()) {
-      case "positive":
+      case "Positive":
         return "#FF4D4F";
       case "negative":
         return "#1890FF";
