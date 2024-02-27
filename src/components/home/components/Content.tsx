@@ -16,7 +16,7 @@ const CardsContent: React.FC = () => {
               <StyledText style={{fontFamily:"Poppins", fontWeight: "semi-bold"}}>
                 Dive Deep Into Your Customer Interactions And Uncover <u><i>Valuable Insights </i></u>
                 Into Their <u> <i>Emotions</i></u>  And Sentiments. Empower Your
-                Business <br/>
+                Business 
                 To Drive Meaningful Engagement And Enhance <u><i> Customer Satisfaction.</i> </u>
               </StyledText>
             </StyledSpace>

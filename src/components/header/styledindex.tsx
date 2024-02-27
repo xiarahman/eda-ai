@@ -4,12 +4,12 @@ import { styled } from "styled-components";
 export const NavBar = styled.div`
   background-color: #141414;
   color: white;
-  padding: 20px;
+  padding: 1% 5%;
   width: 100%;
 `;
 export const Nav = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 export const NavTitle = styled.div`
   color: #c1cfed;

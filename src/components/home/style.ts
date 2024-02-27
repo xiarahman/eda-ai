@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Typography, Row, Card, Space, Button, Collapse } from "antd";
+import { Typography, Row, Card, Space, Button, Collapse, Image } from "antd";
 import mainImage from "../../assets/HomeImage.png";
 
 export const BannerImageContainer = styled.div`
@@ -8,12 +8,13 @@ export const BannerImageContainer = styled.div`
   background-color: #000244;
   position: relative;
 `;
-export const BannerImage = styled.div`
+export const BannerImage = styled.image`
   position: absolute;
   width: 100%;
-  left: 26%;
   height: 100%;
+  left: 25%;
   background-image: url(${mainImage});
+  background-repeat: no-repeat;
 `;
 export const StyledTitle = styled(Typography)`
   font-size: 30px;
@@ -45,15 +46,15 @@ export const StyledButton = styled(Button)`
 `;
 export const BannerContent = styled.div`
   position: relative;
-  text-align: left;
   color: white;
+  text-align: left;
   margin-top: 15%;
   margin-left: 10%;
 `;
 export const Content = styled.div`
   background-color: #c1cfed;
   color: white;
-  padding: 20px;
+  padding: 2%;
   font-family: Poppins;
   font-weight: 600;
 `;
@@ -68,10 +69,9 @@ export const StyledText = styled(Typography)`
   font-weight: 400;
 `;
 export const WorkText = styled(StyledText)`
-font-size: 16px;
+  font-size: 16px;
   font-weight: 480;
-  font-family: Poppins
-
+  font-family: Poppins;
 `;
 export const FAQContainer = styled.div`
   max-width: 700px;
@@ -81,8 +81,7 @@ export const StyledCollapse = styled(Collapse)`
   background: white;
 `;
 export const StyledCard = styled(Card)`
-  width: 280px;
-  height: 220px;
   background-color: #f5f5f5;
-  padding: 10px;
+  padding: 3%;
+  text-align: center;
 `;
