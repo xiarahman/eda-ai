@@ -9,17 +9,9 @@ import {
   AreaChart,
   Area,
 } from "recharts";
-import { chartsDataFetchRequest } from "../../../redux/Slice/index.ts";
-import { useInjectReducer, useInjectSaga } from "redux-injectors";
-import { reducer } from "../../../redux/Slice/index.ts";
-import saga from "../../../redux/Saga/index.ts";
-import { getVideos } from "../../../redux/Selectors/index.ts";
 
-const AreaCharts = ({ job_id }) => {
-  const dispatch = useDispatch();
-  useInjectSaga({ key: "video", saga });
-  useInjectReducer({ key: "video", reducer: reducer });
-  const { chartsData } = useSelector(getVideos);
+const AreaCharts = ({ chartsData }) => {
+  // const { chartsData } = useSelector(getVideos);
 
   const emoHexCode = (emotion) => {
     switch (emotion) {
@@ -37,9 +29,6 @@ const AreaCharts = ({ job_id }) => {
         return "#000000"; // Default color if emotion is not recognized
     }
   };
-  useEffect(() => {
-    dispatch(chartsDataFetchRequest({ job_id }));
-  }, [job_id]);
 
   const formatXAxis = (tick) => {
     return tick.toFixed(2); // Format the tick value to have two decimal places
@@ -70,10 +59,11 @@ const AreaCharts = ({ job_id }) => {
           <YAxis />
           <Tooltip labelFormatter={formatTooltip} />{" "}
           {/* Utilize labelFormatter to format tooltip */}
-          <Area type="monotone" dataKey="angry" stroke="yellow" fill="yellow" />
-          <Area type="monotone" dataKey="sad" stroke="red" fill="red" />
+          <Area type="monotone" dataKey="angry" stroke="red" fill="red" />
+          <Area type="monotone" dataKey="sad" stroke="yellow" fill="yellow" />
           <Area type="monotone" dataKey="fear" stroke="purple" fill="purple" />
           <Area type="monotone" dataKey="neutral" stroke="gray" fill="gray" />
+          <Area type="monotone" dataKey="happy" stroke="green" fill="green" />
         </AreaChart>
       </Flex>
     )

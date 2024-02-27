@@ -32,7 +32,7 @@ const Slider = () => {
     >
       {data.video_detail.frames.map((frame, index) => (
         <div key={index}>
-          <StyledImage src={`${API_ENDPOINT}${frame?.frame_path}`} />
+          <StyledImage src={`${API_ENDPOINT}/${frame?.frame_path}`} />
         </div>
       ))}
     </Slide>

@@ -5,6 +5,7 @@ import axios from "axios";
 import Webcam from "react-webcam";
 import { io } from "socket.io-client";
 import { useHistory, useParams } from "react-router-dom";
+import { API_ENDPOINT } from "../../../../utils/constants.ts";
 
 const videoConstraints = {
   width: 505,
@@ -64,7 +65,7 @@ const LivePreview = ({ setJobId, jobId }) => {
 
   const handleDisconnect = async () => {
     axios
-      .get(`https://eae.smartdemo.live/get-live-streams?job_id=${jobId}`)
+      .get(`${API_ENDPOINT}//live-stream-chart?job_id=${jobId}`)
       .then((response) => {
         const finalPrediction = response.data[0]?.final_prediction;
         setFinalEmotion(finalPrediction);
@@ -85,7 +86,7 @@ const LivePreview = ({ setJobId, jobId }) => {
     } else {
       setShowFrames(true);
       setShowStopButton(false);
-      socket.current = io("https://eae.smartdemo.live");
+      socket.current = io("http://127.0.0.1:8081");
     }
     // Reset final emotion when starting the webcam
     setFinalEmotion(null);

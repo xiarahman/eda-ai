@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Flex } from "antd";
-import ProgressBar from "./components/progressbar.tsx";
-import AreaCharts from "./components/areaChart.tsx";
+import AreaCharts from "../../components/areaChart/index.tsx";
+import { useDispatch, useSelector } from "react-redux";
+import { liveStreamFetchRequest } from "../../redux/Slice/index.ts";
+import { useInjectReducer, useInjectSaga } from "redux-injectors";
+import { reducer } from "../../redux/Slice/index.ts";
+import saga from "../../redux/Saga/index.ts";
+import { getVideos } from "../../redux/Selectors/index.ts";
+import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 
-const LiveResult = () => {
+const LiveResult = ({ job_id }) => {
+  const dispatch = useDispatch();
+  useInjectSaga({ key: "video", saga });
+  useInjectReducer({ key: "video", reducer: reducer });
+  const { chartsData } = useSelector(getVideos);
+
+  useEffect(() => {
+    dispatch(liveStreamFetchRequest({ job_id }));
+    if (chartsData) console.log("Fetched Data :: ", chartsData);
+  }, []);
   return (
     <Flex
       gap="middle"
@@ -15,28 +30,9 @@ const LiveResult = () => {
         margin: "0 auto",
       }}
     >
-      <Flex vertical gap="middle" style={{ flexGrow: "1" }}>
-        <h2 className="section-heading">Preview</h2>
-        <Flex
-          justify="space-between"
-          gap="middle"
-          vertical
-          style={{
-            backgroundColor: "#f5f5f5",
-            flexGrow: "1",
-            padding: "1.5rem",
-            borderRadius: "5px",
-            minWidth: "400px",
-          }}
-        >
-          <div style={{ flexGrow: "1", minHeight: "570px" }}>
-            Frames Captured From Live
-          </div>
-        </Flex>
-      </Flex>
       {/* Results Block */}
-      <Flex vertical gap="middle" style={{ flexGrow: "1" }}>
-        <h2 className="section-heading">Results</h2>
+      <Flex gap="middle" style={{ flexGrow: "1" }}>
+        {/* <h2 className="section-heading">Results</h2> */}
 
         <Flex
           justify="space-between"
@@ -51,13 +47,18 @@ const LiveResult = () => {
         >
           <Flex vertical>
             <h3 className="card-heading">Emotions</h3>
-            <span className="card-subheading">67 Frames</span>
           </Flex>
+
           <Flex flex={1} justify="center">
-            <ProgressBar />
+            <UploadPieChart pieChartData={chartsData?.top_three_emotions} />
           </Flex>
-          <Flex flex={1} justify="center">
-            happy angry neutral
+          <Flex flex={1} justify="start">
+            {chartsData?.top_three_emotions &&
+              chartsData?.top_three_emotions.length > 0 && (
+                <h4 className="card-heading">
+                  Final Prediction: {chartsData.top_three_emotions[0].emotion}
+                </h4>
+              )}
           </Flex>
         </Flex>
         {/* Area Chart */}
@@ -78,7 +79,7 @@ const LiveResult = () => {
             </Flex>
             <Flex>happy angry neutral</Flex>
           </Flex>
-          <AreaCharts job_id={""} />
+          <AreaCharts chartsData={chartsData} />
         </Flex>
       </Flex>
     </Flex>

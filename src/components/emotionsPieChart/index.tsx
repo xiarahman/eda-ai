@@ -36,8 +36,8 @@ export function UploadPieChart({ pieChartData = [] }) {
     <Flex style={{ backgroundColor: "#f5f5f5" }}>
       <Chart
         chartType="PieChart"
-        width={375}
-        height={200}
+        width={350}
+        height={250}
         data={updateData}
         options={options}
         style={{ backgroundColor: "#f5f5f5" }}

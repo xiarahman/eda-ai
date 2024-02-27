@@ -72,7 +72,7 @@ function* workLiveStreamFetchRequest({ payload }) {
   try {
     const response = yield call(
       axios.get,
-      `${API_ENDPOINT}/get-live-streams?job_id=${job_id}`,
+      `${API_ENDPOINT}/live-stream-chart?job_id=${job_id}`,
       {
         headers: {
           "ngrok-skip-browser-warning": true,

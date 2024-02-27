@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { Form, message } from "antd";
 
 import { useHistory } from "react-router-dom";
+import { API_ENDPOINT } from "../../../../utils/constants.ts";
 
 const Uploader = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Uploader = () => {
     name: "video",
     multiple: false,
     method: "post",
-    action: "https://eae.smartdemo.live/analyze_video",
+    action: `${API_ENDPOINT}/analyze_video`,
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {

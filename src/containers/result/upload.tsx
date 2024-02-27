@@ -5,10 +5,13 @@ import Slider from "./components/slide.tsx";
 import ProgressBar from "./components/progressbar.tsx";
 import Emotions from "./components/emotion.tsx";
 import Sentiments from "./components/sentiment.tsx";
-import AreaCharts from "./components/areaChart.tsx";
+import AreaCharts from "../../components/areaChart/index.tsx";
 import { RightOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { videoFetchRequest } from "../../redux/Slice/index.ts";
+import {
+  chartsDataFetchRequest,
+  videoFetchRequest,
+} from "../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
 import { useHistory, useParams } from "react-router-dom";
@@ -26,6 +29,7 @@ const UploadResult = ({ job_id }) => {
   useEffect(() => {
     if (data) {
       dispatch(videoFetchRequest({ job_id }));
+      dispatch(chartsDataFetchRequest({ job_id }));
       console.log("%cupload.tsx line:34 data", "color: #007acc;", data);
     }
   }, []);
@@ -95,6 +99,7 @@ const UploadResult = ({ job_id }) => {
                 <h3 className="card-heading">Emotions</h3>
               </Flex>
               <UploadPieChart pieChartData={data?.final_emotion} />
+              <h4>Final Prediction: {data?.final_prediction} </h4>
             </Flex>
           </Flex>
 
@@ -145,7 +150,7 @@ const UploadResult = ({ job_id }) => {
               ))}
             </Flex>
           </Flex>
-          <AreaCharts job_id={job_id} />
+          <AreaCharts chartsData={chartsData} />
         </Flex>
       </Flex>
     </Flex>

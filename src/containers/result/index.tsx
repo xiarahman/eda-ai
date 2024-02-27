@@ -11,7 +11,7 @@ const Result = () => {
       case "video":
         return <Upload job_id={job_id} />;
       case "live":
-        return <LiveResult />;
+        return <LiveResult job_id={job_id} />;
       case "text":
         return <TextFrom />;
     }
