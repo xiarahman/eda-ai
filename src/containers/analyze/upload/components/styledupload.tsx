@@ -13,7 +13,7 @@ export const StyledDraggerContainer = styled.div`
 `;
 
 export const StyledDragger = styled(Dragger)`
-  width: 580px;
+  width: 628px;
   height: 300px;
   color: white;
   //background-color: #dedede;

@@ -6,10 +6,11 @@ import Webcam from "react-webcam";
 import { io } from "socket.io-client";
 import { useHistory, useParams } from "react-router-dom";
 import { API_ENDPOINT } from "../../../../utils/constants.ts";
+import { Flex } from "antd";
 
 const videoConstraints = {
-  width: 505,
-  height: 360,
+  width: 608,
+  height: 380,
   facingMode: "user",
 };
 
@@ -118,19 +119,20 @@ const LivePreview = ({ setJobId, jobId }) => {
           mirrored={true}
         />
       </Preview>
-
-      <Button type={"primary"} cls="btn-width btn-end" onClick={toggleWebcam}>
-        {showFrames ? "Stop Stream" : "Start Stream"}
-      </Button>
-      {showStopButton && ( // Conditionally render the stop button
-        <Button
-          type={"secondary"}
-          cls="btn-width btn-end"
-          onClick={handleStopStream}
-        >
-          View Results
+      <Flex vertical gap="small">
+        <Button type={"primary"} cls="btn-width btn-end" onClick={toggleWebcam}>
+          {showFrames ? "Stop Stream" : "Start Stream"}
         </Button>
-      )}
+        {showStopButton && ( // Conditionally render the stop button
+          <Button
+            type={"secondary"}
+            cls="btn-width btn-end"
+            onClick={handleStopStream}
+          >
+            View Results
+          </Button>
+        )}
+      </Flex>
     </>
   );
 };

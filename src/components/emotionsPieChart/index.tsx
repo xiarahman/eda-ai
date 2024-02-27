@@ -18,6 +18,7 @@ export const options = {
   tooltip: {
     text: "percentage percent",
   },
+  chartArea: { width: 300, height: 300 },
 };
 
 export function UploadPieChart({ pieChartData = [] }) {
@@ -33,9 +34,7 @@ export function UploadPieChart({ pieChartData = [] }) {
 
   console.log(updateData, pieChartData);
   return (
-    <Flex 
-    style={{ backgroundColor: "transparent" }}
-    >
+    <Flex style={{ backgroundColor: "transparent" }}>
       <Chart
         chartType="PieChart"
         width={350}

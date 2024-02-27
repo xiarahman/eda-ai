@@ -5,7 +5,7 @@ import ProgressBar from "./textProgressBar.tsx";
 import { getColorForEmotion } from "./helper.tsx";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
-import { selectorAnalyzeText } from "../../..//redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
 import { UploadPieChart } from "../../../components/emotionsPieChart/index.tsx";
 const EmotionCard = () => {
   const { analysisResult } = useSelector(selectorAnalyzeText);
@@ -48,7 +48,7 @@ const EmotionCard = () => {
         />
         <Space direction="horizontal" size={10}>
           {/* Map through the available emotions and render a Button */}
-          {/* {availableEmotions.map((emotion, index) => (
+      {/* {availableEmotions.map((emotion, index) => (
             <Button
               key={index}
               type="text"
@@ -59,7 +59,7 @@ const EmotionCard = () => {
             </Button>
           ))}
         </Space>
-      </Flex> */} 
+      </Flex> */}
     </Card>
   );
 };

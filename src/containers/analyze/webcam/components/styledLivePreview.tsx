@@ -12,14 +12,15 @@ export const ButtonDiv = styled.div`
 `;
 
 export const Preview = styled.div`
+  position: relative;
   display: flex;
-  width: 580px;
+  width: 490px;
   height: 300px;
-  justify-content: stretch;
-  align-items: stretch;
-  border-radius: 5px;
-  border: 1px solid var(--Neutral-5, #d9d9d9);
-  background: #f5f5f5;
+  // justify-content: stretch;
+  // align-items: stretch;
+  //border-radius: 5px;
+  //border: 1px solid var(--Neutral-5, #d9d9d9);
+  //background: #f5f5f5;
 `;
 
 export const styles = {

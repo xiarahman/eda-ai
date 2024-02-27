@@ -38,7 +38,7 @@ const AreaCharts = ({ chartsData }) => {
     if (props && props.payload) {
       return [`${props.payload.interval.toFixed(2)}: ${value.toFixed(2)}`]; // Format tooltip value and interval
     }
-    return null; // Return null if props.payload is undefined
+    return ""; // Return null if props.payload is undefined
   };
 
   return (

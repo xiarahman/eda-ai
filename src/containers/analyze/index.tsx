@@ -35,7 +35,7 @@ const Analyze = () => {
       style={{
         minWidth: "1040px",
         minHeight: "830px",
-        paddingTop: "10rem",
+        paddingTop: "6rem",
         flexGrow: "1",
       }}
       vertical
