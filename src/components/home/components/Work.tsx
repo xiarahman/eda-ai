@@ -26,7 +26,7 @@ const Work: React.FC = () => {
               <br /> Select your desired option and start.
             </WorkText>
           </Flex>
-          <StyledButton>Try Now !</StyledButton>
+          <StyledButton type={"link"} href={"/analyze"}>Try Now !</StyledButton>
         </Col>
         <Col span={10}>
           <Image src={option} preview={false} />
@@ -45,7 +45,7 @@ const Work: React.FC = () => {
               faces <br /> and detects emotions
             </WorkText>
           </Flex>
-          <StyledButton>Try Now !</StyledButton>
+          <StyledButton type={"link"} href={"/analyze"}>Try Now !</StyledButton>
         </Col>
       </Row>
       <Row gutter={8}>
@@ -58,7 +58,7 @@ const Work: React.FC = () => {
               faces <br /> and detects emotions
             </WorkText>
           </Flex>
-          <StyledButton>Try Now !</StyledButton>
+          <StyledButton type={"link"} href={"/analyze"}>Try Now !</StyledButton>
         </Col>
         <Col span={10}>
           <Image src={report} preview={false} />
