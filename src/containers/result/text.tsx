@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import Text from "../../components/text/index.tsx";
 import { Row, Col, Button, List, Space, Image } from "antd";
@@ -9,6 +10,7 @@ import SentimentCard from "./components/textSentiment.tsx";
 import { capitalizeFirstLetter } from "./components/helper.tsx";
 import { mapEmotions, mapSentiments } from "./components/helper.tsx";
 import { AnalysisResultProps } from "./components/textType.js";
+import { ArrowLeftOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import {
   AnalysisContainer,
   PreviewColumn,
@@ -20,13 +22,13 @@ import thumbsUp from "../../assets/thumbsup.png";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import saga from "../../redux/Saga/rootSaga.tsx";
 import reducer from "../../redux/Slice/textSlice.tsx";
-import { selectorAnalyzeText } from "../../redux/Selectors/index.ts";
+import { selectorAnalyzeText } from "../../redux/selectors/index.ts";
 import { getColorForSentiment } from "./components/helper.tsx";
 import { LikeOutlined } from "@ant-design/icons";
 const AnalysisResult: React.FC<AnalysisResultProps> = () => {
   // Retrieve analysis result from Redux state
   const { analysisResult } = useSelector(selectorAnalyzeText);
-
+  const history = useHistory();
   // useInjectSaga({ key: "input", saga });
   // useInjectReducer({ key: "input", reducer: reducer });
   // State variables for selected emotion, selected sentiment, and displayed sentences
@@ -37,6 +39,7 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
     string | undefined
   >(analysisResult.top_three_sentiments[0]?.sentiment);
   const [displayedSentences, setDisplayedSentences] = useState<number>(5);
+  
   // Event handlers for selecting emotion and sentiment
   const handleEmotionSelect = (emotion: string) => {
     setSelectedEmotion(emotion);
@@ -72,6 +75,7 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
         <Text type={"h4"} className="preview">
           Preview
         </Text>
+
         <Space direction="vertical">
           {/* preview sentences  */}
           {analysisResult?.detailed_analysis
@@ -110,11 +114,29 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
             ))}
         </Space>
         {/* Render load more button */}
+        <Space direction="vertical" size={8}>
         {displayedSentences < analysisResult?.detailed_analysis.length && (
           <LoadMoreButton type="primary" onClick={handleLoadMore}>
             Load More
           </LoadMoreButton>
         )}
+        <Button 
+          onClick={() => {history.push(`/analyze`);
+          window.location.reload();
+        }}
+         
+        style={{marginTop: 20, backgroundColor: "transparent", border: "none", outline: "none"}} >
+        
+          <ArrowLeftOutlined
+            className="font-size-icon"
+            size={52}
+          
+            style={{backgroundColor: "transparent", border: "none", outline: "none"}}
+          />
+          Go back
+        </Button>
+        </Space>
+      
       </PreviewColumn>
       {/* Results column */}
       <ResultsColumn>

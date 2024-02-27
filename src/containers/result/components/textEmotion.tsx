@@ -5,8 +5,8 @@ import ProgressBar from "./textProgressBar.tsx";
 import { getColorForEmotion } from "./helper.tsx";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "./helper.tsx";
-import { selectorAnalyzeText } from "../../..//redux/Selectors/index.ts";
-
+import { selectorAnalyzeText } from "../../..//redux/selectors/index.ts";
+import { UploadPieChart } from "../../../components/emotionsPieChart/index.tsx";
 const EmotionCard = () => {
   const { analysisResult } = useSelector(selectorAnalyzeText);
   // State variables for selected emotion
@@ -31,7 +31,8 @@ const EmotionCard = () => {
       <Text type={"p"} className="emotions-card">
         Emotions
       </Text>
-      <Flex vertical align="center">
+      <UploadPieChart pieChartData={analysisResult?.top_three_emotions} />
+      {/* <Flex vertical align="center">
         <ProgressBar
           // Set the value of the progress bar based on the selected emotion
           value={Math.floor(
@@ -47,7 +48,7 @@ const EmotionCard = () => {
         />
         <Space direction="horizontal" size={10}>
           {/* Map through the available emotions and render a Button */}
-          {availableEmotions.map((emotion, index) => (
+          {/* {availableEmotions.map((emotion, index) => (
             <Button
               key={index}
               type="text"
@@ -58,7 +59,7 @@ const EmotionCard = () => {
             </Button>
           ))}
         </Space>
-      </Flex>
+      </Flex> */} 
     </Card>
   );
 };

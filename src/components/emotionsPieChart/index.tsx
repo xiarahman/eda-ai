@@ -33,14 +33,16 @@ export function UploadPieChart({ pieChartData = [] }) {
 
   console.log(updateData, pieChartData);
   return (
-    <Flex style={{ backgroundColor: "#f5f5f5" }}>
+    <Flex 
+    style={{ backgroundColor: "transparent" }}
+    >
       <Chart
         chartType="PieChart"
         width={350}
         height={250}
         data={updateData}
         options={options}
-        style={{ backgroundColor: "#f5f5f5" }}
+        style={{ backgroundColor: "transparent" }}
       />
     </Flex>
   );
