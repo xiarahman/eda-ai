@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Text from "../../components/text/index.tsx";
 import { Row, Col, Button, List, Space, Image } from "antd";
 import EmotionCard from "./components/textEmotion.tsx";
@@ -21,7 +22,7 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
   // Retrieve analysis result from Redux state
   const { analysisResult } = useSelector(selectorAnalyzeText);
   const [displayedSentences, setDisplayedSentences] = useState<number>(5);
-
+const history= useHistory();
   // Load more sentences event handler
   const handleLoadMore = () => {
     setDisplayedSentences((prevCount) => prevCount + 4);
