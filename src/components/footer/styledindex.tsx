@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { Typography } from "antd";
+import { Typography, Input } from "antd";
 
 export const FooterSection = styled.div`
   padding: 5% 10%;
@@ -9,13 +9,14 @@ export const FooterSection = styled.div`
 export const SocialLinks = styled.div`
   margin-top: 15%;
 `;
+export const ContactInput= styled(Input)`
+width: 100%;
+ height: 40px;
+ color: black;
+ font-weight: 600;
 
-export const StyledLink = styled(Link)`
-  cursor: pointer;
-  color: #f5f5f5 !important;
-  text-decoration: none;
-  font-size: 14px;
 `;
+
 export const StyledFooterTitle = styled(Typography)`
   font-size: 20px;
   line-height: 25px;
@@ -28,3 +29,4 @@ export const StyledFooterText = styled(StyledFooterTitle)`
   font-family: Poppins;
   font-weight: 500;
 `;
+

@@ -32,15 +32,5 @@ export const getColorForEmotion = (emotion: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
   
-  export const mapEmotions = (emotions: any[]) => {
-    return emotions
-      .filter((emotion) => emotion.percentage > 0)
-      .map((emotion) => capitalizeFirstLetter(emotion.emotion));
-  };
-  
-  export const mapSentiments = (sentiments: any[]) => {
-    return sentiments
-      .filter((sentiment) => sentiment.percentage > 0)
-      .map((sentiment) => capitalizeFirstLetter(sentiment.sentiment));
-  };
+ 
   

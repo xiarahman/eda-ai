@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Input } from "antd";
 export const Inputdiv = styled.div`
   display: flex;
-  margin-top: 10%;
   flex-direction: column;
   align-items: center;
   gap: 20px;

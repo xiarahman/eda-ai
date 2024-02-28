@@ -13,9 +13,6 @@ const InputForm = () => {
   const [inputText, setInputText] = useState<string>("");
   const dispatch = useDispatch();
   const { loading, analysisResult } = useSelector(selectorAnalyzeText);
-
-  console.log(loading, analysisResult);
-
   const { push } = useHistory();
   // Handler for input change event
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {

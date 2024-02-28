@@ -8,40 +8,40 @@ import { StyledCard } from "../style.ts";
 const { Meta } = StyledCard;
 const HomeCards: React.FC = () => {
   return (
-    <div style={{ backgroundColor: "white", padding: "20px 2px" }}>
-      <Row gutter={8}>
-        <Col span={3}>
-          <Image src={pattern} preview={false} style={{ marginTop: 60 }} />
+    <div style={{ backgroundColor: "white", padding: "1% " }}>
+      <Row gutter={16}>
+        <Col xs={24} sm={24} md={3} lg={3} xxl={3}>
+          <Image src={pattern} preview={false} />
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={24} md={6} lg={6} xxl={6}>
           <StyledCard>
-            <Image src={video} preview={false} style={{ marginLeft: "58%" }} />
+            <Image src={video} preview={false} />
             <Meta
               title="Analyze Recorded Videos"
               description="Upload any video to analyse emotions of your customers"
             ></Meta>
           </StyledCard>
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={24} md={6} lg={6} xxl={6}>
           <StyledCard>
-            <Image src={live} preview={false} style={{ marginLeft: "58%" }} />
+            <Image src={live} preview={false} />
             <Meta
               title="Analyze Live Streams"
               description="Upload any video to analyse emotions of your customers"
             ></Meta>
           </StyledCard>
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={24} md={6} lg={6} xxl={6}>
           <StyledCard>
-            <Image src={text} preview={false} style={{ marginLeft: "58%" }} />
+            <Image src={text} preview={false} />
             <Meta
               title="Analyze Text Files"
               description="Upload any text to analyse emotions of your customers"
             ></Meta>
           </StyledCard>
         </Col>
-        <Col span={3}>
-          <Image src={pattern} preview={false} style={{ marginTop: 60 }} />
+        <Col xs={24} sm={24} md={3} lg={3} xxl={3}>
+          <Image src={pattern} preview={false} />
         </Col>
       </Row>
     </div>
