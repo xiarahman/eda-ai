@@ -6,6 +6,7 @@ import EmotionCard from "./components/textEmotion.tsx";
 import SentimentCard from "./components/textSentiment.tsx";
 import { capitalizeFirstLetter } from "./components/helper.tsx";
 import { AnalysisResultProps } from "./components/textType.js";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import {
   AnalysisContainer,
   PreviewColumn,
@@ -57,7 +58,7 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
                     <Space direction="horizontal" size={20}>
                       {/* Display predicted emotion */}
                       <Text type={"p"} className="emotion-name">
-                        {item.pred_emotion}
+                        Emotion: {item.pred_emotion}
                       </Text>
                       {/* Display sentiment icon and colored text */}
 <Space direction= 'horizontal' size={3}>
@@ -68,7 +69,7 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
 
                       >
                         {/* {getSentimentIconAndColor(item.pred_sentiment).icon}{" "} */}
-                       {capitalizeFirstLetter(item.pred_sentiment)} 
+                      Sentiment: {capitalizeFirstLetter(item.pred_sentiment)} 
                       </Text>
 </Space>
                      
@@ -83,11 +84,29 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
             ))}
         </Space>
         {/* Render load more button */}
+        <Space direction="vertical" size={8}>
         {displayedSentences < analysisResult?.detailed_analysis.length && (
           <LoadMoreButton type="primary" onClick={handleLoadMore}>
             Load More
           </LoadMoreButton>
         )}
+        <Button 
+          onClick={() => {history.push(`/analyze`);
+          window.location.reload();
+        }}
+         
+        style={{marginTop: 20, backgroundColor: "transparent", border: "none", outline: "none"}} >
+        
+          <ArrowLeftOutlined
+            className="font-size-icon"
+            size={52}
+          
+            style={{backgroundColor: "transparent", border: "none", outline: "none"}}
+          />
+          Go back
+        </Button>
+        </Space>
+        
       </PreviewColumn>
       {/* Results column */}
       <ResultsColumn>
