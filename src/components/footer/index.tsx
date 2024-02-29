@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {
   SocialLinks,
- ContactInput,
+  ContactInput,
   StyledFooterText,
   StyledFooterTitle,
   FooterSection,
 } from "./styledindex.tsx";
-import { Row, Col, Button, Flex, Image, Modal , Input} from "antd";
+import { Row, Col, Button, Flex, Image, Modal, Input } from "antd";
 import facebook from "../../assets/facebook.png";
 import youtube from "../../assets/youtube.png";
 import instagram from "../../assets/instagram.png";
@@ -19,7 +19,7 @@ const Footer = () => {
   const showModal = () => {
     setIsModalVisible(true);
   };
-  
+
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -58,10 +58,23 @@ const Footer = () => {
             <StyledFooterText>
               <Flex vertical>
                 <StyledLink to="/">Home</StyledLink>
-                <StyledLink >Features</StyledLink>
+                <StyledLink>Features</StyledLink>
                 <StyledLink to="/analyze">How it Works</StyledLink>
                 <StyledLink>FAQs</StyledLink>
-                <StyledLink onClick={showModal}>Contact Us</StyledLink>
+                {/* <StyledLink onClick={showModal}>Contact Us</StyledLink> */}
+                <Button
+                  style={{
+                    border: "none",
+                    backgroundColor: "transparent",
+                    cursor: "pointer",
+                    marginLeft: "-78px",
+                    color: "white",
+                    fontSize: "13px",
+                  }}
+                  onClick={showModal}
+                >
+                  Contact US
+                </Button>
               </Flex>
             </StyledFooterText>
           </Col>
@@ -95,59 +108,57 @@ const Footer = () => {
         </Row>
       </FooterSection>
       <Modal
-  open={isModalVisible}
-  onCancel={handleCancel}
-  width={800}
-  style={{ width: "100%" }}
-  footer= {null}
->
-  <Row style={{ marginTop: 0 }}>
-    <Col
-      span={14}
-      style={{
-        backgroundColor: "#000244",
-        color: "white",
-        width: "100%",
-        height: "100vh",
-        padding: "3%",
-      
-      }}
-    >
-      <Flex vertical style={{marginTop: "50%"}}>
-      <WorkSubTitle style={{ color: "#C1CFED", fontSize: "28px" }}>
-        Send Us A Message
-      </WorkSubTitle>
-      <WorkText style={{ color: "white" }}>
-        Feel free to reach out with your enquiries we will get back to you
-        as soon as we can!
-      </WorkText>
-      </Flex>
-     
-     
-      <Image
-        src={modalImage}
-        preview={false}
-       style={{height: "156px", width: "200px", marginTop: "120%"}}
-      />
-     
-    </Col>
+        open={isModalVisible}
+        onCancel={handleCancel}
+        width={800}
+        style={{ width: "100%" }}
+        footer={null}
+      >
+        <Row style={{ marginTop: 0 }}>
+          <Col
+            span={14}
+            style={{
+              backgroundColor: "#000244",
+              color: "white",
+              width: "100%",
+              height: "100vh",
+              padding: "3%",
+            }}
+          >
+            <Flex vertical style={{ marginTop: "50%" }}>
+              <WorkSubTitle style={{ color: "#C1CFED", fontSize: "28px" }}>
+                Send Us A Message
+              </WorkSubTitle>
+              <WorkText style={{ color: "white" }}>
+                Feel free to reach out with your enquiries we will get back to
+                you as soon as we can!
+              </WorkText>
+            </Flex>
 
-    <Col span={10} style={{ backgroundColor: "#C1CFED" }}>
-      <Flex vertical style={{ padding: "30px" , marginTop: "30%"}} gap={'middle'}>
-        <ContactInput
-          placeholder="Enter Your Name"
-          
-        />
-        <ContactInput placeholder="Your Email" />
-        <ContactInput placeholder="Mobile Number"/>
-        <ContactInput.TextArea placeholder="Write your message" />
-        <Button type="primary" style={{ width: "100%" }}>
-          Submit
-        </Button>
-      </Flex>
-    </Col>
-  </Row>
-</Modal>
+            <Image
+              src={modalImage}
+              preview={false}
+              style={{ height: "156px", width: "200px", marginTop: "120%" }}
+            />
+          </Col>
+
+          <Col span={10} style={{ backgroundColor: "#C1CFED" }}>
+            <Flex
+              vertical
+              style={{ padding: "30px", marginTop: "30%" }}
+              gap={"middle"}
+            >
+              <ContactInput placeholder="Enter Your Name" />
+              <ContactInput placeholder="Your Email" />
+              <ContactInput placeholder="Mobile Number" />
+              <ContactInput.TextArea placeholder="Write your message" />
+              <Button type="primary" style={{ width: "100%" }}>
+                Submit
+              </Button>
+            </Flex>
+          </Col>
+        </Row>
+      </Modal>
     </div>
   );
 };

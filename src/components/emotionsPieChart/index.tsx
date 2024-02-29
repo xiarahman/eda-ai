@@ -14,7 +14,7 @@ export const options = {
   pieSliceTextStyle: {
     color: "black",
   },
-  is3D: false,
+  is3D: true,
   tooltip: {
     text: "percentage percent",
   },

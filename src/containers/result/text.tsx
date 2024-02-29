@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Text from "../../components/text/index.tsx";
-import { Row, Col, Button, List, Space, Image } from "antd";
+import { Row, Col, Button, List, Space, Image, Flex } from "antd";
 import EmotionCard from "./components/textEmotion.tsx";
 import SentimentCard from "./components/textSentiment.tsx";
 import { capitalizeFirstLetter } from "./components/helper.tsx";
 import { AnalysisResultProps } from "./components/textType.js";
-import { ArrowLeftOutlined } from "@ant-design/icons";
 import {
   ArrowLeftOutlined,
   LeftOutlined,
@@ -45,90 +44,90 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
   };
 
   return (
-    <AnalysisContainer>
-      {/* Preview column */}
-      <PreviewColumn>
-        <Text type={"h4"} className="preview">
-          Preview
-        </Text>
+    <div
+      style={{
+        padding: "0px 0px 25px 0px",
+        display: "flex",
+        justifyContent: "space-between",
+        gap: "40px",
+        flexDirection: "column",
+      }}
+    >
+      <AnalysisContainer>
+        {/* Preview column */}
+        <PreviewColumn>
+          <h2 className="section-heading">Preview</h2>
 
-        <Space direction="vertical">
-          {/* preview sentences  */}
-          {analysisResult?.detailed_analysis
-            .slice(0, displayedSentences)
-            .map((item, index) => (
-              <List itemLayout="vertical" key={index}>
-                <List.Item
-                  title={`Sentence ${index + 1}`}
-                  actions={[
-                    <Space direction="horizontal" size={20}>
-                      {/* Display predicted emotion */}
-                      <Text type={"p"} className="emotion-name">
-                        Emotion: {item.pred_emotion}
-                      </Text>
-                      {/* Display sentiment icon and colored text */}
-                      <Space direction="horizontal" size={3}>
-                        <Text type={"p"} className="sentiment-name">
-                          {/* {getSentimentIconAndColor(item.pred_sentiment).icon}{" "} */}
-                          Sentiment:{" "}
-                          {capitalizeFirstLetter(item.pred_sentiment)}
+          <Space direction="vertical">
+            {/* preview sentences  */}
+            {analysisResult?.detailed_analysis
+              .slice(0, displayedSentences)
+              .map((item, index) => (
+                <List itemLayout="vertical" key={index}>
+                  <List.Item
+                    title={`Sentence ${index + 1}`}
+                    actions={[
+                      <Space direction="horizontal" size={20}>
+                        {/* Display predicted emotion */}
+                        <Text type={"p"} className="emotion-name">
+                          Emotion: {item.pred_emotion}
                         </Text>
-                      </Space>
-                    </Space>,
-                  ]}
-                >
-                  {/* Display sentence*/}
-                  <div>{item.sentence}</div>
-                </List.Item>
-                <hr />
-              </List>
-            ))}
-        </Space>
-        {/* Render load more button */}
-        <Space direction="vertical" size={8}>
-          {displayedSentences < analysisResult?.detailed_analysis.length && (
-            <LoadMoreButton type="primary" onClick={handleLoadMore}>
-              Load More
-            </LoadMoreButton>
-          )}
-          <Button
-            onClick={() => {
-              history.push(`/analyze`);
-              window.location.reload();
-            }}
-            style={{
-              marginTop: 20,
-              backgroundColor: "transparent",
-              border: "none",
-              outline: "none",
-            }}
-          >
-            <ArrowLeftOutlined
-              className="font-size-icon"
-              size={52}
-              style={{
-                backgroundColor: "transparent",
-                border: "none",
-                outline: "none",
-              }}
-            />
-            Go back
-          </Button>
-        </Space>
-      </PreviewColumn>
-      {/* Results column */}
-      <ResultsColumn>
-        <ResultsWrapper>
-          <Text type={"h4"} className="results">
-            Results
-          </Text>
-          {/* Render EmotionCard component */}
-          <EmotionCard />
-          {/* Render SentimentCard component */}
-          <SentimentCard />
-        </ResultsWrapper>
-      </ResultsColumn>
-    </AnalysisContainer>
+                        {/* Display sentiment icon and colored text */}
+                        <Space direction="horizontal" size={3}>
+                          <Text type={"p"} className="sentiment-name">
+                            {/* {getSentimentIconAndColor(item.pred_sentiment).icon}{" "} */}
+                            Sentiment:{" "}
+                            {capitalizeFirstLetter(item.pred_sentiment)}
+                          </Text>
+                        </Space>
+                      </Space>,
+                    ]}
+                  >
+                    {/* Display sentence*/}
+                    <div>{item.sentence}</div>
+                  </List.Item>
+                  <hr />
+                </List>
+              ))}
+            {displayedSentences < analysisResult?.detailed_analysis.length && (
+              <LoadMoreButton type="primary" onClick={handleLoadMore}>
+                Load More
+              </LoadMoreButton>
+            )}
+          </Space>
+          {/* Render load more button */}
+          {/* <Space direction="vertical" size={8}> */}
+
+          {/* </Space> */}
+        </PreviewColumn>
+        {/* Results column */}
+        <ResultsColumn>
+          <ResultsWrapper>
+            <h2 className="section-heading">Results</h2>
+            {/* Render EmotionCard component */}
+            <EmotionCard />
+            {/* Render SentimentCard component */}
+            <SentimentCard />
+          </ResultsWrapper>
+        </ResultsColumn>
+      </AnalysisContainer>
+      <Flex
+        style={{
+          minWidth: "1100px",
+          cursor: "pointer",
+          margin: "0 auto",
+          justifyContent: "start",
+        }}
+        onClick={() => {
+          history.push(`/analyze`);
+          window.location.reload();
+        }}
+      >
+        <ArrowLeftOutlined />
+        <span style={{ width: 6 }} />
+        Go Back
+      </Flex>
+    </div>
   );
 };
 export default AnalysisResult;

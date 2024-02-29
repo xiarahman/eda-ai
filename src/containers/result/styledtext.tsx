@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
 import { Button } from "antd";
 export const AnalysisContainer = styled.div`
-  display: flex; 
-  margin-top: 8%
+  display: flex;
+  margin-top: 8%;
 `;
 export const PreviewColumn = styled.div`
   flex: 1;
+  height: 600px;
+  overflow-y: auto;
   padding: 20px;
-  margin-left:5%
+  margin-left: 5%;
 `;
 export const ResultsColumn = styled.div`
   flex: 1;
