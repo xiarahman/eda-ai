@@ -4,11 +4,11 @@ import pattern from "../../../assets/pattern.png";
 import video from "../../../assets/video.png";
 import live from "../../../assets/live.png";
 import text from "../../../assets/text.png";
-import { StyledCard } from "../style.ts";
+import { CardsContainer, StyledCard } from "../style.ts";
 const { Meta } = StyledCard;
 const HomeCards: React.FC = () => {
   return (
-    <div style={{ backgroundColor: "white", padding: "1% " }}>
+    <CardsContainer>
       <Row gutter={16}>
         <Col xs={24} sm={24} md={3} lg={3} xxl={3}>
           <Image src={pattern} preview={false} />
@@ -44,7 +44,7 @@ const HomeCards: React.FC = () => {
           <Image src={pattern} preview={false} />
         </Col>
       </Row>
-    </div>
+    </CardsContainer>
   );
 };
 export default HomeCards;

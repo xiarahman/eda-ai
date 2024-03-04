@@ -1,10 +1,9 @@
 import React from "react";
-import { Nav, NavBar, NavTitle } from "./styledindex.tsx";
+import { Nav, NavBar} from "./styledindex.tsx";
 import { StyledButton } from "../home/style.ts";
 import { useHistory } from "react-router";
 import StyledLink from "../styledLink.ts";
 const Header = () => {
-  const { push } = useHistory();
   return (
     <NavBar>
       <Nav>
