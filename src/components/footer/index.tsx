@@ -7,6 +7,7 @@ import {
   FooterSection,
   ContactButton,
   FooterContainer,
+  ModalTitle,
 } from "./styledindex.tsx";
 import { Row, Col, Button, Flex, Image, Modal, Input } from "antd";
 import facebook from "../../assets/facebook.png";
@@ -101,21 +102,21 @@ const Footer = () => {
         style={{height: "500px"}}
         footer={null}
       >
-        <Row style={{ marginTop: 0 }}>
+        <Row>
           <Col
             span={14}
             style={{
               backgroundColor: "#000244",
               color: "white",
-              width: "100%",
-              height: "100vh",
+             
+             
               padding: "3%",
             }}
           >
-            <Flex vertical style={{ marginTop: "50%" }}>
-              <WorkSubTitle style={{ color: "#C1CFED", fontSize: "28px" }}>
+            <Flex vertical style={{ marginTop: "30%" }}>
+              <ModalTitle>
                 Send Us A Message
-              </WorkSubTitle>
+              </ModalTitle>
               <WorkText style={{ color: "white" }}>
                 Feel free to reach out with your enquiries we will get back to
                 you as soon as we can!
@@ -125,7 +126,7 @@ const Footer = () => {
             <Image
               src={modalImage}
               preview={false}
-              style={{ height: "156px", width: "200px", marginTop: "120%" }}
+              style={{ height: "156px", width: "200px", marginTop: "80%" }}
             />
           </Col>
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Typography, Input, Button } from "antd";
+
 export const FooterContainer = styled.div`
   background-color: #000244;
   color: white;
@@ -39,4 +40,8 @@ export const ContactButton = styled(Button)`
   margin-left: -78px;
   color: white;
   font-size: 13px;
+`;
+export const ModalTitle= styled(StyledFooterTitle)`
+color: #C1CFED;
+ font-size: 28px;
 `;
