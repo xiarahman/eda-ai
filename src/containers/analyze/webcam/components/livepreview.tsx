@@ -71,7 +71,6 @@ const LivePreview = ({ setJobId, jobId }) => {
         setFinalEmotion(finalPrediction);
       })
 
-      .then((response) => console.log("ddd" + response))
       .catch((err) =>
         console.log("%cwebcam.tsx line:128 err", "color: #007acc;", err)
       );

@@ -23,18 +23,18 @@ const Uploader = () => {
     action: `${API_ENDPOINT}/analyze_video`,
     onChange(info) {
       const { status } = info.file;
-      if (status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
+      // if (status !== "uploading") {
+      //   console.log(info.file, info.fileList);
+      // }
       if (status === "done") {
         push(`/result/video/${info.file.response.job_id}`);
       } else if (status === "error") {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
-    onDrop(e) {
-      console.log("Dropped files", e.dataTransfer.files);
-    },
+    // onDrop(e) {
+    //   console.log("Dropped files", e.dataTransfer.files);
+    // },
   };
 
   return (

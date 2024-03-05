@@ -17,7 +17,6 @@ const StyledImage = styled(Image)`
 // Slider Component
 const Slider = () => {
   const { data } = useSelector(getVideos);
-  console.log("test", data);
 
   // Check if data and data.video_detail.frames are defined
   if (!data || !data.video_detail || !data.video_detail.frames) {
