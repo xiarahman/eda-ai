@@ -20,7 +20,7 @@ const SentimentDetails = () => {
       }}
     >
       <Flex justify="space-between" style={{ width: "100%" }}>
-        <h2 className="section-heading">Sentance</h2>
+        <h2 className="section-heading">Sentence</h2>
         <button
           className="back-btn"
           onClick={() => history.push(`/result/${opt}/${job_id}`)}

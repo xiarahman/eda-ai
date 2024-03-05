@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Image } from "antd";
 import { useSelector } from "react-redux";
 import { API_ENDPOINT } from "../../../utils/constants.ts";
+import { getVideos } from "../../../redux/selectors/index.ts";
 
 const StyledImage = styled(Image)`
   object-fit: cover !important;
@@ -15,7 +16,8 @@ const StyledImage = styled(Image)`
 
 // Slider Component
 const Slider = () => {
-  const data = useSelector((state: any) => state?.video?.data);
+  const { data } = useSelector(getVideos);
+  console.log("test", data);
 
   // Check if data and data.video_detail.frames are defined
   if (!data || !data.video_detail || !data.video_detail.frames) {

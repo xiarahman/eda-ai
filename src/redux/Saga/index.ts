@@ -15,7 +15,6 @@ import axios from "axios";
 import { API_ENDPOINT } from "../../utils/constants.ts";
 
 function* workVideoFetchRequest({ payload }) {
-  console.log("Video fetch request saga triggered");
   const { job_id } = payload; // Extract ID from action payload
 
   try {
@@ -30,11 +29,7 @@ function* workVideoFetchRequest({ payload }) {
     );
 
     const formattedRespone = yield response.data[0]; // Use response.data instead of response.json()
-    console.log(
-      "%cvideoSaga.tsx line:26 formattedRespone",
-      "color: #007acc;",
-      formattedRespone
-    );
+
     yield put(videoFetchSuccess(formattedRespone));
   } catch (error) {
     yield put(videoFetchFailure(error));
@@ -42,7 +37,6 @@ function* workVideoFetchRequest({ payload }) {
 }
 
 function* workChartsDataFetchRequest({ payload }) {
-  console.log("Charts data fetch request saga triggered");
   const { job_id } = payload; // Extract ID from action payload
   try {
     const response = yield call(
@@ -55,11 +49,7 @@ function* workChartsDataFetchRequest({ payload }) {
       }
     );
     const formattedRespone = response.data; // Use response.data instead of response.json()
-    console.log(
-      "%cvideoSaga.tsx line:45 formattedRespone",
-      "color: #007acc;",
-      formattedRespone
-    );
+
     yield put(chartsDataFetchSuccess(formattedRespone));
   } catch (error) {
     yield put(chartsDataFetchFailure(error));
@@ -67,7 +57,6 @@ function* workChartsDataFetchRequest({ payload }) {
 }
 
 function* workLiveStreamFetchRequest({ payload }) {
-  console.log("Live Stream fetch request saga triggered");
   const { job_id } = payload; // Extract ID from action payload
   try {
     const response = yield call(
@@ -80,11 +69,7 @@ function* workLiveStreamFetchRequest({ payload }) {
       }
     );
     const formattedRespone = response.data; // Use response.data instead of response.json()
-    console.log(
-      "%cvideoSaga.tsx line:45 formattedRespone",
-      "color: #007acc;",
-      formattedRespone
-    );
+
     yield put(liveStreamFetchSuccess(formattedRespone));
   } catch (error) {
     yield put(liveStreamFetchFailure(error));

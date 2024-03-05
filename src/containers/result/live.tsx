@@ -6,7 +6,7 @@ import { liveStreamFetchRequest } from "../../redux/Slice/index.ts";
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 import { reducer } from "../../redux/Slice/index.ts";
 import saga from "../../redux/Saga/index.ts";
-import { getVideos } from "../../redux/Selectors/index.ts";
+import { getVideos } from "../../redux/selectors/index.ts";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 import {
   ArrowLeftOutlined,
@@ -24,7 +24,6 @@ const LiveResult = ({ job_id }) => {
 
   useEffect(() => {
     dispatch(liveStreamFetchRequest({ job_id }));
-    if (chartsData) console.log("Fetched Data :: ", chartsData);
   }, []);
   return (
     <div

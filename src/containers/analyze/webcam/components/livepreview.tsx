@@ -41,7 +41,6 @@ const LivePreview = ({ setJobId, jobId }) => {
         socket.current.on(
           "processed_frame",
           ({ imageData, job_id, final_prediction }) => {
-            console.log("Called");
             if (imageData) {
               setNewImage(imageData, final_prediction);
             }
@@ -70,7 +69,6 @@ const LivePreview = ({ setJobId, jobId }) => {
       .then((response) => {
         const finalPrediction = response.data[0]?.final_prediction;
         setFinalEmotion(finalPrediction);
-        console.log("ddd" + response);
       })
 
       .then((response) => console.log("ddd" + response))

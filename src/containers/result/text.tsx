@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Text from "../../components/text/index.tsx";
 import { Row, Col, Button, List, Space, Image, Flex } from "antd";
@@ -19,14 +19,16 @@ import {
   ResultsWrapper,
   LoadMoreButton,
 } from "./styledtext.tsx";
-import { selectorAnalyzeText } from "../../redux/Selectors/index.ts";
+import { selectorAnalyzeText } from "../../redux/selectors/index.ts";
 import { getColorForSentiment } from "./components/helper.tsx";
 import { LikeOutlined } from "@ant-design/icons";
+import { analyzeTextSuccess } from "../../redux/Slice/index.ts";
 const AnalysisResult: React.FC<AnalysisResultProps> = () => {
   // Retrieve analysis result from Redux state
   const { analysisResult } = useSelector(selectorAnalyzeText);
   const [displayedSentences, setDisplayedSentences] = useState<number>(5);
   const history = useHistory();
+  const dispatch = useDispatch();
   // Load more sentences event handler
   const handleLoadMore = () => {
     setDisplayedSentences((prevCount) => prevCount + 4);
@@ -42,6 +44,12 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
       return { icon: null, color: "inherit" };
     }
   };
+  useEffect(() => {
+    return () => {
+      dispatch(analyzeTextSuccess({}));
+      history.push("/analyze");
+    };
+  }, []);
 
   return (
     <div
@@ -60,42 +68,44 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
 
           <Space direction="vertical">
             {/* preview sentences  */}
-            {analysisResult?.detailed_analysis
-              .slice(0, displayedSentences)
-              .map((item, index) => (
-                <List itemLayout="vertical" key={index}>
-                  <List.Item
-                    title={`Sentence ${index + 1}`}
-                    actions={[
-                      <Space direction="horizontal" size={20}>
-                        {/* Display predicted emotion */}
-                        <Text type={"p"} className="emotion-name">
-                          Emotion: {item.pred_emotion}
-                        </Text>
-                        {/* Display sentiment icon and colored text */}
-                        <Space direction="horizontal" size={3}>
-                          <Text type={"p"} className="sentiment-name">
-                            {/* {getSentimentIconAndColor(item.pred_sentiment).icon}{" "} */}
-                            Sentiment:{" "}
-                            {capitalizeFirstLetter(item.pred_sentiment)}
+            {Object.keys(analysisResult?.detailed_analysis || {}) &&
+              analysisResult?.detailed_analysis
+                ?.slice(0, displayedSentences)
+                ?.map((item, index) => (
+                  <List itemLayout="vertical" key={index}>
+                    <List.Item
+                      title={`Sentence ${index + 1}`}
+                      actions={[
+                        <Space direction="horizontal" size={20}>
+                          {/* Display predicted emotion */}
+                          <Text type={"p"} className="emotion-name">
+                            Emotion: {item.pred_emotion}
                           </Text>
-                        </Space>
-                      </Space>,
-                    ]}
-                  >
-                    {/* Display sentence*/}
-                    <div>{item.sentence}</div>
-                  </List.Item>
-                  <hr />
-                </List>
-              ))}
-            {displayedSentences < analysisResult?.detailed_analysis.length && (
+                          {/* Display sentiment icon and colored text */}
+                          <Space direction="horizontal" size={3}>
+                            <Text type={"p"} className="sentiment-name">
+                              {/* {getSentimentIconAndColor(item.pred_sentiment).icon}{" "} */}
+                              Sentiment:{" "}
+                              {capitalizeFirstLetter(item.pred_sentiment)}
+                            </Text>
+                          </Space>
+                        </Space>,
+                      ]}
+                    >
+                      {/* Display sentence*/}
+                      <div>{item.sentence}</div>
+                    </List.Item>
+                    <hr />
+                  </List>
+                ))}
+            {/* Render load more button */}
+            {displayedSentences < analysisResult?.detailed_analysis?.length && (
               <LoadMoreButton type="primary" onClick={handleLoadMore}>
                 Load More
               </LoadMoreButton>
             )}
           </Space>
-          {/* Render load more button */}
+
           {/* <Space direction="vertical" size={8}> */}
 
           {/* </Space> */}
@@ -120,7 +130,7 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
         }}
         onClick={() => {
           history.push(`/analyze`);
-          window.location.reload();
+          // window.location.reload();
         }}
       >
         <ArrowLeftOutlined />

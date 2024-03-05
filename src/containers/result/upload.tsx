@@ -12,7 +12,7 @@ import {
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
 import { useHistory, useParams } from "react-router-dom";
-import { getVideos } from "../../redux/Selectors/index.ts";
+import { getVideos } from "../../redux/selectors/index.ts";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 import GlobalSentimentProgress from "../../components/sentiments/progress.tsx";
 
@@ -26,7 +26,6 @@ const UploadResult = ({ job_id }) => {
     if (data) {
       dispatch(videoFetchRequest({ job_id }));
       dispatch(chartsDataFetchRequest({ job_id }));
-      console.log("%cupload.tsx line:34 data", "color: #007acc;", data);
     }
   }, []);
 

@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { Button, Flex, List } from "antd";
 import { useSelector } from "react-redux";
+import { getVideos } from "../../../redux/selectors/index.ts";
 
 const SentenceCard = () => {
-  const sentence = useSelector((state: any) => state?.video?.data);
+  const { data } = useSelector(getVideos);
   const [initLoading, setInitLoading] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [dataa, setData] = useState([]);
   const [list, setList] = useState([]);
 
   useEffect(() => {
     // Replace the following fetch logic with your actual data (audio_chunks)
-    const audioChunks = sentence?.audio_detail?.audio_chunks || [];
+    const audioChunks = data?.audio_detail?.audio_chunks || [];
 
     setInitLoading(false);
     setData(audioChunks.slice(0, 3));
     setList(audioChunks.slice(0, 3));
-  }, [sentence]);
+  }, [data]);
 
   const onLoadMore = () => {
     setLoading(true);
     const remainingChunks =
-      sentence?.audio_detail?.audio_chunks.slice(data.length) || [];
-    setList(data.concat(remainingChunks));
+      data?.audio_detail?.audio_chunks.slice(dataa.length) || [];
+    setList(dataa.concat(remainingChunks));
     setLoading(false);
     window.dispatchEvent(new Event("resize"));
   };
   const loadMore =
     !initLoading &&
     !loading &&
-    data.length < sentence?.audio_detail?.audio_chunks.length ? (
+    dataa.length < data?.audio_detail?.audio_chunks.length ? (
       <div
         style={{
           textAlign: "center",

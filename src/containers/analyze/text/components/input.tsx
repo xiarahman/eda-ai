@@ -6,7 +6,7 @@ import { StyledTextArea, Inputdiv, ButtonsDiv } from "./styledinput.tsx";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import { selectorAnalyzeText } from "../../../../redux/Selectors/index.ts";
+import { selectorAnalyzeText } from "../../../../redux/selectors/index.ts";
 import { analyzeTextRequest } from "../../../../redux/Slice/index.ts";
 const InputForm = () => {
   // State variables
@@ -20,7 +20,6 @@ const InputForm = () => {
   };
   // Handler for dispatching action when user click on submit button of input area
   const handleAnalyze = () => {
-    console.log("action dispatch");
     dispatch(analyzeTextRequest({ payloadData: inputText }));
   };
   // Effect to redirect to result page when api response is available through analysis result
