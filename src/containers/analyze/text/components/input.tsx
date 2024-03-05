@@ -26,6 +26,8 @@ const InputForm = () => {
   useEffect(() => {
     if (Object.keys(analysisResult)?.length) {
       push("/text-result");
+    } else {
+      push("/analyze");
     }
   }, [analysisResult, loading]);
   // Handler for file upload button

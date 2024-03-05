@@ -11,12 +11,6 @@ export const Nav = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export const NavTitle = styled.div`
-  color: #c1cfed;
-  font-family: Sora;
-  font-size: 18;
-  font-weight: 600;
-`;
 
 export const StyledLink = styled(Link)`
   margin: 1rem;

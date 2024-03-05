@@ -4,15 +4,16 @@ import {
   ContactInput,
   StyledFooterText,
   StyledFooterTitle,
-  FooterSection,
+  ContactButton,
+  FooterContainer,
+  ModalTitle,
 } from "./styledindex.tsx";
 import { Row, Col, Button, Flex, Image, Modal, Input } from "antd";
 import facebook from "../../assets/facebook.png";
 import youtube from "../../assets/youtube.png";
 import instagram from "../../assets/instagram.png";
-import { StyledButton } from "../button/index.tsx";
-import StyledLink from "../styledLink.ts";
-import { WorkSubTitle, WorkText } from "../home/style.ts";
+import {StyledLink, StyledScrollLink} from "../styledLink.ts";
+import {  WorkText} from "../home/style.ts";
 import modalImage from "../../assets/modalImage.png";
 const Footer = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,15 +25,7 @@ const Footer = () => {
     setIsModalVisible(false);
   };
   return (
-    <div
-      style={{
-        backgroundColor: "#000244",
-        color: "white",
-        // marginTop: "12%",
-        width: "100%",
-      }}
-    >
-      <FooterSection>
+    <FooterContainer id="footer">
         <Row gutter={64}>
           <Col span={13}>
             <StyledFooterTitle> EmoAnalytica</StyledFooterTitle>
@@ -41,8 +34,10 @@ const Footer = () => {
               Insights into Their Emotions and Sentiments. Empower Your Business
               To Drive Meaningful Engagement and Enhance Customer Satisfaction
             </StyledFooterText>
+         
             <Button
               type="link"
+              href={"/analyze"}
               style={{
                 marginTop: "3%",
                 backgroundColor: "#C1CFED",
@@ -57,24 +52,23 @@ const Footer = () => {
 
             <StyledFooterText>
               <Flex vertical>
-                <StyledLink to="/">Home</StyledLink>
-                <StyledLink>Features</StyledLink>
-                <StyledLink to="/analyze">How it Works</StyledLink>
-                <StyledLink>FAQs</StyledLink>
+              <StyledLink to="/">Home</StyledLink>
+          <StyledScrollLink to="features" smooth duration={500}>
+            Features
+          </StyledScrollLink>
+          <StyledScrollLink to="work" smooth duration={500}>
+            How it Works
+          </StyledScrollLink>
+          <StyledScrollLink to="faq" smooth duration={500}>
+            FAQs
+          </StyledScrollLink>
+         
                 {/* <StyledLink onClick={showModal}>Contact Us</StyledLink> */}
-                <Button
-                  style={{
-                    border: "none",
-                    backgroundColor: "transparent",
-                    cursor: "pointer",
-                    marginLeft: "-78px",
-                    color: "white",
-                    fontSize: "13px",
-                  }}
+                <ContactButton
                   onClick={showModal}
                 >
-                  Contact US
-                </Button>
+                  Contact Us
+                </ContactButton>
               </Flex>
             </StyledFooterText>
           </Col>
@@ -106,29 +100,28 @@ const Footer = () => {
             </SocialLinks>
           </Col>
         </Row>
-      </FooterSection>
       <Modal
+      
         open={isModalVisible}
         onCancel={handleCancel}
         width={800}
-        style={{ width: "100%" }}
+        style={{height: "500px"}}
         footer={null}
+        centered={true}
       >
-        <Row style={{ marginTop: 0 }}>
+        <Row>
           <Col
             span={14}
             style={{
               backgroundColor: "#000244",
               color: "white",
-              width: "100%",
-              height: "100vh",
               padding: "3%",
             }}
           >
-            <Flex vertical style={{ marginTop: "50%" }}>
-              <WorkSubTitle style={{ color: "#C1CFED", fontSize: "28px" }}>
+            <Flex vertical style={{ marginTop: "30%" }}>
+              <ModalTitle>
                 Send Us A Message
-              </WorkSubTitle>
+              </ModalTitle>
               <WorkText style={{ color: "white" }}>
                 Feel free to reach out with your enquiries we will get back to
                 you as soon as we can!
@@ -138,7 +131,7 @@ const Footer = () => {
             <Image
               src={modalImage}
               preview={false}
-              style={{ height: "156px", width: "200px", marginTop: "120%" }}
+              style={{ height: "156px", width: "200px", marginTop: "80%" }}
             />
           </Col>
 
@@ -151,15 +144,15 @@ const Footer = () => {
               <ContactInput placeholder="Enter Your Name" />
               <ContactInput placeholder="Your Email" />
               <ContactInput placeholder="Mobile Number" />
-              <ContactInput.TextArea placeholder="Write your message" />
-              <Button type="primary" style={{ width: "100%" }}>
+              <ContactInput.TextArea placeholder="Write your message" rows={6} />
+              <Button type="primary">
                 Submit
               </Button>
             </Flex>
           </Col>
         </Row>
       </Modal>
-    </div>
+    </FooterContainer>
   );
 };
 export default Footer;
