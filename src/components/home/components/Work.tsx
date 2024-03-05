@@ -18,7 +18,7 @@ const Work: React.FC = () => {
       align="center"
       gap="middle"
       style={{ backgroundColor: "#F5F5F5", padding: "30px" }}
-    >
+    id="work">
       <WorkTitle>How it Works</WorkTitle>
       <Row gutter={8}>
         <Col span={14}>

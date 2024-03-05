@@ -4,7 +4,6 @@ import {
   ContactInput,
   StyledFooterText,
   StyledFooterTitle,
-  FooterSection,
   ContactButton,
   FooterContainer,
   ModalTitle,
@@ -13,9 +12,8 @@ import { Row, Col, Button, Flex, Image, Modal, Input } from "antd";
 import facebook from "../../assets/facebook.png";
 import youtube from "../../assets/youtube.png";
 import instagram from "../../assets/instagram.png";
-import { StyledButton } from "../button/index.tsx";
-import StyledLink from "../styledLink.ts";
-import { WorkSubTitle, WorkText} from "../home/style.ts";
+import {StyledLink, StyledScrollLink} from "../styledLink.ts";
+import {  WorkText} from "../home/style.ts";
 import modalImage from "../../assets/modalImage.png";
 const Footer = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -27,7 +25,7 @@ const Footer = () => {
     setIsModalVisible(false);
   };
   return (
-    <FooterContainer >
+    <FooterContainer id="footer">
         <Row gutter={64}>
           <Col span={13}>
             <StyledFooterTitle> EmoAnalytica</StyledFooterTitle>
@@ -54,10 +52,17 @@ const Footer = () => {
 
             <StyledFooterText>
               <Flex vertical>
-                <StyledLink to="/">Home</StyledLink>
-                <StyledLink>Features</StyledLink>
-                <StyledLink to="/analyze">How it Works</StyledLink>
-                <StyledLink>FAQs</StyledLink>
+              <StyledLink to="/">Home</StyledLink>
+          <StyledScrollLink to="features" smooth duration={500}>
+            Features
+          </StyledScrollLink>
+          <StyledScrollLink to="work" smooth duration={500}>
+            How it Works
+          </StyledScrollLink>
+          <StyledScrollLink to="faq" smooth duration={500}>
+            FAQs
+          </StyledScrollLink>
+         
                 {/* <StyledLink onClick={showModal}>Contact Us</StyledLink> */}
                 <ContactButton
                   onClick={showModal}
@@ -96,11 +101,13 @@ const Footer = () => {
           </Col>
         </Row>
       <Modal
+      
         open={isModalVisible}
         onCancel={handleCancel}
         width={800}
         style={{height: "500px"}}
         footer={null}
+        centered={true}
       >
         <Row>
           <Col
@@ -108,8 +115,6 @@ const Footer = () => {
             style={{
               backgroundColor: "#000244",
               color: "white",
-             
-             
               padding: "3%",
             }}
           >
@@ -139,8 +144,8 @@ const Footer = () => {
               <ContactInput placeholder="Enter Your Name" />
               <ContactInput placeholder="Your Email" />
               <ContactInput placeholder="Mobile Number" />
-              <ContactInput.TextArea placeholder="Write your message" />
-              <Button type="primary" style={{ width: "100%" }}>
+              <ContactInput.TextArea placeholder="Write your message" rows={6} />
+              <Button type="primary">
                 Submit
               </Button>
             </Flex>

@@ -8,7 +8,7 @@ import { CardsContainer, StyledCard } from "../style.ts";
 const { Meta } = StyledCard;
 const HomeCards: React.FC = () => {
   return (
-    <CardsContainer>
+    <CardsContainer id= "features">
       <Row gutter={16}>
         <Col xs={24} sm={24} md={3} lg={3} xxl={3}>
           <Image src={pattern} preview={false} />

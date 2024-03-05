@@ -7,10 +7,6 @@ export const FooterContainer = styled.div`
   width: 100%;
   padding: 5% 10%;
 `;
-export const FooterSection = styled.div`
-  padding: 5% 10%;
-`;
-
 export const SocialLinks = styled.div`
   margin-top: 15%;
 `;

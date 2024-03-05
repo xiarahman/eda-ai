@@ -29,6 +29,7 @@ const FAQ: React.FC = () => {
       vertical
       align="center"
       gap="middle"
+      id="faq"
       style={{ 
         backgroundColor: "#C1CFED",
          padding: "30px"
