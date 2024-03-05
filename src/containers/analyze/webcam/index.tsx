@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import LivePreview from "./components/livepreview.tsx";
 
 const Webcam = () => {
+  const [jobId, setJobId] = useState(null);
   return (
     <>
-      <LivePreview />
+      <LivePreview jobId={jobId} setJobId={setJobId} />
     </>
   );
 };

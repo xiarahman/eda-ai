@@ -1,43 +1,22 @@
-// StyledHeader.js
 import { Link } from "react-scroll";
-import { Dropdown, Space } from "antd";
 import { styled } from "styled-components";
 
+export const NavBar = styled.div`
+  background-color: #141414;
+  color: white;
+  padding: 1% 5%;
+  width: 100%;
+`;
 export const Nav = styled.div`
-  width: 1040px;
-  min-width: 1040px;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
 `;
 
 export const StyledLink = styled(Link)`
   margin: 1rem;
-  //font-weight:500;
   cursor: pointer;
-
+  text-decoration: none;
   &:hover {
-    color: #006fee;
-  }
-`;
-
-export const StyledDropDown = styled(Dropdown)`
-  cursor: pointer;
-
-  && .ant-dropdown-menu {
-    background-color: #fff6f6;
-  }
-
-  && .ant-dropdown-menu-item {
-    color: black;
-  }
-
-  && .ant-dropdown-menu-item:hover {
-    color: white;
-    background-color: #1d2347;
-  }
-
-  &:hover {
-    color: #006fee;
+    color: #c1cfed;
   }
 `;

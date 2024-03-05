@@ -25,8 +25,8 @@ code {
 }
 
 .active{
-  background-color: #c1cfed !important;
-  color: #262e5b !important;
+  background-color: #C1CFED !important;
+  color: #262E5B !important;
 }
 
 /* .ant-image-img {
@@ -48,4 +48,8 @@ code {
 
 .ant-popover {
   --antd-arrow-background-color: #333333 !important;
+}
+
+rect{
+  fill: transparent !important;
 }

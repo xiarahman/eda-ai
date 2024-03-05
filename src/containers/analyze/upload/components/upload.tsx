@@ -6,16 +6,37 @@ import {
 } from "./styledupload.tsx";
 import type { UploadProps } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Form, message } from "antd";
+
+import { useHistory } from "react-router-dom";
+import { API_ENDPOINT } from "../../../../utils/constants.ts";
 
 const Uploader = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { push } = useHistory();
 
   const props: UploadProps = {
+    name: "video",
+    multiple: false,
+    method: "post",
+    action: `${API_ENDPOINT}/analyze_video`,
     onChange(info) {
-      navigate("/result/upload");
+      const { status } = info.file;
+      // if (status !== "uploading") {
+      //   console.log(info.file, info.fileList);
+      // }
+      if (status === "done") {
+        push(`/result/video/${info.file.response.job_id}`);
+      } else if (status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
     },
+    // onDrop(e) {
+    //   console.log("Dropped files", e.dataTransfer.files);
+    // },
   };
+
   return (
     <StyledDraggerContainer>
       <StyledDragger {...props}>

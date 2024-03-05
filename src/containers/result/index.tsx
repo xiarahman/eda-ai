@@ -1,27 +1,23 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import AreaCharts from "./components/AreaChart.tsx";
-import ProgressBar from "./components/progressbar.tsx";
-import Sentiments from "./components/sentiment.tsx";
-import Emotions from "./components/emotion.tsx";
-
+import LiveResult from "./../result/live.tsx";
+import TextFrom from "./../result/text.tsx";
+import Upload from "./../result/upload.tsx";
+import { useParams } from "react-router-dom";
 const Result = () => {
-  // const { type } = useParams();
-  // const navigate = useNavigate();
+  const { opt, job_id } = useParams<{ opt: string; job_id: string }>();
 
-  // const renderComponent = (type) => {
-  //   switch (type) {
-  //     case "video":
-  //       return <Upload />;
-  //     case "live":
-  //       return <Webcam />;
-  //     case "text":
-  //       return <TextFrom />;
-  //     default:
-  //       return <Upload />;
-  //   }
-  // };
-  return <></>;
+  const renderComponent = (val) => {
+    switch (val) {
+      case "video":
+        return <Upload job_id={job_id} />;
+      case "live":
+        return <LiveResult job_id={job_id} />;
+      case "text":
+        return <TextFrom />;
+    }
+  };
+
+  return <>{opt && renderComponent(opt)}</>;
 };
 
 export default Result;

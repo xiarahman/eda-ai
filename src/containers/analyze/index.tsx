@@ -1,7 +1,6 @@
-import { useNavigate, useParams } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import Text from "../../components/text/index.tsx";
-import { Section, OptionsDiv } from "./styledindex.tsx";
+import { OptionsDiv } from "./styledindex.tsx";
 import {
   FontSizeOutlined,
   PaperClipOutlined,
@@ -14,11 +13,10 @@ import TextFrom from "./text/index.tsx";
 import { Flex } from "antd";
 
 const Analyze = () => {
-  const { type } = useParams();
-  const navigate = useNavigate();
+  const [item, setItem] = useState("");
 
-  const renderComponent = (type) => {
-    switch (type) {
+  const renderComponent = (val) => {
+    switch (val) {
       case "video":
         return <Upload />;
       case "live":
@@ -34,36 +32,41 @@ const Analyze = () => {
     <Flex
       align="center"
       gap="large"
-      style={{ minWidth: "1040px", paddingTop: "10rem" }}
+      style={{
+        minWidth: "1040px",
+        minHeight: "830px",
+        paddingTop: "6rem",
+        flexGrow: "1",
+      }}
       vertical
     >
       <Flex gap="middle">
         <OptionsDiv
-          onClick={() => navigate("/video")}
-          className={type === "video" ? "active" : ""}
+          onClick={() => setItem("video")}
+          className={item === "video" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
             <PaperClipOutlined /> Upload Video
           </Text>
         </OptionsDiv>
         <OptionsDiv
-          onClick={() => navigate("/live")}
-          className={type === "live" ? "active" : ""}
+          onClick={() => setItem("live")}
+          className={item === "live" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
             <VideoCameraOutlined /> Webcam
           </Text>
         </OptionsDiv>
         <OptionsDiv
-          onClick={() => navigate("/text")}
-          className={type === "text" ? "active" : ""}
+          onClick={() => setItem("text")}
+          className={item === "text" ? "active" : ""}
         >
           <Text type={"h1"} className="per-size">
             <FontSizeOutlined /> Text
           </Text>
         </OptionsDiv>
       </Flex>
-      <Flex justify="center">{renderComponent(type)}</Flex>
+      <Flex justify="center">{item && renderComponent(item)}</Flex>
     </Flex>
   );
 };
