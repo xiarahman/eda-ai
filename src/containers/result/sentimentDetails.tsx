@@ -5,7 +5,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useHistory, useParams } from "react-router-dom";
 
 const SentimentDetails = () => {
-  const history = useHistory();
+  const { push } = useHistory();
   const { opt, job_id } = useParams<any>();
   return (
     <Flex
@@ -23,7 +23,7 @@ const SentimentDetails = () => {
         <h2 className="section-heading">Sentence</h2>
         <button
           className="back-btn"
-          onClick={() => history.push(`/result/${opt}/${job_id}`)}
+          onClick={() => push(`/result/${opt}/${job_id}`)}
         >
           <ArrowLeftOutlined />
           Back

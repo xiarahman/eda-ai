@@ -8,8 +8,6 @@ export const StyledDraggerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: top;
-  //height: 100vh;
-  // padding-top: 6rem;
 `;
 
 export const StyledDragger = styled(Dragger)`

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Collapse, Flex, Row, Col, Button, Image } from "antd";
+import { Flex, Row, Col, Image } from "antd";
 import process from "../../../assets/process.png";
 import report from "../../../assets/reports.png";
 import option from "../../../assets/option.png";
@@ -10,7 +10,6 @@ import {
   WorkTitle,
   WorkNumberSubTitle,
 } from "../style.ts";
-const { Title } = Typography;
 const Work: React.FC = () => {
   return (
     <Flex
@@ -18,7 +17,8 @@ const Work: React.FC = () => {
       align="center"
       gap="middle"
       style={{ backgroundColor: "#F5F5F5", padding: "30px" }}
-    id="work">
+      id="work"
+    >
       <WorkTitle>How it Works</WorkTitle>
       <Row gutter={8}>
         <Col span={14}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ButtonDiv, Preview, Section, styles } from "./styledLivePreview.tsx";
+import { Preview, styles } from "./styledLivePreview.tsx";
 import Button from "../../../../components/button/index.tsx";
 import axios from "axios";
 import Webcam from "react-webcam";
