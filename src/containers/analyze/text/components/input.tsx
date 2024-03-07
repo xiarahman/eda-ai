@@ -37,13 +37,12 @@ const InputForm = () => {
     }
     
       // Check for special characters and symbols in the input text
-      const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+      const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|<>\/]+/;
       if (regex.test(inputText)) {
         message.error("Please remove special characters and symbols from the input.");
         return;
       }
    
-      
 
     dispatch(analyzeTextRequest({ payloadData: inputText }));
   };
@@ -92,6 +91,7 @@ const InputForm = () => {
           showUploadList={{
             showDownloadIcon: false,
             showRemoveIcon: true,
+            showPreviewIcon: false, // hide the preview icon
           }}
           onChange={handleFileUpload}
           onRemove={() => setFileUploaded(null)} // Set uploaded file information to null when file is removed
