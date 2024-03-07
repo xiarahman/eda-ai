@@ -19,7 +19,7 @@ import {
   ResultsWrapper,
   LoadMoreButton,
 } from "./styledtext.tsx";
-import { selectorAnalyzeText } from "../../redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../redux/Selectors/index.ts";
 import { getColorForSentiment } from "./components/helper.tsx";
 import { LikeOutlined } from "@ant-design/icons";
 import { analyzeTextSuccess } from "../../redux/Slice/index.ts";

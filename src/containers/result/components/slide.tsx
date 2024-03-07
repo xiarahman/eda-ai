@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Image } from "antd";
 import { useSelector } from "react-redux";
 import { API_ENDPOINT } from "../../../utils/constants.ts";
-import { getVideos } from "../../../redux/selectors/index.ts";
+import { getVideos } from "../../../redux/Selectors/index.ts";
 
 const StyledImage = styled(Image)`
   object-fit: cover !important;

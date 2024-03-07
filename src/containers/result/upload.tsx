@@ -12,7 +12,7 @@ import {
 import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
 import { useHistory, useParams } from "react-router-dom";
-import { getVideos } from "../../redux/selectors/index.ts";
+import { getVideos } from "../../redux/Selectors/index.ts";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 import GlobalSentimentProgress from "../../components/sentiments/progress.tsx";
 

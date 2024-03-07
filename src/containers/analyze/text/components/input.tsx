@@ -5,23 +5,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { StyledTextArea, Inputdiv, ButtonsDiv } from "./styledinput.tsx";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import { selectorAnalyzeText } from "../../../../redux/selectors/index.ts";
+import { Button, message } from "antd"; // Import message from antd
+import { selectorAnalyzeText } from "../../../../redux/Selectors/index.ts";
 import { analyzeTextRequest } from "../../../../redux/Slice/index.ts";
+
 const InputForm = () => {
   // State variables
   const [inputText, setInputText] = useState<string>("");
+  const [fileUploaded, setFileUploaded] = useState<any>(null); // Track uploaded file information
   const dispatch = useDispatch();
   const { loading, analysisResult } = useSelector(selectorAnalyzeText);
   const { push } = useHistory();
+
   // Handler for input change event
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setInputText(event.target.value); // Update input text state
+    const newText = event.target.value;
+    setInputText(newText); // Update input text state
+  
+    // Check if input text is empty, then remove the file
+    if (newText.trim() === "") {
+      setFileUploaded(null);
+    }
   };
+
   // Handler for dispatching action when user click on submit button of input area
   const handleAnalyze = () => {
     dispatch(analyzeTextRequest({ payloadData: inputText }));
   };
+
   // Effect to redirect to result page when api response is available through analysis result
   useEffect(() => {
     if (Object.keys(analysisResult)?.length) {
@@ -30,6 +41,7 @@ const InputForm = () => {
       push("/analyze");
     }
   }, [analysisResult, loading]);
+
   // Handler for file upload button
   const handleFileUpload = (info: any) => {
     if (info.file.status === "done") {
@@ -37,10 +49,15 @@ const InputForm = () => {
       reader.onload = (e) => {
         const fileContent = e.target?.result as string;
         setInputText(fileContent);
+        setFileUploaded(info.file); // Set uploaded file information
       };
       reader.readAsText(info.file.originFileObj);
+    } else if (info.file.status === "removed") {
+     
+      setFileUploaded(null); // Set uploaded file information to null when file is removed
     }
   };
+
   return (
     <Inputdiv>
       {/* Input text area */}
@@ -54,8 +71,12 @@ const InputForm = () => {
       <ButtonsDiv>
         <Upload
           customRequest={({ onSuccess }) => setTimeout(onSuccess, 0)} // Custom request function to prevent default behavior
-          showUploadList={true}
+          showUploadList={{
+            showDownloadIcon: false,
+            showRemoveIcon: true,
+          }}
           onChange={handleFileUpload}
+          onRemove={() => setFileUploaded(null)} // Set uploaded file information to null when file is removed
         >
           <Button type={"primary"} className="btn-color">
             <UploadOutlined /> Upload File
@@ -64,7 +85,8 @@ const InputForm = () => {
         <Button
           type={"primary"}
           onClick={handleAnalyze}
-          disabled={loading}
+          
+          disabled={loading || (!fileUploaded && inputText.trim() === "")} // Disable button if no file uploaded and input text is empty
           className="btn-width"
         >
           {loading ? "Analyzing..." : "Submit"}
@@ -78,4 +100,5 @@ const InputForm = () => {
     </Inputdiv>
   );
 };
+
 export default InputForm;
