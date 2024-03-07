@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StyledTextArea, Inputdiv, ButtonsDiv } from "./styledinput.tsx";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { Button, message } from "antd"; // Import message from antd
+import { Button, message } from "antd";
 import { selectorAnalyzeText } from "../../../../redux/Selectors/index.ts";
 import { analyzeTextRequest } from "../../../../redux/Slice/index.ts";
 
@@ -16,20 +16,27 @@ const InputForm = () => {
   const dispatch = useDispatch();
   const { loading, analysisResult } = useSelector(selectorAnalyzeText);
   const { push } = useHistory();
+  const [showFillPrompt, setShowFillPrompt] = useState(false); // State to control the visibility of the prompt
 
   // Handler for input change event
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const newText = event.target.value;
     setInputText(newText); // Update input text state
-  
+
     // Check if input text is empty, then remove the file
     if (newText.trim() === "") {
       setFileUploaded(null);
     }
   };
 
-  // Handler for dispatching action when user click on submit button of input area
+  // Handler for dispatching action when user clicks on submit button of input area
   const handleAnalyze = () => {
+    if (inputText.trim() === "") {
+      message.error("Please enter text.");
+      return;
+    }
+
+
     dispatch(analyzeTextRequest({ payloadData: inputText }));
   };
 
@@ -53,7 +60,7 @@ const InputForm = () => {
       };
       reader.readAsText(info.file.originFileObj);
     } else if (info.file.status === "removed") {
-     
+      setInputText(""); // Clear input text when file is removed
       setFileUploaded(null); // Set uploaded file information to null when file is removed
     }
   };
@@ -67,6 +74,7 @@ const InputForm = () => {
         value={inputText}
         onChange={handleInputChange}
       />
+     
       {/* Upload and submit buttons */}
       <ButtonsDiv>
         <Upload
@@ -85,8 +93,7 @@ const InputForm = () => {
         <Button
           type={"primary"}
           onClick={handleAnalyze}
-          
-          disabled={loading || (!fileUploaded && inputText.trim() === "")} // Disable button if no file uploaded and input text is empty
+          disabled={loading || (!fileUploaded && inputText.trim() === "")}
           className="btn-width"
         >
           {loading ? "Analyzing..." : "Submit"}
