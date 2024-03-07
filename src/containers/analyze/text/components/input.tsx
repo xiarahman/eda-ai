@@ -35,7 +35,15 @@ const InputForm = () => {
       message.error("Please enter text.");
       return;
     }
-
+    
+      // Check for special characters and symbols in the input text
+      const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+      if (regex.test(inputText)) {
+        message.error("Please remove special characters and symbols from the input.");
+        return;
+      }
+   
+      
 
     dispatch(analyzeTextRequest({ payloadData: inputText }));
   };
@@ -78,6 +86,8 @@ const InputForm = () => {
       {/* Upload and submit buttons */}
       <ButtonsDiv>
         <Upload
+        maxCount={1}
+        accept=".txt"
           customRequest={({ onSuccess }) => setTimeout(onSuccess, 0)} // Custom request function to prevent default behavior
           showUploadList={{
             showDownloadIcon: false,
