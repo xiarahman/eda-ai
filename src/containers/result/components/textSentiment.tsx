@@ -3,7 +3,7 @@ import { Flex, Card } from "antd";
 import { useSelector } from "react-redux";
 import GlobalSentimentProgress from "../../../components/sentiments/progress.tsx";
 import { WorkTitle } from "../../../components/home/style.ts";
-import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
 
 const SentimentCard = () => {
   // Access sentiment data from Redux store

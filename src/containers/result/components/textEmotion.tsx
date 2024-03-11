@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "antd";
 import Text from "../../../components/text/index.tsx";
 import { useSelector } from "react-redux";
-import { selectorAnalyzeText } from "../../../redux/selectors/index.ts";
+import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
 import { UploadPieChart } from "../../../components/emotionsPieChart/index.tsx";
 
 const EmotionCard = () => {

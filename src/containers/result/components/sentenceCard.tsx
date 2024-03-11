@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Flex, List } from "antd";
 import { useSelector } from "react-redux";
-import { getVideos } from "../../../redux/selectors/index.ts";
+import { getVideos } from "../../../redux/Selectors/index.ts";
 
 const SentenceCard = () => {
   const { data } = useSelector(getVideos);

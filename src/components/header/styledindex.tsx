@@ -6,6 +6,9 @@ export const NavBar = styled.div`
   color: white;
   padding: 1% 5%;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1; 
 `;
 export const Nav = styled.div`
   display: flex;
