@@ -16,7 +16,7 @@ const InputForm = () => {
   const dispatch = useDispatch();
   const { loading, analysisResult } = useSelector(selectorAnalyzeText);
   const { push } = useHistory();
-  const [showFillPrompt, setShowFillPrompt] = useState(false); // State to control the visibility of the prompt
+ 
 
   // Handler for input change event
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -36,13 +36,12 @@ const InputForm = () => {
       return;
     }
     
-      // Check for special characters and symbols in the input text
-      const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|<>\/]+/;
-      if (regex.test(inputText)) {
-        message.error("Please remove special characters and symbols from the input.");
-        return;
-      }
-   
+    // Check for special characters and symbols in the input text
+    const regex = /[!@#$%^&*()_+\=\[\]{};:"\\|<>\/]+/;
+    if (regex.test(inputText)) {
+      message.error("Please remove special characters and symbols from the input.");
+      return;
+    }
 
     dispatch(analyzeTextRequest({ payloadData: inputText }));
   };
@@ -84,22 +83,23 @@ const InputForm = () => {
      
       {/* Upload and submit buttons */}
       <ButtonsDiv>
-        <Upload
-        maxCount={1}
-        accept=".txt"
-          customRequest={({ onSuccess }) => setTimeout(onSuccess, 0)} // Custom request function to prevent default behavior
-          showUploadList={{
-            showDownloadIcon: false,
-            showRemoveIcon: true,
-            showPreviewIcon: false, // hide the preview icon
-          }}
-          onChange={handleFileUpload}
-          onRemove={() => setFileUploaded(null)} // Set uploaded file information to null when file is removed
-        >
-          <Button type={"primary"} className="btn-color">
-            <UploadOutlined /> Upload File
-          </Button>
-        </Upload>
+      <Upload 
+  maxCount={1}
+  accept=".txt"
+  customRequest={({ onSuccess }) => setTimeout(onSuccess, 0)} // Custom request function to prevent default behavior
+  showUploadList={{
+    showDownloadIcon: false,
+    showRemoveIcon: true,
+    showPreviewIcon: false, // hide the preview icon
+  }}
+  onChange={handleFileUpload}
+  onRemove={() => setFileUploaded(null)} // Set uploaded file information to null when file is removed
+>
+<Button type={"primary"} className="btn-color">
+      <UploadOutlined /> Upload File
+    </Button>
+ 
+</Upload>
         <Button
           type={"primary"}
           onClick={handleAnalyze}
@@ -109,6 +109,7 @@ const InputForm = () => {
           {loading ? "Analyzing..." : "Submit"}
         </Button>
       </ButtonsDiv>
+
       {/* Description text */}
       <Text type={"p"} className="btn-des">
         Support for a single upload. Only supports <br />
