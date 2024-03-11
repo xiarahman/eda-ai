@@ -1,1 +1,1 @@
-export const API_ENDPOINT = "http://127.0.0.1:8081";
+export const API_ENDPOINT = "http://cacf.ddns.net:8001";
