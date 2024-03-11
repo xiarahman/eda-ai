@@ -98,6 +98,9 @@ const InputForm = () => {
 <Button type={"primary"} className="btn-color">
       <UploadOutlined /> Upload File
     </Button>
+    {fileUploaded &&
+    <span> ({(fileUploaded.size / 1024).toFixed(2)} KB)</span>
+  }
  
 </Upload>
         <Button
