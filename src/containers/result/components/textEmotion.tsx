@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Card, Space, Button, Flex } from "antd";
+import React from "react";
+import { Card } from "antd";
 import Text from "../../../components/text/index.tsx";
 import { useSelector } from "react-redux";
 import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";

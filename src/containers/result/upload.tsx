@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Flex, Space } from "antd";
+import { Flex } from "antd";
 import VideoPlayer from "./components/videoPlayer.tsx";
 import Slider from "./components/slide.tsx";
 import AreaCharts from "../../components/areaChart/index.tsx";
@@ -9,7 +9,6 @@ import {
   chartsDataFetchRequest,
   videoFetchRequest,
 } from "../../redux/Slice/index.ts";
-import { useInjectReducer, useInjectSaga } from "redux-injectors";
 
 import { useHistory, useParams } from "react-router-dom";
 import { getVideos } from "../../redux/Selectors/index.ts";

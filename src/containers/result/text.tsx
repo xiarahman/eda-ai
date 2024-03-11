@@ -2,16 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Text from "../../components/text/index.tsx";
-import { Row, Col, Button, List, Space, Image, Flex } from "antd";
+import { List, Space, Flex } from "antd";
 import EmotionCard from "./components/textEmotion.tsx";
 import SentimentCard from "./components/textSentiment.tsx";
 import { capitalizeFirstLetter } from "./components/helper.tsx";
 import { AnalysisResultProps } from "./components/textType.js";
-import {
-  ArrowLeftOutlined,
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import {
   AnalysisContainer,
   PreviewColumn,

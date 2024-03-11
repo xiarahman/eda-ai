@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Flex } from "antd";
-import { useDispatch, useSelector } from "react-redux";
 import {
   XAxis,
   YAxis,
@@ -11,25 +10,6 @@ import {
 } from "recharts";
 
 const AreaCharts = ({ chartsData }) => {
-  // const { chartsData } = useSelector(getVideos);
-
-  const emoHexCode = (emotion) => {
-    switch (emotion) {
-      case "happy":
-        return "#FFF172";
-      case "sad":
-        return "#56577A";
-      case "neutral":
-        return "#AFAFAF";
-      case "angry":
-        return "#FF1500";
-      case "fear":
-        return "#9C9DD7";
-      default:
-        return "#000000"; // Default color if emotion is not recognized
-    }
-  };
-
   const formatXAxis = (tick) => {
     return tick.toFixed(2); // Format the tick value to have two decimal places
   };

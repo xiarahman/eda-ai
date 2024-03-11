@@ -2,12 +2,6 @@ import { Flex } from "antd";
 import React, { useMemo } from "react";
 import { Chart } from "react-google-charts";
 
-export const data = [
-  ["Emotion", "Percentage"],
-  ["neutral", 11],
-  ["Sad", 2],
-];
-
 export const options = {
   pieHole: 0.4,
   pieSliceText: "Percentage",
@@ -22,6 +16,7 @@ export const options = {
 };
 
 export function UploadPieChart({ pieChartData = [] }) {
+  //Updating the data according to pieChart format
   const updateData = useMemo(() => {
     const actualResult = [["Emotion", "Percentage"]];
 

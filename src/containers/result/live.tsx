@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Flex, Space } from "antd";
+import { Flex } from "antd";
 import AreaCharts from "../../components/areaChart/index.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { liveStreamFetchRequest } from "../../redux/Slice/index.ts";
@@ -8,11 +8,7 @@ import { reducer } from "../../redux/Slice/index.ts";
 import saga from "../../redux/Saga/index.ts";
 import { getVideos } from "../../redux/Selectors/index.ts";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
-import {
-  ArrowLeftOutlined,
-  LeftOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 
 const LiveResult = ({ job_id }) => {
