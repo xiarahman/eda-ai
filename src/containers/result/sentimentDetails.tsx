@@ -8,29 +8,37 @@ const SentimentDetails = () => {
   const { push } = useHistory();
   const { opt, job_id } = useParams<any>();
   return (
-    <Flex
-      vertical
-      align="center"
-      gap="large"
+    <div
       style={{
         height: "100vh",
         maxWidth: "1040px",
         margin: "0 auto",
         padding: "8rem 0",
+        overflow: "hidden", // Hide the scroll bar
       }}
     >
-      <Flex justify="space-between" style={{ width: "100%" }}>
-        <h2 className="section-heading">Sentence</h2>
-        <button
-          className="back-btn"
-          onClick={() => push(`/result/${opt}/${job_id}`)}
-        >
-          <ArrowLeftOutlined />
-          Back
-        </button>
+      <Flex
+        vertical
+        align="center"
+        gap="large"
+        style={{
+          height: "100%",
+          overflowY: "auto", // Allow scrolling in the vertical direction
+        }}
+      >
+        <Flex justify="space-between" style={{ width: "100%" }}>
+          <h2 className="section-heading">Sentence</h2>
+          <button
+            className="back-btn"
+            onClick={() => push(`/result/${opt}/${job_id}`)}
+          >
+            <ArrowLeftOutlined />
+            Back
+          </button>
+        </Flex>
+        <SentenceCard />
       </Flex>
-      <SentenceCard />
-    </Flex>
+    </div>
   );
 };
 
