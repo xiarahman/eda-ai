@@ -40,8 +40,8 @@ const Uploader = () => {
           Click or drag file to this area to upload
         </StyledUploadText>
         <p className="ant-upload-hint">
-          Support for a single or bulk upload. Strictly prohibited from
-          uploading company data or other banned files.
+          Support for a single upload. Strictly prohibited from uploading
+          company data or other banned files.
         </p>
       </StyledDragger>
     </StyledDraggerContainer>
