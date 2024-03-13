@@ -31,7 +31,10 @@ const InputForm = () => {
       setShowUploadList(true); // Show the upload list if text is present
     }
   };
-  
+  const handleFileSizeClick = () => {
+    // Prevent any action when the file size is clicked
+    return false;
+  };
 
   // Handler for dispatching action when user clicks on submit button of input area
   const handleAnalyze = () => {
@@ -64,7 +67,8 @@ const InputForm = () => {
         setInputText(fileContent);
         // Set uploaded file information
         setShowUploadList(true);
-  
+        const fileSizeKB = info.file.size / 1024;
+        setFileUploaded(fileSizeKB);
     
       };
       reader.readAsText(info.file.originFileObj);
@@ -76,8 +80,6 @@ const InputForm = () => {
       
     }
   };
-  
-
   return (
     <Inputdiv>
       {/* Input text area */}
@@ -105,6 +107,10 @@ const InputForm = () => {
           
         
         </Upload>
+        {fileUploaded && (
+        <span onClick={handleFileSizeClick} style={{ cursor: 'default', margin: "4px" }}>
+       ({fileUploaded.toFixed(2)}) KB
+        </span>)}
         </Flex>
         <Button
           type={"primary"}
