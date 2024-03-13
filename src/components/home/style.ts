@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Typography,  Card, Space, Button, Collapse, } from "antd";
+import { Typography, Card, Space, Button, Collapse } from "antd";
 import mainImage from "../../assets/HomeImage.png";
 
 export const BannerImageContainer = styled.div`
@@ -28,6 +28,7 @@ export const BannerTitle = styled(StyledTitle)`
   font-weight: 900;
 `;
 export const WorkTitle = styled(StyledTitle)`
+   margin-top: 2%;
   fonts-size: 28px;
   font-family: Sora;
   font-weight: 600;
@@ -37,7 +38,7 @@ export const WorkSubTitle = styled(WorkTitle)`
 `;
 export const WorkNumberSubTitle = styled(WorkTitle)`
   font-size: 38px;
-  color: #ADADAD;
+  color: #adadad;
 `;
 
 export const StyledButton = styled(Button)`
@@ -86,9 +87,10 @@ export const FAQContainer = styled.div`
 export const StyledCollapse = styled(Collapse)`
   background: white;
 `;
-export const CardsContainer = styled.div `
-background-color: white;
- padding: 1%;
+export const CardsContainer = styled.div`
+  background-color: white;
+  padding-top: 8%;
+  padding: 1%;
 `;
 export const StyledCard = styled(Card)`
   background-color: #f5f5f5;

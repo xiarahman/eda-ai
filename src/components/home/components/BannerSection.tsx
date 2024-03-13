@@ -8,7 +8,7 @@ import {
 } from "../style.ts";
 const Banner: React.FC = () => {
   return (
-    <BannerImageContainer>
+    <BannerImageContainer id="home">
       <BannerImage />
       <BannerContent>
         <BannerTitle>
