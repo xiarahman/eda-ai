@@ -27,10 +27,11 @@ const SentenceCard = () => {
     setLoading(false);
     window.dispatchEvent(new Event("resize"));
   };
+
   const loadMore =
     !initLoading &&
     !loading &&
-    dataa.length < data?.audio_detail?.audio_chunks.length ? (
+    list.length < (data?.audio_detail?.audio_chunks?.length || 0) ? (
       <div
         style={{
           textAlign: "center",

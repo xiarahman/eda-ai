@@ -84,7 +84,7 @@ const LivePreview = ({ setJobId, jobId }) => {
     } else {
       setShowFrames(true);
       setShowStopButton(false);
-      socket.current = io("http://127.0.0.1:8081");
+      socket.current = io("http://cacf.ddns.net:8001");
     }
     // Reset final emotion when starting the webcam
     setFinalEmotion(null);
