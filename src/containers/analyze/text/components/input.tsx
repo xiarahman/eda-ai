@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Text from "../../../../components/text/index.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { StyledTextArea, Inputdiv, ButtonsDiv } from "./styledinput.tsx";
-import { Upload } from "antd";
+import { Flex, Space, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import { selectorAnalyzeText } from "../../../../redux/Selectors/index.ts";
@@ -31,6 +31,7 @@ const InputForm = () => {
       setShowUploadList(true); // Show the upload list if text is present
     }
   };
+  
 
   // Handler for dispatching action when user clicks on submit button of input area
   const handleAnalyze = () => {
@@ -52,7 +53,7 @@ const InputForm = () => {
     } else {
       push("/analyze");
     }
-  }, [analysisResult, loading]);
+  }, [analysisResult,loading]);
 
   // Handler for file upload button
   const handleFileUpload = (info: any) => {
@@ -61,8 +62,10 @@ const InputForm = () => {
       reader.onload = (e) => {
         const fileContent = e.target?.result as string;
         setInputText(fileContent);
-        setFileUploaded(info.file); // Set uploaded file information
+        // Set uploaded file information
         setShowUploadList(true);
+  
+    
       };
       reader.readAsText(info.file.originFileObj);
     } else if (info.file.status === "removed") {
@@ -70,8 +73,10 @@ const InputForm = () => {
       setInputText("");
       setFileUploaded(null);
       setShowUploadList(false);
+      
     }
   };
+  
 
   return (
     <Inputdiv>
@@ -85,6 +90,7 @@ const InputForm = () => {
 
       {/* Upload and submit buttons */}
       <ButtonsDiv>
+        <Flex >
         <Upload
           maxCount={1}
           accept=".txt"
@@ -96,10 +102,10 @@ const InputForm = () => {
           <Button type={"primary"} className="btn-color">
             <UploadOutlined /> Upload File
           </Button>
-          {fileUploaded && (
-            <span> ({(fileUploaded.size / 1024).toFixed(2)} KB)</span>
-          )}
+          
+        
         </Upload>
+        </Flex>
         <Button
           type={"primary"}
           onClick={handleAnalyze}
