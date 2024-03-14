@@ -36,7 +36,13 @@ const SentimentDetails = () => {
             Back
           </button>
         </Flex>
-        <SentenceCard />
+        <div
+          style={{
+            overflowY: "auto", // Allow scrolling in the vertical direction
+          }}
+        >
+          <SentenceCard />
+        </div>
       </Flex>
     </div>
   );
