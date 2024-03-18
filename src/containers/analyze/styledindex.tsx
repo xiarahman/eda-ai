@@ -1,5 +1,5 @@
 // StyledAnalyze.js
-
+import Text from "../../components/text/index.tsx";
 import { styled } from "styled-components";
 
 export const Section = styled.div`
@@ -27,4 +27,10 @@ export const OptionsDiv = styled.div`
     background-color: #c1cfed;
     color: #262e5b;
   }
+`;
+
+export const MainText = styled(Text)`
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
 `;

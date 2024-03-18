@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Text from "../../components/text/index.tsx";
-import { OptionsDiv } from "./styledindex.tsx";
+import { MainText, OptionsDiv } from "./styledindex.tsx";
 import {
   FontSizeOutlined,
   PaperClipOutlined,
@@ -45,25 +45,25 @@ const Analyze = () => {
           onClick={() => setItem("video")}
           className={item === "video" ? "active" : ""}
         >
-          <Text type={"h1"} className="per-size">
+          <MainText type={"h1"} className="">
             <PaperClipOutlined /> Upload Video
-          </Text>
+          </MainText>
         </OptionsDiv>
         <OptionsDiv
           onClick={() => setItem("live")}
           className={item === "live" ? "active" : ""}
         >
-          <Text type={"h1"} className="per-size">
+          <MainText type={"h1"} className="">
             <VideoCameraOutlined /> Webcam
-          </Text>
+          </MainText>
         </OptionsDiv>
         <OptionsDiv
           onClick={() => setItem("text")}
           className={item === "text" ? "active" : ""}
         >
-          <Text type={"h1"} className="per-size">
+          <MainText type={"h1"} className="">
             <FontSizeOutlined /> Text
-          </Text>
+          </MainText>
         </OptionsDiv>
       </Flex>
       <Flex justify="center">{item && renderComponent(item)}</Flex>

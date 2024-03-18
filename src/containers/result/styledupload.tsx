@@ -28,28 +28,3 @@ export const VideoPreview = styled.div`
   gap: 10px;
   border-radius: 5px;
 `;
-
-export const SlideShow = styled.div`
-  //   background-color: blue;
-`;
-
-export const ResultSection = styled.div`
-  background-color: blue;
-`;
-
-export const EmotionAndSentimentResults = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: pink;
-`;
-export const EmotionResult = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: yellow;
-`;
-export const SentimentResult = styled.div`
-  background-color: red;
-`;
-export const EmotionResultChart = styled.div`
-  background-color: blue;
-`;
