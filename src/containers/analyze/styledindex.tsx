@@ -1,5 +1,5 @@
 // StyledAnalyze.js
-
+import Text from "../../components/text/index.tsx";
 import { styled } from "styled-components";
 
 export const Section = styled.div`
@@ -14,6 +14,7 @@ export const OptionsDiv = styled.div`
   width: 200px;
   height: 80px;
   padding: 0 1rem;
+  font-family: "Roboto Serif";
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -26,5 +27,12 @@ export const OptionsDiv = styled.div`
   &:hover {
     background-color: #c1cfed;
     color: #262e5b;
+    font-family: "Roboto Serif";
   }
+`;
+
+export const MainText = styled(Text)`
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
 `;

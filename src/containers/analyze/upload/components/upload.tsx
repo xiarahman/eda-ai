@@ -32,7 +32,7 @@ const Uploader = () => {
 
   return (
     <StyledDraggerContainer>
-      <StyledDragger {...props}>
+      <StyledDragger {...props} maxCount={1} listType="picture">
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
         </p>

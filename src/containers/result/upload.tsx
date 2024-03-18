@@ -14,6 +14,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getVideos } from "../../redux/Selectors/index.ts";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 import GlobalSentimentProgress from "../../components/sentiments/progress.tsx";
+import { CardHeading, SectionHeading } from "./styledupload.tsx";
 
 const UploadResult = ({ job_id }) => {
   const history = useHistory();
@@ -53,7 +54,7 @@ const UploadResult = ({ job_id }) => {
           vertical
           style={{ flexGrow: "1", minWidth: "400px" }}
         >
-          <h2 className="section-heading">Preview</h2>
+          <SectionHeading>Preview</SectionHeading>
           <VideoPlayer file={data?.video_detail?.file_path} />
           <Flex
             id="slider"
@@ -66,7 +67,7 @@ const UploadResult = ({ job_id }) => {
 
         {/* Results Block */}
         <Flex vertical gap="middle" style={{ flexGrow: "1" }}>
-          <h2 className="section-heading">Results</h2>
+          <SectionHeading>Results</SectionHeading>
 
           <Flex gap="middle" align="start" style={{ alignItems: "stretch" }}>
             <Flex
@@ -90,16 +91,16 @@ const UploadResult = ({ job_id }) => {
                 }}
               >
                 <Flex vertical style={{ flexGrow: "1" }}>
-                  <h3 className="card-heading">Emotions</h3>
+                  <CardHeading>Emotions</CardHeading>
                 </Flex>
                 <UploadPieChart pieChartData={data?.final_emotion} />
 
                 <Flex flex={1} justify="start">
                   {data?.final_prediction &&
                     data?.final_prediction.length > 0 && (
-                      <h4 className="card-heading">
+                      <CardHeading>
                         Final Prediction: {data?.final_prediction}
-                      </h4>
+                      </CardHeading>
                     )}
                 </Flex>
               </Flex>
@@ -117,7 +118,7 @@ const UploadResult = ({ job_id }) => {
             >
               <Flex justify="space-between">
                 <Flex vertical gap="small">
-                  <h3 className="card-heading">Sentiments</h3>
+                  <CardHeading>Sentiments</CardHeading>
                   <Flex vertical gap="small" style={{ marginTop: 40 }}>
                     <GlobalSentimentProgress
                       sentimentData={data.final_sentiment}
@@ -147,7 +148,7 @@ const UploadResult = ({ job_id }) => {
           >
             <Flex gap="large" justify="space-between">
               <Flex vertical>
-                <h3 className="card-heading">Graph</h3>
+                <CardHeading>Graph</CardHeading>
               </Flex>
             </Flex>
             <AreaCharts chartsData={chartsData} />

@@ -29,27 +29,16 @@ export const VideoPreview = styled.div`
   border-radius: 5px;
 `;
 
-export const SlideShow = styled.div`
-  //   background-color: blue;
+export const SectionHeading = styled.h2`
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 500;
+  color: #c4c4c4;
 `;
 
-export const ResultSection = styled.div`
-  background-color: blue;
-`;
-
-export const EmotionAndSentimentResults = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: pink;
-`;
-export const EmotionResult = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: yellow;
-`;
-export const SentimentResult = styled.div`
-  background-color: red;
-`;
-export const EmotionResultChart = styled.div`
-  background-color: blue;
+export const CardHeading = styled.h4`
+  font-family: "Poppins";
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #262e5b;
 `;

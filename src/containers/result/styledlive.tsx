@@ -11,18 +11,9 @@ export const Container = styled.div`
   background-color: gray;
 `;
 
-export const PreviewSection = styled.div`
-  background-color: red;
-`;
-
-export const ResultSection = styled.div`
-  background-color: blue;
-`;
-
-export const EmotionResult = styled.div`
-  background-color: yellow;
-`;
-
-export const EmotionResultChart = styled.div`
-  background-color: pink;
+export const CardHeading = styled.h4`
+  font-family: "Poppins";
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #262e5b;
 `;
