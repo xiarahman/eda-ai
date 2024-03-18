@@ -28,3 +28,17 @@ export const VideoPreview = styled.div`
   gap: 10px;
   border-radius: 5px;
 `;
+
+export const SectionHeading = styled.h2`
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 500;
+  color: #c4c4c4;
+`;
+
+export const CardHeading = styled.h4`
+  font-family: "Poppins";
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #262e5b;
+`;

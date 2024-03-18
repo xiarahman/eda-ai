@@ -14,6 +14,7 @@ export const OptionsDiv = styled.div`
   width: 200px;
   height: 80px;
   padding: 0 1rem;
+  font-family: "Roboto Serif";
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -26,6 +27,7 @@ export const OptionsDiv = styled.div`
   &:hover {
     background-color: #c1cfed;
     color: #262e5b;
+    font-family: "Roboto Serif";
   }
 `;
 

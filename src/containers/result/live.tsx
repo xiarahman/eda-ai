@@ -10,6 +10,7 @@ import { getVideos } from "../../redux/Selectors/index.ts";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
+import { CardHeading } from "./styledupload.tsx";
 
 const LiveResult = ({ job_id }) => {
   const history = useHistory();
@@ -43,7 +44,7 @@ const LiveResult = ({ job_id }) => {
           }}
         >
           <Flex vertical>
-            <h3 className="card-heading">Emotions</h3>
+            <CardHeading>Emotions</CardHeading>
           </Flex>
 
           <Flex justify="center">
@@ -52,9 +53,9 @@ const LiveResult = ({ job_id }) => {
           <Flex justify="start">
             {chartsData?.top_three_emotions &&
               chartsData?.top_three_emotions.length > 0 && (
-                <h4 className="card-heading">
+                <CardHeading>
                   Final Prediction: {chartsData.top_three_emotions[0].emotion}
-                </h4>
+                </CardHeading>
               )}
           </Flex>
         </Flex>
@@ -71,7 +72,7 @@ const LiveResult = ({ job_id }) => {
         >
           <Flex gap="large" justify="space-between">
             <Flex vertical>
-              <h3 className="card-heading">Graph</h3>
+              <CardHeading>Graph</CardHeading>
             </Flex>
           </Flex>
           <AreaCharts chartsData={chartsData} />
