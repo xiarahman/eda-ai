@@ -9,7 +9,7 @@ const VideoPlayer = ({ file }) => {
         url={`${API_ENDPOINT}/${file}`}
         controls={true}
         width="100%"
-        height="433px"
+        height="100%"
         style={{
           backgroundColor: "#F5F5F5",
           borderRadius: "5px",

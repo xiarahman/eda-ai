@@ -15,6 +15,13 @@ export const options = {
   chartArea: { width: 300, height: 300 },
 };
 
+// Define CSS directly in the component
+const customCSS = `
+  svg > g > g:last-child {
+    pointer-events: none;
+  }
+`;
+
 export function UploadPieChart({ pieChartData = [] }) {
   //Updating the data according to pieChart format
   const updateData = useMemo(() => {
@@ -29,6 +36,8 @@ export function UploadPieChart({ pieChartData = [] }) {
 
   return (
     <Flex style={{ backgroundColor: "transparent" }}>
+      <style>{customCSS}</style>
+      {/* Apply custom CSS */}
       <Chart
         chartType="PieChart"
         width={350}
