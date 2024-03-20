@@ -1,4 +1,5 @@
 // StyledAnalyze.js
+import { Flex } from "antd";
 import Text from "../../components/text/index.tsx";
 import { styled } from "styled-components";
 
@@ -35,4 +36,11 @@ export const MainText = styled(Text)`
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
+`;
+
+export const MainFlex = styled(Flex)`
+  min-width: 1040px;
+  min-height: 830px;
+  padding-top: 6rem;
+  flexgrow: 1;
 `;

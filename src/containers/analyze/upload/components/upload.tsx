@@ -19,6 +19,7 @@ const Uploader = () => {
     multiple: false,
     method: "post",
     action: `${API_ENDPOINT}/analyze_video`,
+    listType: "picture",
     onChange(info) {
       const { status } = info.file;
 
@@ -32,7 +33,7 @@ const Uploader = () => {
 
   return (
     <StyledDraggerContainer>
-      <StyledDragger {...props} maxCount={1} listType="picture">
+      <StyledDragger {...props} maxCount={1}>
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
         </p>

@@ -11,6 +11,13 @@ import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { CardHeading } from "./styledupload.tsx";
+import {
+  Container,
+  MainFlex,
+  EmotionSectionFlex,
+  AreaChartFlex,
+  GoBackButtonFlex,
+} from "./styledlive.tsx";
 
 const LiveResult = ({ job_id }) => {
   const history = useHistory();
@@ -23,26 +30,9 @@ const LiveResult = ({ job_id }) => {
     dispatch(liveStreamFetchRequest({ job_id }));
   }, []);
   return (
-    <div
-      style={{
-        padding: "7rem 0",
-        display: "flex",
-        justifyContent: "space-between",
-        gap: "40px",
-        flexDirection: "column",
-      }}
-    >
-      <Flex gap="middle" style={{ margin: "0 auto", maxWidth: "1100px" }}>
-        <Flex
-          justify="space-between"
-          gap="middle"
-          vertical
-          style={{
-            backgroundColor: "#f5f5f5",
-            padding: "1.5rem",
-            borderRadius: "5px",
-          }}
-        >
+    <Container>
+      <MainFlex gap="middle">
+        <EmotionSectionFlex justify="space-between" gap="middle" vertical>
           <Flex vertical>
             <CardHeading>Emotions</CardHeading>
           </Flex>
@@ -58,41 +48,24 @@ const LiveResult = ({ job_id }) => {
                 </CardHeading>
               )}
           </Flex>
-        </Flex>
+        </EmotionSectionFlex>
         {/* Area Chart */}
-        <Flex
-          vertical
-          gap="large"
-          style={{
-            backgroundColor: "#f5f5f5",
-            flexGrow: "1",
-            padding: "1.5rem",
-            borderRadius: "5px",
-          }}
-        >
+        <AreaChartFlex vertical gap="large">
           <Flex gap="large" justify="space-between">
             <Flex vertical>
               <CardHeading>Graph</CardHeading>
             </Flex>
           </Flex>
           <AreaCharts chartsData={chartsData} />
-        </Flex>
-      </Flex>
+        </AreaChartFlex>
+      </MainFlex>
       {/* Go Back Button */}
-      <Flex
-        style={{
-          minWidth: "1100px",
-          cursor: "pointer",
-          margin: "0 auto",
-          justifyContent: "start",
-        }}
-        onClick={() => history.push(`/analyze`)}
-      >
+      <GoBackButtonFlex onClick={() => history.push(`/analyze`)}>
         <ArrowLeftOutlined />
         <span style={{ width: 6 }} />
         Go Back
-      </Flex>
-    </div>
+      </GoBackButtonFlex>
+    </Container>
   );
 };
 

@@ -14,7 +14,21 @@ import { useHistory, useParams } from "react-router-dom";
 import { getVideos } from "../../redux/Selectors/index.ts";
 import { UploadPieChart } from "../../components/emotionsPieChart/index.tsx";
 import GlobalSentimentProgress from "../../components/sentiments/progress.tsx";
-import { CardHeading, SectionHeading } from "./styledupload.tsx";
+import {
+  AreaChartFlex,
+  CardHeading,
+  Container,
+  EmotionAndSentimentSection,
+  EmotionPieChartFlex,
+  EmotionSectionFlex,
+  GoBackButtonFlex,
+  MainFlex,
+  PreviewSectionFlex,
+  ResultSectionFlex,
+  SectionHeading,
+  SentimentSectionFlex,
+  SliderSectionFlex,
+} from "./styledupload.tsx";
 
 const UploadResult = ({ job_id }) => {
   const history = useHistory();
@@ -37,59 +51,24 @@ const UploadResult = ({ job_id }) => {
     return null;
   }
   return (
-    <div
-      style={{
-        padding: "7rem 0",
-        display: "flex",
-        justifyContent: "space-between",
-        gap: "40px",
-        flexDirection: "column",
-      }}
-    >
-      <Flex gap="middle" style={{ margin: "0 auto", maxWidth: "1100px" }}>
-        <Flex
-          gap="middle"
-          align="start"
-          justify="top"
-          vertical
-          style={{ flexGrow: "1", minWidth: "400px" }}
-        >
+    <Container>
+      <MainFlex gap="middle">
+        <PreviewSectionFlex gap="middle" align="start" justify="top" vertical>
           <SectionHeading>Preview</SectionHeading>
           <VideoPlayer file={data?.video_detail?.file_path} />
-          <Flex
-            id="slider"
-            vertical
-            style={{ width: "100%", backgroundColor: "#f5f5f5" }}
-          >
+          <SliderSectionFlex id="slider" vertical>
             <Slider />
-          </Flex>
-        </Flex>
+          </SliderSectionFlex>
+        </PreviewSectionFlex>
 
         {/* Results Block */}
-        <Flex vertical gap="middle" style={{ flexGrow: "1" }}>
+        <ResultSectionFlex vertical gap="middle">
           <SectionHeading>Results</SectionHeading>
 
-          <Flex gap="middle" align="start" style={{ alignItems: "stretch" }}>
-            <Flex
-              justify="space-between"
-              gap="middle"
-              style={{
-                backgroundColor: "#f5f5f5",
-                flexGrow: "1",
-                padding: "1.5rem",
-                borderRadius: "5px",
-              }}
-            >
-              <Flex
-                vertical
-                align="space-between"
-                gap="middle"
-                style={{
-                  minHeight: "100px",
-                  minWidth: "200px",
-                  borderRadius: "5px",
-                }}
-              >
+          <EmotionAndSentimentSection gap="middle" align="start">
+            {/* Emotions Section */}
+            <EmotionSectionFlex justify="space-between" gap="middle">
+              <EmotionPieChartFlex vertical align="space-between" gap="middle">
                 <Flex vertical style={{ flexGrow: "1" }}>
                   <CardHeading>Emotions</CardHeading>
                 </Flex>
@@ -103,19 +82,10 @@ const UploadResult = ({ job_id }) => {
                       </CardHeading>
                     )}
                 </Flex>
-              </Flex>
-            </Flex>
-
-            <Flex
-              gap="middle"
-              style={{
-                backgroundColor: "#f5f5f5",
-                flexGrow: "1",
-                padding: "1rem",
-                borderRadius: "5px",
-              }}
-              vertical
-            >
+              </EmotionPieChartFlex>
+            </EmotionSectionFlex>
+            {/* Sentiment Section */}
+            <SentimentSectionFlex gap="middle" vertical>
               <Flex justify="space-between">
                 <Flex vertical gap="small">
                   <CardHeading>Sentiments</CardHeading>
@@ -132,31 +102,22 @@ const UploadResult = ({ job_id }) => {
                   </Flex>
                 </Flex>
               </Flex>
-            </Flex>
-          </Flex>
+            </SentimentSectionFlex>
+          </EmotionAndSentimentSection>
 
           {/* Area Chart */}
-          <Flex
-            vertical
-            gap="large"
-            style={{
-              backgroundColor: "#f5f5f5",
-              flexGrow: "1",
-              padding: "1.5rem",
-              borderRadius: "5px",
-            }}
-          >
+          <AreaChartFlex vertical gap="large">
             <Flex gap="large" justify="space-between">
               <Flex vertical>
                 <CardHeading>Graph</CardHeading>
               </Flex>
             </Flex>
             <AreaCharts chartsData={chartsData} />
-          </Flex>
-        </Flex>
-      </Flex>
+          </AreaChartFlex>
+        </ResultSectionFlex>
+      </MainFlex>
       {/* Go Back Button */}
-      <Flex
+      <GoBackButtonFlex
         style={{
           minWidth: "1100px",
           cursor: "pointer",
@@ -168,8 +129,8 @@ const UploadResult = ({ job_id }) => {
         <ArrowLeftOutlined />
         <span style={{ width: 6 }} />
         Go Back
-      </Flex>
-    </div>
+      </GoBackButtonFlex>
+    </Container>
   );
 };
 
