@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MainFlex, MainText, OptionsDiv } from "./styledindex.tsx";
 import {
+  FileTextOutlined,
   FontSizeOutlined,
   PaperClipOutlined,
   VideoCameraOutlined,
@@ -51,7 +52,7 @@ const Analyze = () => {
           className={item === "text" ? "active" : ""}
         >
           <MainText type={"h1"} className="">
-            <FontSizeOutlined /> Text
+            <FileTextOutlined /> Text
           </MainText>
         </OptionsDiv>
       </Flex>
