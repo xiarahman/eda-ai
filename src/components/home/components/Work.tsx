@@ -10,6 +10,7 @@ import {
   WorkTitle,
   WorkNumberSubTitle,
 } from "../style.ts";
+
 const Work: React.FC = () => {
   return (
     <Flex
@@ -21,7 +22,7 @@ const Work: React.FC = () => {
     >
       <WorkTitle>How it Works</WorkTitle>
       <Row gutter={8}>
-        <Col span={14}>
+        <Col xs={24} sm={12}>
           <WorkNumberSubTitle>01</WorkNumberSubTitle>
           <Flex vertical>
             <WorkSubTitle>
@@ -36,15 +37,15 @@ const Work: React.FC = () => {
             Try Now !
           </StyledButton>
         </Col>
-        <Col span={10}>
+        <Col xs={24} sm={12}>
           <Image src={option} preview={false} />
         </Col>
       </Row>
       <Row gutter={8}>
-        <Col span={12}>
+        <Col xs={24} sm={12}>
           <Image src={process} preview={false} />
         </Col>
-        <Col span={12}>
+        <Col xs={24} sm={12}>
           <WorkNumberSubTitle>02</WorkNumberSubTitle>
           <Flex vertical>
             <WorkSubTitle>Process</WorkSubTitle>
@@ -59,7 +60,7 @@ const Work: React.FC = () => {
         </Col>
       </Row>
       <Row gutter={8}>
-        <Col span={14}>
+        <Col xs={24} sm={12}>
           <WorkNumberSubTitle>03</WorkNumberSubTitle>
           <Flex vertical>
             <WorkSubTitle>Reports</WorkSubTitle>
@@ -72,11 +73,12 @@ const Work: React.FC = () => {
             Try Now !
           </StyledButton>
         </Col>
-        <Col span={10}>
+        <Col xs={24} sm={12}>
           <Image src={report} preview={false} />
         </Col>
       </Row>
     </Flex>
   );
 };
+
 export default Work;

@@ -33,7 +33,7 @@ export const ContactButton = styled(Button)`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  margin-left: -78px;
+  margin-left: -60%;
   color: white;
   font-size: 13px;
 `;

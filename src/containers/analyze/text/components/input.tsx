@@ -39,13 +39,13 @@ const InputForm = () => {
   // Handler for dispatching action when user clicks on submit button of input area
   const handleAnalyze = () => {
     // Check for special characters and symbols in the input text
-    const regex = /[!@#$%^&*()_+\=\[\]{};:"\\|<>\/]+/;
-    if (regex.test(inputText)) {
-      message.error(
-        "Please remove special characters and symbols from the input."
-      );
-      return;
-    }
+    // const regex = /[!@#$%^&*()_+\=\[\]{};:"\\|<>\/]+/;
+    // if (regex.test(inputText)) {
+    //   message.error(
+    //     "Please remove special characters and symbols from the input."
+    //   );
+    //   return;
+    // }
     dispatch(analyzeTextRequest({ payloadData: inputText }));
   };
 

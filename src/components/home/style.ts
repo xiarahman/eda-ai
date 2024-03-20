@@ -19,6 +19,7 @@ export const BannerImage = styled.image`
 export const StyledTitle = styled(Typography)`
   font-size: 30px;
   font-weight: 700;
+  
 `;
 export const BannerTitle = styled(StyledTitle)`
   color: white;
@@ -72,6 +73,7 @@ export const StyledSpace = styled(Space)`
 `;
 export const StyledText = styled(Typography)`
   font-size: 32px;
+ 
   font-weight: 500;
   font-family: Poppins;
 `;
@@ -96,4 +98,6 @@ export const StyledCard = styled(Card)`
   background-color: #f5f5f5;
   padding: 3%;
   text-align: center;
+ 
 `;
+
