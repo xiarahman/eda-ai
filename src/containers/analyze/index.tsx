@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Text from "../../components/text/index.tsx";
-import { MainText, OptionsDiv } from "./styledindex.tsx";
+import { MainFlex, MainText, OptionsDiv } from "./styledindex.tsx";
 import {
   FontSizeOutlined,
   PaperClipOutlined,
@@ -29,17 +28,7 @@ const Analyze = () => {
   };
 
   return (
-    <Flex
-      align="center"
-      gap="large"
-      style={{
-        minWidth: "1040px",
-        minHeight: "830px",
-        paddingTop: "6rem",
-        flexGrow: "1",
-      }}
-      vertical
-    >
+    <MainFlex align="center" gap="large" vertical>
       <Flex gap="middle">
         <OptionsDiv
           onClick={() => setItem("video")}
@@ -67,7 +56,7 @@ const Analyze = () => {
         </OptionsDiv>
       </Flex>
       <Flex justify="center">{item && renderComponent(item)}</Flex>
-    </Flex>
+    </MainFlex>
   );
 };
 
