@@ -19,7 +19,7 @@ import { selectorAnalyzeText } from "../../redux/Selectors/index.ts";
 import { getColorForSentiment } from "./components/helper.tsx";
 import { LikeOutlined } from "@ant-design/icons";
 import { analyzeTextSuccess } from "../../redux/Slice/index.ts";
-const AnalysisResult: React.FC<AnalysisResultProps> = () => {
+const AnalysisResult: React.FC = () => {
   // Retrieve analysis result from Redux state
   const { analysisResult } = useSelector(selectorAnalyzeText);
   const [displayedSentences, setDisplayedSentences] = useState<number>(5);
@@ -41,9 +41,11 @@ const AnalysisResult: React.FC<AnalysisResultProps> = () => {
     }
   };
   useEffect(() => {
+   
     return () => {
       dispatch(analyzeTextSuccess({}));
-      history.push("/analyze");
+      history.push("/analyze")
+      
     };
   }, []);
 
