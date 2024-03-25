@@ -18,6 +18,10 @@ margin-right: 1rem;
   color: #f5f5f5 !important;
   text-decoration: none;
   font-size: 14px;
+  @media (max-width: 768px) {
+   margin-bottom: 0.5rem;
+  }
+
   &:hover {
     color: #6cc0e5;
   }
