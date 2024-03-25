@@ -98,6 +98,7 @@ export const StyledCard = styled(Card)`
   background-color: #f5f5f5;
   padding: 3%;
   text-align: center;
+  margin-top: 8px;
  
 `;
 
