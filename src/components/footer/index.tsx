@@ -55,7 +55,7 @@ const Footer = () => {
 
           <StyledFooterText>
             <Flex vertical>
-              <StyledLink to="/">Home</StyledLink>
+              <StyledScrollLink to="home">Home</StyledScrollLink>
               <StyledScrollLink to="features" smooth duration={500}>
                 Features
               </StyledScrollLink>

@@ -36,6 +36,10 @@ export const ContactButton = styled(Button)`
   margin-left: -60%;
   color: white;
   font-size: 13px;
+  
+  @media (max-width: 768px) {
+    margin-left: -80%;
+  }
 `;
 export const ModalTitle= styled(StyledFooterTitle)`
 color: #C1CFED;

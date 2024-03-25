@@ -66,9 +66,9 @@ export const Content = styled.div`
   font-weight: 600;
 `;
 export const StyledSpace = styled(Space)`
-  text-align: left;
+
   padding: 20px;
-  padding-left: 160px;
+
   background-color: "#F5F5F5";
 `;
 export const StyledText = styled(Typography)`
