@@ -5,14 +5,14 @@ export const AnalysisContainer = styled.div`
   margin-top: 8%;
 `;
 export const PreviewColumn = styled.div`
-  flex: 1;
+  
   height: 600px;
   overflow-y: auto;
   padding: 20px;
   margin-left: 5%;
 `;
 export const ResultsColumn = styled.div`
-  flex: 1;
+ 
   padding: 20px;
   display: flex;
   flex-direction: column;

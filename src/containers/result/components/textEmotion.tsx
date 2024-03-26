@@ -9,7 +9,7 @@ import { UploadPieChart } from "../../../components/emotionsPieChart/index.tsx";
 // Styled Card component
 const StyledCard = styled(Card)`
   background-color: #f5f5f5;
-  width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;

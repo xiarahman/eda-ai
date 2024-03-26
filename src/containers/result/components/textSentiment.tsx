@@ -10,8 +10,8 @@ import { selectorAnalyzeText } from "../../../redux/Selectors/index.ts";
 const StyledCard = styled(Card)`
   backgroundcolor: #f5f5f5;
   margin-top: 10px;
-  width: 600px;
-  height: 250px;
+  width: 100%;
+  height: 270px;
   padding: 5px;
 `;
 

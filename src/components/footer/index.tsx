@@ -66,7 +66,9 @@ const Footer = () => {
                 FAQs
               </StyledScrollLink>
 
-              <ContactButton onClick={showModal}>Contact Us</ContactButton>
+<ContactButton onClick={showModal}>Contact Us</ContactButton>
+
+              
             </Flex>
           </StyledFooterText>
         </Col>

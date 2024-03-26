@@ -28,7 +28,7 @@ const CardsContent: React.FC = () => {
           </StyledSpace>
         </Col>
         <Col xs={{ span: 2 }} lg={{ span: 2 }}>
-          <Image src={quoteComma} preview={false} style={{ marginTop: "20px", width: "100%" }} />
+          <Image src={quoteComma} preview={false} style={{  width: "100%" }} />
         </Col>
       </Row>
     </Content>

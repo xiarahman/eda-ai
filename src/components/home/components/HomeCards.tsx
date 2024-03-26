@@ -4,7 +4,7 @@ import pattern from "../../../assets/pattern.png";
 import video from "../../../assets/video.png";
 import live from "../../../assets/live.png";
 import text from "../../../assets/text.png";
-import { CardsContainer, StyledCard } from "../style.ts";
+import { CardsContainer, StyledCard, StyledImage } from "../style.ts";
 const { Meta } = StyledCard;
 
 const HomeCards: React.FC = () => {
@@ -13,7 +13,7 @@ const HomeCards: React.FC = () => {
     <CardsContainer id= "features">
       <Row gutter={32} align="middle" justify="center">
         <Col xs={20} sm={20} md={3} lg={3} xxl={3}>
-          <Image src={pattern} preview={false} />
+          <StyledImage src={pattern} preview={false} />
         </Col>
         
         <Col xs={20} sm={20} md={6} lg={6} xxl={6}>
@@ -44,7 +44,7 @@ const HomeCards: React.FC = () => {
           </StyledCard>
         </Col>
         <Col xs={20} sm={20} md={3} lg={3} xxl={3}>
-          <Image src={pattern} preview={false} />
+          <StyledImage src={pattern} preview={false} />
         </Col>
       </Row>
     </CardsContainer>

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Drawer } from "antd";
+import { Drawer, Flex } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { StyledButton } from "../home/style.ts";
 import { StyledLink, StyledScrollLink } from "../styledLink.ts";
-import { NavBar, Nav, MobileMenuButton } from "./styledindex.tsx";
+import { NavBar, Nav,StyledDiv, MobileMenuButton } from "./styledindex.tsx";
 
 const Header = () => {
   const [visible, setVisible] = useState(false);
@@ -51,14 +51,17 @@ const Header = () => {
           Try Now!
         </StyledButton>
       </Nav>
-
+<Flex justify="space-between">
+<StyledDiv style={{ color: "white", marginTop: "1rem" }}>
+            EmoAnalytica
+          </StyledDiv>
       <MobileMenuButton
         type="text"
         onClick={showDrawer}
         icon={<MenuOutlined />}
       />
-      <Drawer
-        placement="left"
+<Drawer
+        placement="right"
         closable={true}
         onClose={onClose}
         open={visible}
@@ -77,9 +80,7 @@ const Header = () => {
             fontSize: "32px",
           }}
         >
-          <div style={{ color: "white", marginBottom: "1rem" }}>
-            EmoAnalytica
-          </div>
+          
           {!isHomePage ? (
             <StyledLink to="/">Home</StyledLink>
           ) : (
@@ -132,6 +133,7 @@ const Header = () => {
           </StyledButton>
         </div>
       </Drawer>
+      </Flex>
     </NavBar>
   );
 };

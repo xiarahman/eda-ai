@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Text from "../../components/text/index.tsx";
-import { List, Space, Flex } from "antd";
+import { List, Space, Flex, Row, Col } from "antd";
 import EmotionCard from "./components/textEmotion.tsx";
 import SentimentCard from "./components/textSentiment.tsx";
 import { capitalizeFirstLetter } from "./components/helper.tsx";
@@ -55,12 +55,13 @@ const AnalysisResult: React.FC = () => {
         padding: "0px 0px 25px 0px",
         display: "flex",
         justifyContent: "space-between",
-        gap: "40px",
+        gap: "0px",
         flexDirection: "column",
       }}
     >
-      <AnalysisContainer>
+      <Row style={{marginTop: "8%"}}>
         {/* Preview column */}
+        <Col xs={24} sm={24} md={12} lg={14} xxl={14}>
         <PreviewColumn>
           <h2 className="section-heading">Preview</h2>
 
@@ -108,7 +109,10 @@ const AnalysisResult: React.FC = () => {
 
           {/* </Space> */}
         </PreviewColumn>
+        </Col>
+       
         {/* Results column */}
+        <Col xs={24} sm={24} md={12} lg={10} xxl={10}>
         <ResultsColumn>
           <ResultsWrapper>
             <h2 className="section-heading">Results</h2>
@@ -118,12 +122,14 @@ const AnalysisResult: React.FC = () => {
             <SentimentCard />
           </ResultsWrapper>
         </ResultsColumn>
-      </AnalysisContainer>
+        </Col>
+       
+      </Row>
       <Flex
         style={{
-          minWidth: "1100px",
+          
           cursor: "pointer",
-          margin: "0 auto",
+          margin: "3%",
           justifyContent: "start",
         }}
         onClick={() => {
