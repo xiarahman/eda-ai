@@ -91,6 +91,7 @@ export const StyledText = styled(Typography)`
   font-weight: 500;
   font-family: Poppins;
   padding-left: 2%;
+  
   @media (max-width: 768px) {
     font-size: 16px;
     font-weight: 800;

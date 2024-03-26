@@ -61,7 +61,7 @@ const AnalysisResult: React.FC = () => {
     >
       <Row style={{marginTop: "8%"}}>
         {/* Preview column */}
-        <Col xs={24} sm={24} md={12} lg={14} xxl={14}>
+        <Col xs={{span: 24, order: 2}} sm={{span: 24, order: 2}} md={{span: 12, order: 1}} lg={{span: 14, order: 1}} xxl={{span: 14, order: 1}} >
         <PreviewColumn>
           <h2 className="section-heading">Preview</h2>
 
@@ -112,7 +112,8 @@ const AnalysisResult: React.FC = () => {
         </Col>
        
         {/* Results column */}
-        <Col xs={24} sm={24} md={12} lg={10} xxl={10}>
+    
+        <Col xs={{span: 24, order: 1}} sm={{span: 24, order: 1}} md={{span: 12, order: 1}} lg={{span: 10, order: 2}} xxl={{span: 10, order: 2}} >
         <ResultsColumn>
           <ResultsWrapper>
             <h2 className="section-heading">Results</h2>

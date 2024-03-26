@@ -42,10 +42,10 @@ const Work: React.FC = () => {
         </Col>
       </Row>
       <Row gutter={8}>
-        <Col xs={24} sm={12}>
+        <Col xs={{span:24, order: 2}} sm={{span:24, order: 2}}  lg={{span:12, order: 1}}>
           <Image src={process} preview={false} />
         </Col>
-        <Col xs={24} sm={12}>
+        <Col xs={{span:24, order: 1}} sm={{span:24, order: 1}}  lg={{span:12, order: 2}} >
           <WorkNumberSubTitle>02</WorkNumberSubTitle>
           <Flex vertical>
             <WorkSubTitle>Process</WorkSubTitle>

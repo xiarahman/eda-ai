@@ -114,6 +114,7 @@ const Header = () => {
             to="faq"
             smooth
             duration={500}
+            onClick={handleLinkClick}
           >
             FAQs
           </StyledScrollLink>
@@ -121,6 +122,7 @@ const Header = () => {
             to="footer"
             smooth
             duration={500}
+            onClick={handleLinkClick}
           >
             Contact Us
           </StyledScrollLink>

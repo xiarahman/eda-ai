@@ -29,8 +29,8 @@ const Analyze = () => {
   };
 
   return (
-    <MainFlex align="center" gap="large" vertical>
-      <Flex gap="middle">
+    <MainFlex align="center" gap="large" vertical >
+      <Flex gap="middle" >
         <OptionsDiv
           onClick={() => setItem("video")}
           className={item === "video" ? "active" : ""}
