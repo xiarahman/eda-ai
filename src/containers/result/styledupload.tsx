@@ -45,6 +45,10 @@ export const CardHeading = styled.h4`
 export const MainFlex = styled(Flex)`
   margin: 0 auto;
   max-width: 1100px;
+  @media (max-width: 768px) {
+    margin: 1;
+    max-width: 330px;
+  }
 `;
 
 export const PreviewSectionFlex = styled(Flex)`

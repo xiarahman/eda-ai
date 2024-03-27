@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Flex } from "antd";
+import { Row, Col, Flex } from "antd";
 import AreaCharts from "../../components/areaChart/index.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { liveStreamFetchRequest } from "../../redux/Slice/index.ts";
@@ -29,42 +29,56 @@ const LiveResult = ({ job_id }) => {
   useEffect(() => {
     dispatch(liveStreamFetchRequest({ job_id }));
   }, []);
+
   return (
     <Container>
       <MainFlex gap="middle">
-        <EmotionSectionFlex justify="space-between" gap="middle" vertical>
-          <Flex vertical>
-            <CardHeading>Emotions</CardHeading>
-          </Flex>
+        <Row gutter={[16, 16]}>
+          {/* Emotions Section */}
+          <Col xs={24} lg={12}>
+            <EmotionSectionFlex justify="space-between" gap="middle" vertical>
+              <Flex vertical>
+                <CardHeading>Emotions</CardHeading>
+              </Flex>
 
-          <Flex justify="center">
-            <UploadPieChart pieChartData={chartsData?.top_three_emotions} />
-          </Flex>
-          <Flex justify="start">
-            {chartsData?.top_three_emotions &&
-              chartsData?.top_three_emotions.length > 0 && (
-                <CardHeading>
-                  Final Prediction: {chartsData.top_three_emotions[0].emotion}
-                </CardHeading>
-              )}
-          </Flex>
-        </EmotionSectionFlex>
-        {/* Area Chart */}
-        <AreaChartFlex vertical gap="large">
-          <Flex gap="large" justify="space-between">
-            <Flex vertical>
-              <CardHeading>Graph</CardHeading>
-            </Flex>
-          </Flex>
-          <AreaCharts chartsData={chartsData} />
-        </AreaChartFlex>
+              <Flex justify="center">
+                <UploadPieChart pieChartData={chartsData?.top_three_emotions} />
+              </Flex>
+              <Flex justify="start">
+                {chartsData?.top_three_emotions &&
+                  chartsData?.top_three_emotions.length > 0 && (
+                    <CardHeading>
+                      Final Prediction:{" "}
+                      {chartsData.top_three_emotions[0].emotion}
+                    </CardHeading>
+                  )}
+              </Flex>
+            </EmotionSectionFlex>
+          </Col>
+
+          {/* Area Chart */}
+          <Col xs={24} sm={24} md={12} lg={12} xxl={12}>
+            <AreaChartFlex vertical gap="large">
+              <Flex gap="large" justify="space-between">
+                <Flex vertical>
+                  <CardHeading>Graph</CardHeading>
+                </Flex>
+              </Flex>
+              <AreaCharts chartsData={chartsData} />
+            </AreaChartFlex>
+          </Col>
+        </Row>
       </MainFlex>
       {/* Go Back Button */}
-      <GoBackButtonFlex onClick={() => history.push(`/analyze`)}>
-        <ArrowLeftOutlined />
-        <span style={{ width: 6 }} />
-        Go Back
-      </GoBackButtonFlex>
+      <Row justify="center">
+        <Col>
+          <GoBackButtonFlex onClick={() => history.push(`/analyze`)}>
+            <ArrowLeftOutlined />
+            <span style={{ width: 6 }} />
+            Go Back
+          </GoBackButtonFlex>
+        </Col>
+      </Row>
     </Container>
   );
 };
