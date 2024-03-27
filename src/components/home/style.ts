@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Typography, Card, Space, Button, Collapse } from "antd";
+import { Typography, Card, Space, Button, Collapse, Image } from "antd";
 import mainImage from "../../assets/HomeImage.png";
 
 export const BannerImageContainer = styled.div`
@@ -15,11 +15,31 @@ export const BannerImage = styled.image`
   left: 25%;
   background-image: url(${mainImage});
   background-repeat: no-repeat;
+  @media (max-width: 768px) {
+    left: 0;
+  }
+`;
+export const StyledImage = styled(Image)`
+  @media (max-width: 768px) {
+    margin-left: 45%;
+    margin-top: 5%;
+  }
 `;
 export const StyledTitle = styled(Typography)`
   font-size: 30px;
   font-weight: 700;
-  
+`;
+export const BannerContent = styled.div`
+  position: relative;
+  color: white;
+  text-align: left;
+  margin-top: 18%;
+  margin-left: 10%;
+  @media (max-width: 768px) {
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 120%;
+  }
 `;
 export const BannerTitle = styled(StyledTitle)`
   color: white;
@@ -27,9 +47,12 @@ export const BannerTitle = styled(StyledTitle)`
   font-size: 48px;
   line-height: 150%;
   font-weight: 900;
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
 `;
 export const WorkTitle = styled(StyledTitle)`
-   margin-top: 2%;
+  margin-top: 2%;
   fonts-size: 28px;
   font-family: Sora;
   font-weight: 600;
@@ -51,13 +74,7 @@ export const StyledButton = styled(Button)`
   font-weight: 600;
   padding: 5px;
 `;
-export const BannerContent = styled.div`
-  position: relative;
-  color: white;
-  text-align: left;
-  margin-top: 15%;
-  margin-left: 10%;
-`;
+
 export const Content = styled.div`
   background-color: #c1cfed;
   color: white;
@@ -66,16 +83,20 @@ export const Content = styled.div`
   font-weight: 600;
 `;
 export const StyledSpace = styled(Space)`
-
-  padding: 20px;
-
+  // padding: 20px;
   background-color: "#F5F5F5";
 `;
 export const StyledText = styled(Typography)`
   font-size: 32px;
- 
   font-weight: 500;
   font-family: Poppins;
+  padding-left: 2%;
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
+    font-weight: 800;
+    padding: 2%;
+  }
 `;
 export const WorkText = styled(StyledText)`
   font-size: 16px;
@@ -99,6 +120,4 @@ export const StyledCard = styled(Card)`
   padding: 3%;
   text-align: center;
   margin-top: 8px;
- 
 `;
-

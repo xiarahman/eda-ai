@@ -8,27 +8,27 @@ const CardsContent: React.FC = () => {
     <Content>
       {/* Description of Product */}
       <Row>
-        <Col xs={{ span: 22 }} lg={{ span: 22 }}>
+        <Col xs={22} lg={22}>
           <StyledSpace>
             <StyledText>
-              Dive Deep Into Your Customer Interactions And Uncover{" "}
+              Dive Deep Into Your Customer Interactions And Uncover
               <u>
                 <i>Valuable Insights</i>
-              </u>{" "}
-              Into Their{" "}
+              </u>
+              Into Their
               <u>
                 <i>Emotions</i>
-              </u>{" "}
+              </u>
               And Sentiments. Empower Your Business To Drive Meaningful
-              Engagement And Enhance{" "}
+              Engagement And Enhance
               <u>
                 <i>Customer Satisfaction.</i>
               </u>
             </StyledText>
           </StyledSpace>
         </Col>
-        <Col xs={{ span: 2 }} lg={{ span: 2 }}>
-          <Image src={quoteComma} preview={false} style={{ marginTop: "20px", width: "100%" }} />
+        <Col xs={2} lg={2}>
+          <Image src={quoteComma} preview={false} style={{  width: "100%" }} />
         </Col>
       </Row>
     </Content>

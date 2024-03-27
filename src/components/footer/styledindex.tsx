@@ -25,7 +25,7 @@ export const StyledFooterTitle = styled(Typography)`
   font-family: Poppins;
 `;
 export const StyledFooterText = styled(StyledFooterTitle)`
-  font-size: 12px;
+  font-size: 14px;
   font-family: Poppins;
   font-weight: 500;
 `;
@@ -36,7 +36,9 @@ export const ContactButton = styled(Button)`
   margin-left: -60%;
   color: white;
   font-size: 13px;
-  
+  &:hover {
+    color: white;
+  }
   @media (max-width: 768px) {
     margin-left: -80%;
   }

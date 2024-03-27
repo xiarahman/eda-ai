@@ -10,7 +10,7 @@ export const NavBar = styled.div`
   top: 0;
   z-index: 1000;
   @media (max-width: 768px) {
-    padding: 1% 2%;
+    padding: 3% ;
   } 
 `;
 export const Nav = styled.div`
@@ -37,5 +37,10 @@ export const StyledLink = styled(Link)`
   &:hover {
     color: #c1cfed;
   }
+`;
+export const StyledDiv = styled.div`
+@media (min-width: 768px){
+  display: none;
+}
 `;
 

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom'
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 export const StyledLink = styled(Link)`
   cursor: pointer;
@@ -7,24 +7,24 @@ export const StyledLink = styled(Link)`
   color: #f5f5f5 !important;
   text-decoration: none;
   font-size: 14px;
+  @media (max-width: 768px) {
+    margin-bottom: 0.5rem;
+  }
   &:hover {
     color: #6cc0e5;
   }
 `;
-export const StyledScrollLink= styled(ScrollLink)`
-
-cursor: pointer;
-margin-right: 1rem;
+export const StyledScrollLink = styled(ScrollLink)`
+  cursor: pointer;
+  margin-right: 1rem;
   color: #f5f5f5 !important;
   text-decoration: none;
   font-size: 14px;
   @media (max-width: 768px) {
-   margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   &:hover {
     color: #6cc0e5;
   }
-`
-;
-
+`;

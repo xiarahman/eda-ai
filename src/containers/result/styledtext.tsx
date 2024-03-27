@@ -3,16 +3,17 @@ import { Button } from "antd";
 export const AnalysisContainer = styled.div`
   display: flex;
   margin-top: 8%;
+  width: 80%;
 `;
 export const PreviewColumn = styled.div`
-  flex: 1;
+  
   height: 600px;
   overflow-y: auto;
   padding: 20px;
   margin-left: 5%;
 `;
 export const ResultsColumn = styled.div`
-  flex: 1;
+ 
   padding: 20px;
   display: flex;
   flex-direction: column;
