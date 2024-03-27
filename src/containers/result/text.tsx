@@ -61,10 +61,9 @@ const AnalysisResult: React.FC = () => {
     >
       <Row style={{marginTop: "8%"}}>
         {/* Preview column */}
-        <Col xs={{span: 24, order: 2}} sm={{span: 24, order: 2}} md={{span: 12, order: 1}} lg={{span: 14, order: 1}} xxl={{span: 14, order: 1}} >
-        <PreviewColumn>
-          <h2 className="section-heading">Preview</h2>
-
+        <Col xs={{span: 24, order: 2}} sm={{span: 24, order: 2}} md={{span: 13, order: 1}} lg={{span: 13, order: 1}} xl={{span: 13, order: 1}} >
+        <h2 className="section-heading" style={{position: "sticky",marginLeft: "7%" }}>Preview</h2>
+        <PreviewColumn>  
           <Space direction="vertical">
             {/* preview sentences  */}
             {Object.keys(analysisResult?.detailed_analysis || {}) &&
@@ -114,9 +113,10 @@ const AnalysisResult: React.FC = () => {
         {/* Results column */}
     
         <Col xs={{span: 24, order: 1}} sm={{span: 24, order: 1}} md={{span: 12, order: 1}} lg={{span: 10, order: 2}} xxl={{span: 10, order: 2}} >
+        <h2 className="section-heading" style={{marginLeft: "2%"}}>Results</h2>
         <ResultsColumn>
           <ResultsWrapper>
-            <h2 className="section-heading">Results</h2>
+          
             {/* Render EmotionCard component */}
             <EmotionCard />
             {/* Render SentimentCard component */}

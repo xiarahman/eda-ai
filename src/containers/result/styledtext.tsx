@@ -3,6 +3,7 @@ import { Button } from "antd";
 export const AnalysisContainer = styled.div`
   display: flex;
   margin-top: 8%;
+  width: 80%;
 `;
 export const PreviewColumn = styled.div`
   
