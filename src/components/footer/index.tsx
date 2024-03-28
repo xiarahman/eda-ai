@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <FooterContainer id="footer">
-      <Row gutter={[16, 16]}>
+      <Row gutter={[32, 32]}>
         <Col xs={24} sm={24} md={13} lg={13}>
           <StyledFooterTitle>EmoAnalytica</StyledFooterTitle>
           <StyledFooterText>
@@ -66,9 +66,7 @@ const Footer = () => {
                 FAQs
               </StyledScrollLink>
 
-<ContactButton onClick={showModal}>Contact Us</ContactButton>
-
-              
+              <ContactButton onClick={showModal}>Contact Us</ContactButton>
             </Flex>
           </StyledFooterText>
         </Col>
@@ -101,57 +99,55 @@ const Footer = () => {
         </Col>
       </Row>
       <Modal
-      
-              open={isModalVisible}
-              onCancel={handleCancel}
-              width={800}
-              style={{height: "500px"}}
-              footer={null}
-              centered={true}
+        open={isModalVisible}
+        onCancel={handleCancel}
+        width={800}
+        style={{ height: "500px" }}
+        footer={null}
+        centered={true}
+      >
+        <Row>
+          <Col
+            span={14}
+            style={{
+              backgroundColor: "#000244",
+              color: "white",
+              padding: "3%",
+            }}
+          >
+            <Flex vertical style={{ marginTop: "30%" }}>
+              <ModalTitle>Send Us A Message</ModalTitle>
+              <WorkText style={{ color: "white" }}>
+                Feel free to reach out with your enquiries we will get back to
+                you as soon as we can!
+              </WorkText>
+            </Flex>
+
+            <Image
+              src={modalImage}
+              preview={false}
+              style={{ height: "156px", width: "200px", marginTop: "80%" }}
+            />
+          </Col>
+
+          <Col span={10} style={{ backgroundColor: "#C1CFED" }}>
+            <Flex
+              vertical
+              style={{ padding: "30px", marginTop: "30%" }}
+              gap={"middle"}
             >
-              <Row>
-                <Col
-                  span={14}
-                  style={{
-                    backgroundColor: "#000244",
-                    color: "white",
-                    padding: "3%",
-                  }}
-                >
-                  <Flex vertical style={{ marginTop: "30%" }}>
-                    <ModalTitle>
-                      Send Us A Message
-                    </ModalTitle>
-                    <WorkText style={{ color: "white" }}>
-                      Feel free to reach out with your enquiries we will get back to
-                      you as soon as we can!
-                    </WorkText>
-                  </Flex>
-      
-                  <Image
-                    src={modalImage}
-                    preview={false}
-                    style={{ height: "156px", width: "200px", marginTop: "80%" }}
-                  />
-                </Col>
-      
-                <Col span={10} style={{ backgroundColor: "#C1CFED" }}>
-                  <Flex
-                    vertical
-                    style={{ padding: "30px", marginTop: "30%" }}
-                    gap={"middle"}
-                  >
-                    <ContactInput placeholder="Enter Your Name" />
-                    <ContactInput placeholder="Your Email" />
-                    <ContactInput placeholder="Mobile Number" />
-                    <ContactInput.TextArea placeholder="Write your message" rows={6} />
-                    <Button type="primary">
-                      Submit
-                    </Button>
-                  </Flex>
-                </Col>
-              </Row>
-            </Modal>
+              <ContactInput placeholder="Enter Your Name" />
+              <ContactInput placeholder="Your Email" />
+              <ContactInput placeholder="Mobile Number" />
+              <ContactInput.TextArea
+                placeholder="Write your message"
+                rows={6}
+              />
+              <Button type="primary">Submit</Button>
+            </Flex>
+          </Col>
+        </Row>
+      </Modal>
     </FooterContainer>
   );
 };
@@ -194,7 +190,7 @@ export default Footer;
 //               Insights into Their Emotions and Sentiments. Empower Your Business
 //               To Drive Meaningful Engagement and Enhance Customer Satisfaction
 //             </StyledFooterText>
-         
+
 //             <Button
 //               type="link"
 //               href={"/analyze"}
@@ -222,7 +218,7 @@ export default Footer;
 //           <StyledScrollLink to="faq" smooth duration={500}>
 //             FAQs
 //           </StyledScrollLink>
-         
+
 //                 {/* <StyledLink onClick={showModal}>Contact Us</StyledLink> */}
 //                 <ContactButton
 //                   onClick={showModal}
@@ -261,7 +257,7 @@ export default Footer;
 //           </Col>
 //         </Row>
 //       <Modal
-      
+
 //         open={isModalVisible}
 //         onCancel={handleCancel}
 //         width={800}

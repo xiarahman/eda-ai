@@ -5,10 +5,10 @@ export const FooterContainer = styled.div`
   background-color: #000244;
   color: white;
   width: 100%;
-  padding: 5% 10%;
+  padding: 5% 8%;
 `;
 export const SocialLinks = styled.div`
-  margin-top: 15%;
+  margin-top: 10%;
 `;
 export const ContactInput = styled(Input)`
   width: 100%;
