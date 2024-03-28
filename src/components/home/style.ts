@@ -78,12 +78,12 @@ export const StyledButton = styled(Button)`
 export const Content = styled.div`
   background-color: #c1cfed;
   color: white;
-  padding: 2%;
+  height: 270px;
+  padding: 3%;
   font-family: Poppins;
   font-weight: 600;
 `;
 export const StyledSpace = styled(Space)`
-  // padding: 20px;
   background-color: "#F5F5F5";
 `;
 export const StyledText = styled(Typography)`
@@ -113,6 +113,7 @@ export const StyledCollapse = styled(Collapse)`
 export const CardsContainer = styled.div`
   background-color: white;
   padding-top: 8%;
+  margin-top: 1%;
   padding: 1%;
 `;
 export const StyledCard = styled(Card)`

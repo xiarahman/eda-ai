@@ -5,10 +5,10 @@ export const FooterContainer = styled.div`
   background-color: #000244;
   color: white;
   width: 100%;
-  padding: 5% 8%;
+  padding: 5% 10%;
 `;
 export const SocialLinks = styled.div`
-  margin-top: 10%;
+  margin-top: 15%;
 `;
 export const ContactInput = styled(Input)`
   width: 100%;
@@ -32,16 +32,16 @@ export const StyledFooterText = styled(StyledFooterTitle)`
 export const ContactButton = styled(Button)`
   border: none;
   background-color: transparent;
+  // padding: 0;
   cursor: pointer;
-  margin-left: -60%;
+//  text-align: left;
   color: white;
   font-size: 13px;
   &:hover {
     color: white;
   }
-  @media (max-width: 768px) {
-    margin-left: -80%;
-  }
+
+
 `;
 export const ModalTitle= styled(StyledFooterTitle)`
 color: #C1CFED;

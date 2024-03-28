@@ -5,7 +5,7 @@ import { Row, Col, Image } from "antd";
 
 const CardsContent: React.FC = () => {
   return (
-    <Content>
+    <Content id="content">
       {/* Description of Product */}
       <Row>
         <Col xs={22} lg={22}>
@@ -13,11 +13,11 @@ const CardsContent: React.FC = () => {
             <StyledText>
               Dive Deep Into Your Customer Interactions And Uncover
               <u>
-                <i>Valuable Insights</i>
-              </u>
-              Into Their
+                <i>Valuable Insights </i>
+              </u> 
+              Into Their 
               <u>
-                <i>Emotions</i>
+                <i>Emotions </i>
               </u>
               And Sentiments. Empower Your Business To Drive Meaningful
               Engagement And Enhance
@@ -28,7 +28,7 @@ const CardsContent: React.FC = () => {
           </StyledSpace>
         </Col>
         <Col xs={2} lg={2}>
-          <Image src={quoteComma} preview={false} style={{  width: "100%" }} />
+          <Image src={quoteComma} preview={false} style={{   marginTop: "2%" }} />
         </Col>
       </Row>
     </Content>

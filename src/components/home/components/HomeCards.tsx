@@ -11,7 +11,7 @@ const HomeCards: React.FC = () => {
  
   return (
     <CardsContainer id= "features">
-      <Row gutter={32} align="middle" justify="center">
+      <Row gutter={32} align="middle" justify="center" style={{marginTop: "3%"}}>
         <Col xs={20} sm={20} md={3} lg={3} xxl={3}>
           <StyledImage src={pattern} preview={false} />
         </Col>
