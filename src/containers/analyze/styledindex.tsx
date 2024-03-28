@@ -30,12 +30,20 @@ export const OptionsDiv = styled.div`
     color: #262e5b;
     font-family: "Roboto Serif";
   }
+
+  @media (max-width: 768px) {
+    width: 105px;
+    padding: 0 0.2rem;
+  }
 `;
 
 export const MainText = styled(Text)`
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 export const MainFlex = styled(Flex)`
@@ -43,4 +51,8 @@ export const MainFlex = styled(Flex)`
   min-height: 830px;
   padding-top: 6rem;
   flexgrow: 1;
+  @media (max-width: 768px) {
+    margin: 2;
+    min-width: 300px;
+  }
 `;

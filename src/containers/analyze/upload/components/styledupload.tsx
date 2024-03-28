@@ -42,6 +42,11 @@ export const StyledDragger = styled(Dragger)`
   && .anticon {
     color: #262e5b !important;
   }
+
+  @media (max-width: 768px) {
+    width: 328px;
+    height: 200px;
+  }
 `;
 
 export const StyledUploadText = styled.p`

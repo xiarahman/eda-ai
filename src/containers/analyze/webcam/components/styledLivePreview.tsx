@@ -21,6 +21,12 @@ export const Preview = styled.div`
   //border-radius: 5px;
   //border: 1px solid var(--Neutral-5, #d9d9d9);
   //background: #f5f5f5;
+
+  @media (max-width: 768px) {
+    width: 230px;
+    height: 140px;
+    margin: 1;
+  }
 `;
 
 export const styles = {
