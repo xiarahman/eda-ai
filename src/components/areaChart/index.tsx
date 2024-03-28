@@ -40,7 +40,7 @@ const AreaCharts = ({ chartsData }) => {
           <Tooltip labelFormatter={formatTooltip} />{" "}
           {/* Utilize labelFormatter to format tooltip */}
           <Area type="monotone" dataKey="angry" stroke="red" fill="red" />
-          <Area type="monotone" dataKey="sad" stroke="yellow" fill="yellow" />
+          <Area type="monotone" dataKey="sad" stroke="orange" fill="orange" />
           <Area type="monotone" dataKey="fear" stroke="purple" fill="purple" />
           <Area type="monotone" dataKey="neutral" stroke="gray" fill="gray" />
           <Area type="monotone" dataKey="happy" stroke="green" fill="green" />
