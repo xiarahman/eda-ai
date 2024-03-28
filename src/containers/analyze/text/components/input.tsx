@@ -2,12 +2,13 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Text from "../../../../components/text/index.tsx";
 import { useDispatch, useSelector } from "react-redux";
-import { StyledTextArea, Inputdiv, ButtonsDiv } from "./styledinput.tsx";
+import { StyledTextArea, Inputdiv, ButtonsDiv, StyledUploadText,  } from "./styledinput.tsx";
 import { Flex, Space, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import { selectorAnalyzeText } from "../../../../redux/Selectors/index.ts";
 import { analyzeTextRequest } from "../../../../redux/Slice/index.ts";
+
 
 const InputForm = () => {
   // State variables
@@ -17,6 +18,7 @@ const InputForm = () => {
   const dispatch = useDispatch();
   const { loading, analysisResult } = useSelector(selectorAnalyzeText);
   const { push } = useHistory();
+  
 
   // Handler for input change event
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -123,10 +125,10 @@ const InputForm = () => {
       </ButtonsDiv>
 
       {/* Description text */}
-      <Text type={"p"} className="btn-des">
-        Support for a single upload. Only supports <br />
+      <StyledUploadText>
+        Support for a single upload. Only supports
         .txt or csv extensions.
-      </Text>
+      </StyledUploadText>
     </Inputdiv>
   );
 };

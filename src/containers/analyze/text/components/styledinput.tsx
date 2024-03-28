@@ -1,11 +1,17 @@
 import styled from "styled-components";
-import { Input } from "antd";
+import { Input, Typography } from "antd";
+import Text from "../../../../components/text/index.tsx";
 export const Inputdiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   width: 628px;
+  @media (max-width: 768px) {
+    width: 328px;
+    height: 300px;
+   
+  }
 `;
 export const ButtonsDiv = styled.div`
   width: 628px;
@@ -14,6 +20,10 @@ export const ButtonsDiv = styled.div`
   flex-direction: row;
   align-items: space-between;
   gap: 20px;
+  @media (max-width: 768px) {
+    width: 328px;
+    
+  }
 `;
 export const StyledTextArea = styled(Input.TextArea)`
   background-color: #f5f5f5 !important;
@@ -30,4 +40,12 @@ export const StyledTextArea = styled(Input.TextArea)`
     color: black !important;
     background-color: #f5f5f5 !important;
   }
+`;
+export const StyledUploadText = styled (Typography)`
+font-size: 12px;
+text-align: start;
+
+@media (max-width: 768px){
+  //  display: none;
+}
 `;

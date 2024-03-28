@@ -7,10 +7,11 @@ export const AnalysisContainer = styled.div`
 `;
 export const PreviewColumn = styled.div`
   
-  height: 600px;
+  height: 92%;
   overflow-y: auto;
   padding: 20px;
   margin-left: 5%;
+
 `;
 export const ResultsColumn = styled.div`
  
