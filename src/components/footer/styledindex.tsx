@@ -32,18 +32,16 @@ export const StyledFooterText = styled(StyledFooterTitle)`
 export const ContactButton = styled(Button)`
   border: none;
   background-color: transparent;
-  // padding: 0;
+  padding: 0;
   cursor: pointer;
-//  text-align: left;
+  text-align: left;
   color: white;
   font-size: 13px;
   &:hover {
     color: white;
   }
-
-
 `;
-export const ModalTitle= styled(StyledFooterTitle)`
-color: #C1CFED;
- font-size: 28px;
+export const ModalTitle = styled(StyledFooterTitle)`
+  color: #c1cfed;
+  font-size: 28px;
 `;
